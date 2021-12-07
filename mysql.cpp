@@ -63,9 +63,43 @@ QByteArray mysql::classSignIn_sql(int id)
     return sign_in_code;
 }
 
-void mysql::sign_in_sql(int uid)
+void mysql::studentSignIn_sql(int sid,int classid)
 {
+    if(DB.isOpen()==false)connect();
+    QSqlQuery query=DB.exec("select * from student where sid=\""+QString::number(sid)+"\";");
+    QJsonArray classList=query.value("class").toJsonArray();
+    QJsonObject classSingle;
+    int sign_up;
+    for(int i=0;i<classList.size();i++)//遍历数组中的每个对象，寻找对应的课程id
+    {
+        classSingle=classList[i].toObject();
+        if(classSingle.value("id").toInt()==classid)//取出签到次数并修改，删除该对象并插入修改后的对象
+        {
+            sign_up=classSingle.take("sign_up").toInt()+1;
+            classSingle.insert("sign_up",sign_up);
+            classList.removeAt(i);
+            classList.insert(i,classSingle);
+            break;
+        }
+    }
+}
 
+QString mysql::studentChoose_sql(int classid, int &sid)
+{
+    if(DB.isOpen()==false)connect();
+    QSqlQuery query=DB.exec("select * from student where"
+                            " json_contains(class,json_object(\'id\',"+QString::number(classid)+"));");
+    QSqlQuery query2=DB.exec("select count(*) as count from student where"
+                            " json_contains(class,json_object(\'id\',"+QString::number(classid)+"));");
+    query2.next();
+    int cnt=query2.value("count").toInt(),selectStu;
+    selectStu=rand()%cnt+1;
+    while(selectStu-->0)
+    {
+        query.next();
+    }
+    sid=query.value("sid").toInt();
+    return query.value("name").toString();
 }
 
 QJsonArray mysql::classList_sql(int uid, int mode)
@@ -84,7 +118,7 @@ QJsonArray mysql::studentList_sql(int id)
 {
     if(DB.isOpen()==false)connect();
     QSqlQuery query=DB.exec("select * from student where"
-                            " json_contains(class,json_object(\'classid\',""\""+QString::number(id)+"\"));");
+                            " json_contains(class,json_object(\'id\',"+QString::number(id)+"));");
 
     QJsonObject stu;
     QJsonArray stuList;
@@ -197,7 +231,7 @@ QJsonObject mysql::examCheck_sql(int paperid,QJsonArray PaperInfo, int &score)
     {
         QJsonObject examSingle=examContent[i].toObject();
         chooseAns=PaperInfo[i].toInt();
-        correctAns=examSingle.value("correctAnd").toInt();
+        correctAns=examSingle.value("correctAns").toInt();
         examSingle.insert("choose",chooseAns);
         if(chooseAns==correctAns)score++;
         contentChange.append(examSingle);
@@ -207,11 +241,6 @@ QJsonObject mysql::examCheck_sql(int paperid,QJsonArray PaperInfo, int &score)
     paperDone.insert("get_score",score);
 
     return paperDone;
-}
-
-QJsonArray mysql::paperInquiry_sql(int sid, int paperid)
-{
-
 }
 
 QJsonObject mysql::addStudentExam_sql(int sid, int paperid, QJsonArray PaperInfo, int &score)
@@ -232,4 +261,59 @@ QJsonObject mysql::addStudentExam_sql(int sid, int paperid, QJsonArray PaperInfo
     DB.exec("update student set exam="+json+" where sid="+QString::number(sid)+";");
 
     return paperDone;
+}
+
+QJsonArray mysql::studentExamList_sql(int sid)
+{
+    if(DB.isOpen()==false)connect();
+    QSqlQuery query=DB.exec("select * from student where sid="+QString::number(sid)+";");
+    QJsonArray examList=query.value("exam").toJsonArray(),examListChange;
+    QJsonObject examSingle;
+    QString title;
+    QString publish_time;
+    int total_score,get_score;
+    int paperid;
+    for(int i=0;i<examList.size();i++)
+    {
+        examSingle=examList[i].toObject();
+        paperid=examSingle.value("id").toInt();
+        QSqlQuery query2=DB.exec("select * from paper where id="+QString::number(paperid)+";");
+        query2.next();
+
+        title=query2.value("title").toString();
+        publish_time=query2.value("publish_time").toString();
+        total_score=query2.value("total_score").toInt();
+        get_score=examSingle.value("score").toInt();
+
+        examSingle.insert("title",title);
+        examSingle.insert("publish_time",publish_time);
+        examSingle.insert("total_score",total_score);
+        examSingle.insert("get_score",get_score);
+
+            examListChange.append(examSingle);
+    }
+    return examListChange;
+}
+
+QJsonObject mysql::paperInquiry_sql(int sid, int paperid)
+{
+    if(DB.isOpen()==false)connect();
+    QSqlQuery query=DB.exec("select * from student where sid="+QString::number(sid)+" and "
+                                     "json_contains(exam,json_object(\'id\',"+QString::number(paperid)+"));");
+    query.next();
+    QJsonArray examList=query.value("exam").toJsonArray(),paperInfo;
+    QJsonObject examSingle;
+    for(int i=0;i<examList.size();i++)
+    {
+        examSingle=examList[i].toObject();
+        if(paperid==examSingle.value("id").toInt())
+        {
+            paperInfo=examSingle.value("option").toArray();
+            break;
+        }
+    }
+    int score=0;
+    QJsonObject paperDone=examCheck_sql(paperid,paperInfo,score);
+    return paperDone;
+
 }
