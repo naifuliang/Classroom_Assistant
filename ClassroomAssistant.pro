@@ -1,24 +1,24 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++11 console
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    client_student.cpp \
-    client_teacher.cpp \
+    client.cpp \
     main.cpp \
     mainwindow.cpp \
+    serverconnection.cpp \
     serverside.cpp
 
 HEADERS += \
-    client_student.h \
-    client_teacher.h \
+    client.h \
     mainwindow.h \
+    serverconnection.h \
     serverside.h
 
 FORMS += \
