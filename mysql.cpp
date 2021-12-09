@@ -5,21 +5,6 @@ mysql::mysql()
 {
 }
 
-void mysql::debug()
-{
-    setSqlInformation("Academy_Manage","root","wwwMysql_76219");
-    connect();
-    QString title="我的试卷1";
-    QString publish_time="2021-12-09",content="{yes}";
-    int lasting_time=1200;
-    int total_score=100;
-    int creator=2;
-    DB.exec("insert into paper(title,creator,total_score,lasting_time,publish_time,content) "
-            "value("+title+","+QString::number(creator)+","+QString::number(total_score)+
-            ","+QString::number(lasting_time)+","+publish_time+","+content+");");
-    qDebug()<<"finished";
-}
-
 bool mysql::connect()
 {
     if(QSqlDatabase::contains(DatabaseName))
@@ -45,12 +30,12 @@ int mysql::Login_sql(QString Name, QString Password, int mode)
     if(mode==0)
     {
         mode_name="student";
-        query=DB.exec("select * from "+mode_name+" where (name=\""+Name+"\" or sid=\""+Name+"\") and password=\""+Password+"\";");
+        query=DB.exec("select * from "+mode_name+" where (name='"+Name+"' or sid="+Name+") and password='"+Password+"';");
     }
     else
     {
         mode_name="teacher";
-        query=DB.exec("select * from "+mode_name+" where name=\""+Name+"\" and password=\""+Password+"\";");
+        query=DB.exec("select * from "+mode_name+" where name='"+Name+"' and password='"+Password+"';");
     }
 
     if(query.next())
@@ -341,7 +326,7 @@ QJsonObject mysql::addStudentExam_sql(int sid, int paperid, QJsonArray PaperInfo
     examInfo.append(examAdd);
     QJsonDocument doc(examInfo);
     QByteArray json = doc.toJson();
-    DB.exec("update student set exam="+json+" where sid="+QString::number(sid)+";");
+    DB.exec("update student set exam='"+json+"' where sid="+QString::number(sid)+";");
 
     return paperDone;
 }
@@ -416,17 +401,49 @@ int mysql::insertPaper_sql(int uid,int paperid,QJsonObject PaperInfo)
     if(paperid==0)
     {
         DB.exec("insert into paper(title,creator,total_score,lasting_time,publish_time,content) "
-                "value("+title+","+QString::number(creator)+","+QString::number(total_score)+
-                ","+QString::number(lasting_time)+","+publish_time+","+content+");");
+                "value('"+title+"',"+QString::number(creator)+","+QString::number(total_score)+
+                ","+QString::number(lasting_time)+",'"+publish_time+"','"+content+"');");
         QSqlQuery query=DB.exec("SELECT * FROM paper order by id desc limit 1;");
         query.next();
         paperid=query.value("id").toInt();
     }
     else
     {
-        DB.exec("update paper set title=\""+title+"\",lasting_time="+QString::number(lasting_time)+
-                ",publish_time=\""+publish_time+"\",content=\""+content+"\",total_score="+QString::number(total_score)+
+        DB.exec("update paper set title='"+title+"',lasting_time="+QString::number(lasting_time)+
+                ",publish_time='"+publish_time+"',content='"+content+"',total_score="+QString::number(total_score)+
                 " where id="+QString::number(paperid)+";");
     }
     return paperid;
 }
+
+QJsonObject mysql::publishPaper_sql(int classid, int paperid)
+{
+
+    if(DB.isOpen()==false)connect();
+
+    QSqlQuery query=DB.exec("select * from paper where id="+QString::number(paperid)+";");
+    DB.exec("update paper set classid="+QString::number(classid)+" where id="+QString::number(paperid)+";");
+    QJsonArray content;
+    QString title;
+    QString publish_time;
+    int total_score,lasting_time;
+    QJsonObject paperSingle;
+    query.next();
+
+    paperid=query.value("paperid").toInt();
+    title=query.value("title").toString();
+    publish_time=query.value("publish_time").toString();
+    total_score=query.value("total_score").toInt();
+    lasting_time=query.value("lasting_time").toInt();
+    content=query.value("content").toJsonArray();
+
+    paperSingle.insert("id",paperid);
+    paperSingle.insert("title",title);
+    paperSingle.insert("publish_time",publish_time);
+    paperSingle.insert("total_score",total_score);
+    paperSingle.insert("lasting_time",lasting_time);
+    paperSingle.insert("content",content);
+
+    return paperSingle;
+}
+

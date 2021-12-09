@@ -10,12 +10,13 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QSqlQuery>
-class mysql
+
+class mysql:public QObject
 {
+    Q_OBJECT
 public:
     mysql();
 
-    void debug();
 
     void setSqlInformation(QString DBname,QString Uname,QString pw);
        //设置所要连接数据库的 “数据库名字” “用户名” “密码”
@@ -178,6 +179,33 @@ public:
                ]
              }
         * */
+    QJsonObject publishPaper_sql(int classid,int paperid);
+       /*教师发布试卷，返回试卷 json数组，同时在数据库中更新该试卷的课程属性
+             {
+                "id":
+                "title":
+                "lasting_time":
+                "publish_time":
+                "total_score":
+                "content":
+                 [
+                   {
+                       "id":
+                       "description":
+                       "option":
+                       {
+                           "A":
+                           "B":
+                           "C":
+                           "D":
+                       }
+                       "correctAns":
+                   }
+                ]
+              }
+        *
+        * */
+    //    void setdown();
 private:
     QSqlDatabase DB;
     int sign_cnt;
