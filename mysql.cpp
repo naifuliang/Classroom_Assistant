@@ -5,6 +5,21 @@ mysql::mysql()
 {
 }
 
+void mysql::debug()
+{
+    setSqlInformation("Academy_Manage","root","wwwMysql_76219");
+    connect();
+    QString title="我的试卷1";
+    QString publish_time="2021-12-09",content="{yes}";
+    int lasting_time=1200;
+    int total_score=100;
+    int creator=2;
+    DB.exec("insert into paper(title,creator,total_score,lasting_time,publish_time,content) "
+            "value("+title+","+QString::number(creator)+","+QString::number(total_score)+
+            ","+QString::number(lasting_time)+","+publish_time+","+content+");");
+    qDebug()<<"finished";
+}
+
 bool mysql::connect()
 {
     if(QSqlDatabase::contains(DatabaseName))
@@ -25,10 +40,19 @@ bool mysql::connect()
 int mysql::Login_sql(QString Name, QString Password, int mode)
 {
     QString mode_name;
-    if(mode==0)mode_name="student";
-    else mode_name="teacher";
     if(DB.isOpen()==false)connect();
-    QSqlQuery query=DB.exec("select * from "+mode_name+" where name=\""+Name+"\" and password=\""+Password+"\";");
+    QSqlQuery query;
+    if(mode==0)
+    {
+        mode_name="student";
+        query=DB.exec("select * from "+mode_name+" where (name=\""+Name+"\" or sid=\""+Name+"\") and password=\""+Password+"\";");
+    }
+    else
+    {
+        mode_name="teacher";
+        query=DB.exec("select * from "+mode_name+" where name=\""+Name+"\" and password=\""+Password+"\";");
+    }
+
     if(query.next())
     {
         if(mode==0)
@@ -38,6 +62,21 @@ int mysql::Login_sql(QString Name, QString Password, int mode)
     }
     else return 0;
 }
+
+//int mysql::teacherReg_sql(int Name, QString Password)
+//{
+//}
+
+//int mysql::studentReg_sql(int sid, QString Name, QString Password)
+//{
+//    if(DB.isOpen()==false)connect();
+//    QSqlQuery query=DB.exec("select * from student where sid="+QString::number(sid)+" or name=\""+Name+"\";");
+//    if(query.next())
+//    {
+//        return 0;
+//    }
+//    return 1;
+//}
 
 void mysql::setSqlInformation(QString DBname, QString Uname, QString pw)
 {
@@ -49,10 +88,10 @@ void mysql::setSqlInformation(QString DBname, QString Uname, QString pw)
 QByteArray mysql::classSignIn_sql(int id)
 {
     if(DB.isOpen()==false)connect();
-    QSqlQuery query=DB.exec("select * from class where id=\""+QString::number(id)+"\";");
+    QSqlQuery query=DB.exec("select * from class where id="+QString::number(id)+";");
     query.next();
     sign_cnt=query.value("sign_in_total").toInt()+1;
-    DB.exec("update class set sign_in_total="+QString::number(sign_cnt)+" where id=\""+QString::number(id)+"\";");
+    DB.exec("update class set sign_in_total="+QString::number(sign_cnt)+" where id="+QString::number(id)+";");
     for(int i=0;i<4;i++)
     {
         int rdm=rand()%62;
@@ -66,7 +105,7 @@ QByteArray mysql::classSignIn_sql(int id)
 void mysql::studentSignIn_sql(int sid,int classid)
 {
     if(DB.isOpen()==false)connect();
-    QSqlQuery query=DB.exec("select * from student where sid=\""+QString::number(sid)+"\";");
+    QSqlQuery query=DB.exec("select * from student where sid="+QString::number(sid)+";");
     QJsonArray classList=query.value("class").toJsonArray();
     QJsonObject classSingle;
     int sign_up;
@@ -102,16 +141,57 @@ QString mysql::studentChoose_sql(int classid, int &sid)
     return query.value("name").toString();
 }
 
-QJsonArray mysql::classList_sql(int uid, int mode)
+QJsonArray mysql::studentClassList_sql(int sid)
 {
-    QString mode_name;
-    if(mode==0)mode_name="student";
-    else mode_name="teacher";
+
     if(DB.isOpen()==false)connect();
 
-    QSqlQuery query=DB.exec("select * from "+mode_name+" where uid="+QString::number(uid)+";");
+    QSqlQuery query=DB.exec("select * from student where sid="+QString::number(sid)+";"),query2;
     query.next();
-    return query.value("class").toJsonArray();
+    QJsonArray classList=query.value("class").toJsonArray();
+    int classid,sign_in_total;
+    QString className,teacherNmae;
+    for(int i=0;i<classList.size();i++)
+    {
+        classid=classList[i].toObject().value("id").toInt();
+        query2=DB.exec("select *from class where id="+QString::number(classid)+";");
+        query2.next();
+        className=query2.value("name").toString();
+        sign_in_total=query2.value("sign_in_total").toInt();
+
+        classList[i].toObject().insert("className",className);
+        classList[i].toObject().insert("sign_in_total",sign_in_total);
+
+        query2=DB.exec("select * from teacher where JSON_CONTAINS(class,JSON_OBJECT('id', "+QString::number(classid)+"));");
+        query2.next();
+        teacherNmae=query2.value("name").toString();
+        classList[i].toObject().insert("teacherNmae",teacherNmae);
+
+    }
+    return classList;
+}
+
+QJsonArray mysql::teacherClassList_sql(int uid)
+{
+
+    if(DB.isOpen()==false)connect();
+    QSqlQuery query=DB.exec("select * from teacher where uid="+QString::number(uid)+";"),query2;
+    query.next();
+    QJsonArray classList=query.value("class").toJsonArray();
+    int classid;
+    QString className;
+    for(int i=0;i<classList.size();i++)
+    {
+        classid=classList[i].toInt();
+        query2=DB.exec("select *from class where id="+QString::number(classid)+";");
+        query2.next();
+        className=query2.value("name").toString();
+        QJsonObject classSingle;
+        classSingle.insert("id",classid);
+        classSingle.insert("className",className);
+        classList.append(classSingle);
+    }
+    return classList;
 }
 
 QJsonArray mysql::studentList_sql(int id)
@@ -173,20 +253,22 @@ QJsonArray mysql::studentExamInfo_sql(int sid, int classid)
 
 }
 
-QJsonArray mysql::paperList_sql(int uid, int classid)
+QJsonArray mysql::paperList_sql(int uid)
 {
 
     if(DB.isOpen()==false)connect();
 
-    QSqlQuery query;
-    if(classid==0)query=DB.exec("select * from paper where creator="+QString::number(uid)+";");
-    else query=DB.exec("select * from paper where id="+QString::number(classid)+";");
+//    QSqlQuery query;
+//    if(classid==0)query=DB.exec("select * from paper where creator="+QString::number(uid)+";");
+//    else query=DB.exec("select * from paper where id="+QString::number(classid)+";");
+    QSqlQuery query=DB.exec("select * from paper where creator="+QString::number(uid)+";");
     QJsonArray content,paperList;
     QString title;
     QString publish_time;
-    int total_score,lasting_time;
+    int total_score,lasting_time,paperid;
     while(query.next())
     {
+        paperid=query.value("paperid").toInt();
         title=query.value("title").toString();
         publish_time=query.value("publish_time").toString();
         total_score=query.value("total_score").toInt();
@@ -194,6 +276,7 @@ QJsonArray mysql::paperList_sql(int uid, int classid)
         content=query.value("content").toJsonArray();
 
         QJsonObject paperSingle;
+        paperSingle.insert("id",paperid);
         paperSingle.insert("title",title);
         paperSingle.insert("publish_time",publish_time);
         paperSingle.insert("total_score",total_score);
@@ -285,6 +368,7 @@ QJsonArray mysql::studentExamList_sql(int sid)
         total_score=query2.value("total_score").toInt();
         get_score=examSingle.value("score").toInt();
 
+        examSingle.insert("id",paperid);
         examSingle.insert("title",title);
         examSingle.insert("publish_time",publish_time);
         examSingle.insert("total_score",total_score);
@@ -316,4 +400,33 @@ QJsonObject mysql::paperInquiry_sql(int sid, int paperid)
     QJsonObject paperDone=examCheck_sql(paperid,paperInfo,score);
     return paperDone;
 
+}
+
+int mysql::insertPaper_sql(int uid,int paperid,QJsonObject PaperInfo)
+{
+    if(DB.isOpen()==false)connect();
+    QString title=PaperInfo.value("title").toString();
+    QString publish_time=PaperInfo.value("publish_time").toString();
+    int lasting_time=PaperInfo.value("lasting_time").toInt();
+    int total_score=PaperInfo.value("total_score").toInt();
+    int creator=uid;
+
+    QJsonDocument doc(PaperInfo.value("content").toArray());
+    QByteArray content = doc.toJson();
+    if(paperid==0)
+    {
+        DB.exec("insert into paper(title,creator,total_score,lasting_time,publish_time,content) "
+                "value("+title+","+QString::number(creator)+","+QString::number(total_score)+
+                ","+QString::number(lasting_time)+","+publish_time+","+content+");");
+        QSqlQuery query=DB.exec("SELECT * FROM paper order by id desc limit 1;");
+        query.next();
+        paperid=query.value("id").toInt();
+    }
+    else
+    {
+        DB.exec("update paper set title=\""+title+"\",lasting_time="+QString::number(lasting_time)+
+                ",publish_time=\""+publish_time+"\",content=\""+content+"\",total_score="+QString::number(total_score)+
+                " where id="+QString::number(paperid)+";");
+    }
+    return paperid;
 }
