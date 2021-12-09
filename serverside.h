@@ -1,11 +1,35 @@
-#ifndef MESSENGER_H
-#define MESSENGER_H
+#ifndef SERVERSIDE_H
+#define SERVERSIDE_H
 
+#include <QWidget>
+#include <QTcpServer>
 
-class Messenger
+namespace Ui {
+    class Messenger;
+}
+
+class Messenger : public QWidget
 {
+    Q_OBJECT
+
 public:
-    Messenger();
+    explicit Messenger(QWidget *parent = nullptr);
+    ~Messenger();
+
+private slots:
+    void openServer();
+    void closeServer();
+    void sendMsg();
+
+private:
+    Ui::Messenger *ui;
+    QTcpServer *server;
+    QList<QTcpSocket*> client;
+
+private:
+    void newconnectionSlot();
+    void readDataSlot();
+    void disconnectionSlot();
 };
 
-#endif // MESSENGER_H
+#endif // SERVERSIDE_H
