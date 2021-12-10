@@ -51,7 +51,7 @@ public:
     {
         if (Register_Student->objectName().isEmpty())
             Register_Student->setObjectName(QString::fromUtf8("Register_Student"));
-        Register_Student->resize(223, 244);
+        Register_Student->resize(293, 244);
         verticalLayout = new QVBoxLayout(Register_Student);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget = new QWidget(Register_Student);

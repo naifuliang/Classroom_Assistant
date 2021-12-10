@@ -1,19 +1,20 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <QMainWindow>
+#include <QWidget>
 
 namespace Ui {
 class Student;
 }
 
-class Student : public QMainWindow
+class Student : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit Student(QWidget *parent = nullptr);
     ~Student();
+    void setattribute(int ui,QString pss,QString nam);
 
 private:
     Ui::Student *ui;

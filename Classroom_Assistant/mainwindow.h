@@ -7,6 +7,7 @@
 #include "login_teacher.h"
 #include "student.h"
 #include "teacher.h"
+#include "welcome.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,8 +20,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void build_student(int ui,QString pss,QString cla);//建立学生端主窗口
-    void build_teacher(int ui,QString pss,QString cla);//建立教师端主窗口
+    void build_student(int ui,QString pss,QString nam);//建立学生端主窗口
+    void build_teacher(int ui,QString pss,QString nam);//建立教师端主窗口
 
 public slots:
     void login_register_slot();//开始登录注册槽函数
@@ -30,6 +31,7 @@ signals:
 
 private:
     Ui::MainWindow *ui;
+    Welcome *welcome;//欢迎窗口
     ChooseRole *cr;//选择身份的窗口
     Login_student *ls;//学生端登录窗口
     Login_teacher *lt;//教师端登录窗口

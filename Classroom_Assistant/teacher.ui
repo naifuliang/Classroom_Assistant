@@ -3,21 +3,18 @@
  <comment/>
  <exportmacro/>
  <class>Teacher</class>
- <widget name="Teacher" class="QMainWindow">
+ <widget name="Teacher" class="QWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Form</string>
   </property>
-  <widget name="menubar" class="QMenuBar"/>
-  <widget name="centralwidget" class="QWidget"/>
-  <widget name="statusbar" class="QStatusBar"/>
  </widget>
  <pixmapfunction/>
  <connections/>
