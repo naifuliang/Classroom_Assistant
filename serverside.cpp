@@ -4,7 +4,7 @@ serverside::serverside(QObject *parent)
     : QObject{parent}
 {
     server = new QTcpServer(this);
-    server->listen(QHostAddress::Any,12022);
+    server->listen(QHostAddress::Any,12021);
     connect(server,&QTcpServer::newConnection,this,&serverside::newconnectionslot);
     //系统主函数自动开始阻塞，直到用户输入exit
 }

@@ -5,6 +5,7 @@
 #include <QTcpSocket>
 #include <QThread>
 #include <QtDebug>
+#include <QDateTime>
 
 class serverconnection : public QObject
 {
@@ -19,6 +20,7 @@ signals:
 private:
     QTcpSocket* tcp;
     QThread *thread;
+    QDateTime time;
 };
 
 #endif // SERVERCONNECTION_H

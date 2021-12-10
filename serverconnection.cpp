@@ -17,5 +17,6 @@ serverconnection::~serverconnection()
 
 void serverconnection::quit()
 {
+    qDebug()<<time.currentDateTime()<<"A Connection Lost\n";
     emit stop(this);
 }
