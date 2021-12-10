@@ -16,6 +16,12 @@ public:
     ~Student_MainWindow();
     void setusername(QString a);//学生端设置用户名
 
+signals:
+    void logout();
+
+public slots:
+    void logout_slot();
+
 private:
     Ui::Student_MainWindow *ui;
     QString username;//用户名
