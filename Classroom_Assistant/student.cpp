@@ -1,12 +1,13 @@
 #include "student.h"
 #include "ui_student.h"
+#include <qdebug.h>
 
-Student::Student(QWidget *parent) :
-    QWidget(parent),
+Student::Student(const int &Uid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent) :
+    QWidget(parent),Uid(Uid),Password(Password),Name(Name),Class(Class),
     ui(new Ui::Student)
 {
     ui->setupUi(this);
-    resize(800,600);
+    setWindowTitle("学生端首页");
 }
 
 Student::~Student()
@@ -14,9 +15,7 @@ Student::~Student()
     delete ui;
 }
 
-void Student::setattribute(int ui, QString pss, QString nam)
-{
-    Uid = ui;
-    Password = pss;
-    Name = nam;
+void Student::closeEvent(QCloseEvent *event){
+    emit Logout();
+    qDebug()<<"Logout信号已发出";
 }

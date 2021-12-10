@@ -12,9 +12,12 @@ class Teacher : public QWidget
     Q_OBJECT
 
 public:
-    explicit Teacher(QWidget *parent = nullptr);
+    explicit Teacher(const int &Uid,const QString &Password,const QString &Name,const QString &Class,QWidget *parent = nullptr);
     ~Teacher();
-    void setattribute(int ui,QString pss,QString nam);
+    void closeEvent(QCloseEvent *event);//关闭事件
+
+signals:
+    void Logout();//注销信号
 
 private:
     Ui::Teacher *ui;

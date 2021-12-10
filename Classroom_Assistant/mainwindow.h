@@ -37,6 +37,5 @@ private:
     Login_teacher *lt;//教师端登录窗口
     Student *student;//学生端主窗口
     Teacher *teacher;//教师端主窗口
-
 };
 #endif // MAINWINDOW_H

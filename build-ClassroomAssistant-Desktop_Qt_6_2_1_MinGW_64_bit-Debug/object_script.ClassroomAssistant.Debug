@@ -1,0 +1,17 @@
+debug/chooserole.o
+debug/login_student.o
+debug/login_teacher.o
+debug/main.o
+debug/mainwindow.o
+debug/register_student.o
+debug/register_teacher.o
+debug/student.o
+debug/teacher.o
+debug/moc_chooserole.o
+debug/moc_login_student.o
+debug/moc_login_teacher.o
+debug/moc_mainwindow.o
+debug/moc_register_student.o
+debug/moc_register_teacher.o
+debug/moc_student.o
+debug/moc_teacher.o
