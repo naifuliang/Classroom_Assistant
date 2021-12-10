@@ -15,6 +15,10 @@ public:
     explicit Teacher_MainWindow(QWidget *parent = nullptr);
     ~Teacher_MainWindow();
     void setusername(QString a);
+    void closeEvent(QCloseEvent *event);//关闭事件
+
+signals:
+    void TeaMainClosed();
 
 private:
     Ui::Teacher_MainWindow *ui;

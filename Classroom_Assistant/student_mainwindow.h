@@ -15,6 +15,10 @@ public:
     explicit Student_MainWindow(QWidget *parent = nullptr);
     ~Student_MainWindow();
     void setusername(QString a);//学生端设置用户名
+    void closeEvent(QCloseEvent *event);//关闭事件
+
+signals:
+    void StuMainClosed();
 
 private:
     Ui::Student_MainWindow *ui;

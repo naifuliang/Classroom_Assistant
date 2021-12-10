@@ -19,3 +19,7 @@ void Student_MainWindow::setusername(QString a)
 {
     username = a;
 }
+
+void Student_MainWindow::closeEvent(QCloseEvent *event){
+    emit StuMainClosed();
+}
