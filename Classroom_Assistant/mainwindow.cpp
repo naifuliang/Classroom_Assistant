@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     ls = new Login_student(this);
     lt = new Login_teacher(this);
     cr = new ChooseRole(this);
-    sm = new Student_MainWindow(this);
-    tm = new Teacher_MainWindow(this);
+    student = new Student(this);
+    teacher = new Teacher(this);
     connect(ui->login_registerBtn, &QPushButton::clicked, this, &MainWindow::login_register);
     connect(this, &MainWindow::login_register, this, &MainWindow::login_register_slot);
     connect(ls, &Login_student::log_in_succeed, this, &MainWindow::build_student);
@@ -24,23 +24,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::build_student(QString username)
+void MainWindow::build_student(int ui,QString pss,QString nam)
 {
-    Student_MainWindow *sm = new Student_MainWindow(this);
-    sm->setusername(username);
+    Student *student = new Student(this);
+    student->setattribute(ui,pss,nam);
     //this->hide();
     //不知道为什么hide后就直接关闭程序了
-    sm->show();
+    student->show();
     this->close();
 }
 
-void MainWindow::build_teacher(QString username)
+void MainWindow::build_teacher(int ui,QString pss,QString nam)
 {
-    Teacher_MainWindow *tm = new Teacher_MainWindow(this);
-    tm->setusername(username);
+    Teacher *teacher = new Teacher(this);
+    teacher->setattribute(ui,pss,nam);
     //this->hide();
     //不知道为什么hide后就直接关闭程序了
-    tm->show();
+    teacher->show();
     this->close();
 }
 

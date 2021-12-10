@@ -19,8 +19,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void build_student(int ui,QString pss,QString cla);//建立学生端主窗口
-    void build_teacher(int ui,QString pss,QString cla);//建立教师端主窗口
+    void build_student(int ui,QString pss,QString nam);//建立学生端主窗口
+    void build_teacher(int ui,QString pss,QString nam);//建立教师端主窗口
 
 public slots:
     void login_register_slot();//开始登录注册槽函数

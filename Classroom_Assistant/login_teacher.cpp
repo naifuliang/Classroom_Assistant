@@ -39,9 +39,10 @@ void Login_teacher::log_in_slot()
     QString a,b;
     a = ui->usernameLine->text();//获取用户名
     b = ui->passwordLine->text();//获取密码
+    int id=0;
     if(1)
     {
-        emit Login_teacher::log_in_succeed(a);
+        emit Login_teacher::log_in_succeed(id,b,a);
         this->done(1);
     }
     else

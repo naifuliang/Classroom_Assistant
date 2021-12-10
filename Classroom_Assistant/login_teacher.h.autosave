@@ -22,7 +22,7 @@ public slots:
 
 signals:
     void log_in();//教师端登录信号
-    void log_in_succeed(int ui,QString pss,QString cla);//教师端登录成功信号
+    void log_in_succeed(int ui,QString pss,QString nam);//教师端登录成功信号
     void log_in_failed();//教师端登录失败信号
     void Register();//教师端注册信号
 

@@ -16,8 +16,8 @@ SOURCES += \
     mainwindow.cpp \
     register_student.cpp \
     register_teacher.cpp \
-    student_mainwindow.cpp \
-    teacher_mainwindow.cpp
+    student.cpp \
+    teacher.cpp
 
 HEADERS += \
     chooserole.h \
@@ -26,8 +26,8 @@ HEADERS += \
     mainwindow.h \
     register_student.h \
     register_teacher.h \
-    student_mainwindow.h \
-    teacher_mainwindow.h
+    student.h \
+    teacher.h
 
 FORMS += \
     chooserole.ui \
@@ -36,8 +36,8 @@ FORMS += \
     mainwindow.ui \
     register_student.ui \
     register_teacher.ui \
-    student_mainwindow.ui \
-    teacher_mainwindow.ui
+    student.ui \
+    teacher.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
