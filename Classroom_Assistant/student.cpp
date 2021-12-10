@@ -8,6 +8,7 @@ Student::Student(const int &Sid,const QString &Password,const QString& Name,cons
 {
     ui->setupUi(this);
     setWindowTitle("学生端首页");
+    resize(800,600);
 }
 
 

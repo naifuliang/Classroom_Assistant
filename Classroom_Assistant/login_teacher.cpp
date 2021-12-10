@@ -8,6 +8,7 @@ Login_teacher::Login_teacher(QWidget *parent) :
     ui(new Ui::Login_teacher)
 {
     ui->setupUi(this);
+    resize(400,300);
     setWindowTitle("教师端登录");
     //登录
     connect(ui->loginBtn, &QPushButton::clicked, this, &Login_teacher::log_in);

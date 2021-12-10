@@ -7,9 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     setWindowTitle("欢迎");
-
+    resize(600,400);
     ls = new Login_student(this);
     lt = new Login_teacher(this);
     cr = new ChooseRole(this);
