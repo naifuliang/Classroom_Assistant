@@ -1,17 +1,15 @@
 #include "student.h"
 #include "ui_student.h"
-#include<qdebug.h>
+#include <qdebug.h>
 
-Student::Student(const int &Sid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent) :
-    QWidget(parent),Sid(Sid),Password(Password),Name(Name),Class(Class),
+Student::Student(const int &Uid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent) :
+    QWidget(parent),Uid(Uid),Password(Password),Name(Name),Class(Class),
     ui(new Ui::Student)
 {
     ui->setupUi(this);
     setWindowTitle("学生端首页");
     resize(800,600);
 }
-
-
 
 Student::~Student()
 {

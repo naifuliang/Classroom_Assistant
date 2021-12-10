@@ -19,13 +19,13 @@ Register_Student::Register_Student(QWidget *parent) :
     ui->passwordLine->setEchoMode(QLineEdit::Password);
     ui->repeatLine->setEchoMode(QLineEdit::Password);
     connect(ui->repeatLine, &QLineEdit::textChanged, this, [=](const QString &text){
-        QString pw = ui->passwordLine->text();
+        QString pw=ui->passwordLine->text();
         int p=pw.length(),t=text.length();
         if(t>p) password_fault_slot();
         else
         {
             for(int i=0;i<t;i++)
-                if(pw[i]!=text[i])
+                if(pw[i] != text[i])
                 {
                     password_fault_slot();
                     break;

@@ -24,7 +24,7 @@ Register_Teacher::Register_Teacher(QWidget *parent) :
         else
         {
             for(int i=0;i<t;i++)
-                if(pw[i]!=text[i])
+                if(pw[i] != text[i])
                 {
                     password_fault_slot();
                     break;

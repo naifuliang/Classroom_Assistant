@@ -12,9 +12,8 @@ class Student : public QWidget
     Q_OBJECT
 
 public:
-    explicit Student(const int &Sid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent = nullptr);
+    explicit Student(const int &Uid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent = nullptr);
     ~Student();
-
     void closeEvent(QCloseEvent *event);//关闭事件
 
 signals:
@@ -22,7 +21,7 @@ signals:
 
 private:
     Ui::Student *ui;
-    int Sid;
+    int Uid;
     QString Password,Name,Class;
 };
 

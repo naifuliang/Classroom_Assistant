@@ -12,10 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
     ls = new Login_student(this);
     lt = new Login_teacher(this);
     cr = new ChooseRole(this);
+    connect(ui->login_registerBtn, &QPushButton::clicked, this, &MainWindow::login_register);
     student = 0;
     teacher = 0;
-
-    connect(ui->login_registerBtn, &QPushButton::clicked, this, &MainWindow::login_register);
     connect(this, &MainWindow::login_register, this, &MainWindow::login_register_slot);
     connect(ls, &Login_student::log_in_succeed, this, &MainWindow::build_student);
     connect(lt, &Login_teacher::log_in_succeed, this, &MainWindow::build_teacher);
@@ -29,7 +28,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::build_student(int ui,QString pss,QString nam)
 {
-
     student = new Student(ui,pss,nam,"",nullptr);//新建学生主页面
     this->hide();
     student->show();
@@ -38,13 +36,11 @@ void MainWindow::build_student(int ui,QString pss,QString nam)
         delete student;
         qDebug()<<"student指针已删除";
     });
-
 }
 
-void MainWindow::build_teacher(int ui,QString pss,QString nam)
+void MainWindow::build_teacher(int ui, QString pss, QString nam)
 {
-
-    teacher = new Teacher(ui,pss,nam,"",nullptr);//新建教师主页面
+    teacher = new Teacher(ui,pss,nam,"",nullptr);//新建学生主页面
     this->hide();
     teacher->show();
     connect(teacher,&Teacher::Logout,this,[=](){//返回Mainwindow并释放内存
@@ -52,7 +48,6 @@ void MainWindow::build_teacher(int ui,QString pss,QString nam)
         delete teacher;
         qDebug()<<"teacher指针已删除";
     });
-
 }
 
 void MainWindow::login_register_slot()
