@@ -6,7 +6,7 @@
 // Hongyi Honor College,
 // Wuhan University
 
-// Last updated : 2021/12/9
+// Last updated : 2021/12/10
 
 #include "client_teacher.h"
 
@@ -46,9 +46,9 @@ void Client_Teacher::newDataSlot()
     QByteArray json;
     QJsonDocument doc;
     QJsonObject obj, content;
-    QJsonArray courselist;
-    QList<quint32> courseidlist;
-    QStringList coursenamelist;
+    QJsonArray courselist, studentlist;
+    QList<quint32> courseidlist, studentidlist;
+    QStringList coursenamelist, studentnamelist;
     QString action, type, name, error;
     bool is_successful;
 
@@ -94,6 +94,16 @@ void Client_Teacher::newDataSlot()
             courselist = content.value("coursenamelist").toArray();
             for(int i = 0; i < courselist.size(); i ++)
                 coursenamelist.append(courselist[i].toString());
+            // return to teacher client
+        }
+        if(action == "query_student")
+        {
+            studentlist = content.value("studentidlist").toArray();
+            for(int i = 0; i < studentlist.size(); i ++)
+                studentidlist.append(studentlist[i].toInt());
+            studentlist = content.value("studentnamelist").toArray();
+            for(int i = 0; i < studentlist.size(); i ++)
+                studentnamelist.append(studentlist[i].toString());
             // return to teacher client
         }
     }
@@ -281,6 +291,64 @@ void Client_Teacher::getcourselist()
     subobj.insert("username", username);
 
     obj.insert("act", "query_course");
+    obj.insert("content", subobj);
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    return;
+}
+
+// When asking for the student list
+
+/*
+ * Teacher client to Server
+ *
+ * [
+ *     {
+ *         act : "query_student"
+ *         content :
+ *         [
+ *             {
+ *                 username :
+ *                 courseid :
+ *             }
+ *         ]
+ *     }
+ * ]
+ *
+ */
+
+/*
+ * Server to Teacher client
+ *
+ * [
+ *     {
+ *         act : "query_student"
+ *         content :
+ *         [
+ *             {
+ *                 studentidlist : (QJsonArray)
+ *                 studentnamelist : (QJsonArray)
+ *             }
+ *         ]
+ *     }
+ * ]
+ *
+ */
+
+void Client_Teacher::getstudentlist(quint32 courseid)
+{
+    QJsonObject obj, subobj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    subobj.insert("username", username);
+    subobj.insert("courseid", QString::number(courseid));
+
+    obj.insert("act", "query_student");
     obj.insert("content", subobj);
 
     doc = QJsonDocument(obj);
