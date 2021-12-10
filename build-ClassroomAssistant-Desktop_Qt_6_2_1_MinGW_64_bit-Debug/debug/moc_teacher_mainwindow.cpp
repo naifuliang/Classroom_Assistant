@@ -23,18 +23,18 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Teacher_MainWindow_t {
     const uint offsetsAndSize[6];
-    char stringdata0[34];
+    char stringdata0[30];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Teacher_MainWindow_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_Teacher_MainWindow_t qt_meta_stringdata_Teacher_MainWindow = {
     {
 QT_MOC_LITERAL(0, 18), // "Teacher_MainWindow"
-QT_MOC_LITERAL(19, 13), // "TeaMainClosed"
-QT_MOC_LITERAL(33, 0) // ""
+QT_MOC_LITERAL(19, 9), // "TeaLogout"
+QT_MOC_LITERAL(29, 0) // ""
 
     },
-    "Teacher_MainWindow\0TeaMainClosed\0"
+    "Teacher_MainWindow\0TeaLogout\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -66,14 +66,14 @@ void Teacher_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         auto *_t = static_cast<Teacher_MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->TeaMainClosed(); break;
+        case 0: _t->TeaLogout(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (Teacher_MainWindow::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Teacher_MainWindow::TeaMainClosed)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Teacher_MainWindow::TeaLogout)) {
                 *result = 0;
                 return;
             }
@@ -129,7 +129,7 @@ int Teacher_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Teacher_MainWindow::TeaMainClosed()
+void Teacher_MainWindow::TeaLogout()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }

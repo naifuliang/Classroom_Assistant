@@ -18,7 +18,7 @@ public:
     void closeEvent(QCloseEvent *event);//关闭事件
 
 signals:
-    void TeaMainClosed();
+    void TeaLogout();//注销信号
 
 private:
     Ui::Teacher_MainWindow *ui;

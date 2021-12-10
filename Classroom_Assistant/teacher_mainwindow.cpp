@@ -20,5 +20,5 @@ void Teacher_MainWindow::setusername(QString a)
 }
 
 void Teacher_MainWindow::closeEvent(QCloseEvent *event){
-    emit TeaMainClosed();
+    emit TeaLogout();
 }

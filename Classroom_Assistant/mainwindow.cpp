@@ -30,11 +30,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::build_student(QString username)
 {
-    Student_MainWindow *sm = new Student_MainWindow;//新建学生主页面
-    sm->setusername(username);
+    Student_MainWindow *sm = new Student_MainWindow(nullptr,username);//新建学生主页面
     this->hide();
     sm->show();
-    connect(sm,&Student_MainWindow::StuMainClosed,this,[=](){//返回Mainwindow并释放内存
+    connect(sm,&Student_MainWindow::StuLogout,this,[=](){//返回Mainwindow并释放内存
         this->show();
         delete sm;
         qDebug()<<"sm指针已删除";
@@ -47,7 +46,7 @@ void MainWindow::build_teacher(QString username)
     tm->setusername(username);
     this->hide();
     tm->show();
-    connect(tm,&Teacher_MainWindow::TeaMainClosed,this,[=](){//返回Mainwindow并释放内存
+    connect(tm,&Teacher_MainWindow::TeaLogout,this,[=](){//返回Mainwindow并释放内存
         this->show();
         delete tm;
         qDebug()<<"tm指针已删除";
@@ -57,6 +56,6 @@ void MainWindow::build_teacher(QString username)
 void MainWindow::login_register_slot()
 {
     int res_cr = cr->exec();
-    if(res_cr == 1) ls->exec();
-    else if(res_cr == 0) lt->exec();
+    if(res_cr == 1) ls->open();
+    else if(res_cr == 0) lt->open();
 }
