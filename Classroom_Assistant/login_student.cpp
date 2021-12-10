@@ -37,9 +37,9 @@ Login_student::~Login_student()
 void Login_student::log_in_slot()
 {
     QString a,b;
-    a = ui->usernameLine->text();//获取输入的用户名
+    a = "小明";
     b = ui->passwordLine->text();//获取输入的密码
-    int id=0;
+    int id = ui->usernameLine->text().toInt();
     //这里判断是否正确
     if(1)
     {

@@ -20,6 +20,9 @@ public:
 signals:
     void Logout();//注销信号
 
+private slots:
+    void on_LogoutButton_clicked();
+
 private:
     Ui::Student *ui;
     int Sid;

@@ -11,6 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -18,12 +22,68 @@ QT_BEGIN_NAMESPACE
 class Ui_Student
 {
 public:
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label;
+    QLabel *NameLabel;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_3;
+    QLabel *SidLabel;
+    QPushButton *LogoutButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
 
     void setupUi(QWidget *Student)
     {
         if (Student->objectName().isEmpty())
             Student->setObjectName(QString::fromUtf8("Student"));
         Student->resize(400, 300);
+        verticalLayoutWidget = new QWidget(Student);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(60, 100, 160, 80));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label = new QLabel(verticalLayoutWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        horizontalLayout->addWidget(label);
+
+        NameLabel = new QLabel(verticalLayoutWidget);
+        NameLabel->setObjectName(QString::fromUtf8("NameLabel"));
+
+        horizontalLayout->addWidget(NameLabel);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_3 = new QLabel(verticalLayoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        SidLabel = new QLabel(verticalLayoutWidget);
+        SidLabel->setObjectName(QString::fromUtf8("SidLabel"));
+
+        horizontalLayout_2->addWidget(SidLabel);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        LogoutButton = new QPushButton(Student);
+        LogoutButton->setObjectName(QString::fromUtf8("LogoutButton"));
+        LogoutButton->setGeometry(QRect(100, 200, 80, 20));
+        pushButton_2 = new QPushButton(Student);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(260, 100, 80, 31));
+        pushButton_3 = new QPushButton(Student);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(260, 140, 80, 31));
 
         retranslateUi(Student);
 
@@ -33,6 +93,13 @@ public:
     void retranslateUi(QWidget *Student)
     {
         Student->setWindowTitle(QCoreApplication::translate("Student", "Form", nullptr));
+        label->setText(QCoreApplication::translate("Student", "Name:", nullptr));
+        NameLabel->setText(QString());
+        label_3->setText(QCoreApplication::translate("Student", "Sid:", nullptr));
+        SidLabel->setText(QString());
+        LogoutButton->setText(QCoreApplication::translate("Student", "Logout", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Student", "\350\277\233\345\205\245\350\257\276\345\240\202", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("Student", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
     } // retranslateUi
 
 };

@@ -8,6 +8,8 @@ Student::Student(const int &Sid,const QString &Password,const QString& Name,cons
 {
     ui->setupUi(this);
     setWindowTitle("学生端首页");
+    ui->SidLabel->setText(QString::number(Sid));
+    ui->NameLabel->setText(Name);
 }
 
 
@@ -21,3 +23,9 @@ void Student::closeEvent(QCloseEvent *event){
     emit Logout();
     qDebug()<<"Logout信号已发出";
 }
+
+void Student::on_LogoutButton_clicked()
+{
+    this->close();
+}
+
