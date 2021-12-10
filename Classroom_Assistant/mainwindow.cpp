@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     ls = new Login_student(this);
     lt = new Login_teacher(this);
     cr = new ChooseRole(this);
-    sm = 0;
-    tm = 0;
+    student = 0;
+    teacher = 0;
 
     connect(ui->login_registerBtn, &QPushButton::clicked, this, &MainWindow::login_register);
     connect(this, &MainWindow::login_register, this, &MainWindow::login_register_slot);
@@ -28,29 +28,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::build_student(QString username)
+void MainWindow::build_student(int ui,QString pss,QString nam)
 {
-    Student_MainWindow *sm = new Student_MainWindow(nullptr,username);//新建学生主页面
+
+    student = new Student(ui,pss,nam,"",nullptr);//新建学生主页面
     this->hide();
-    sm->show();
-    connect(sm,&Student_MainWindow::StuLogout,this,[=](){//返回Mainwindow并释放内存
+    student->show();
+    connect(student,&Student::Logout,this,[=](){//返回Mainwindow并释放内存
         this->show();
-        delete sm;
-        qDebug()<<"sm指针已删除";
+        delete student;
+        qDebug()<<"student指针已删除";
     });
+
 }
 
-void MainWindow::build_teacher(QString username)
+void MainWindow::build_teacher(int ui,QString pss,QString nam)
 {
-    Teacher_MainWindow *tm = new Teacher_MainWindow;//新建教师主页面
-    tm->setusername(username);
+
+    teacher = new Teacher(ui,pss,nam,"",nullptr);//新建教师主页面
     this->hide();
-    tm->show();
-    connect(tm,&Teacher_MainWindow::TeaLogout,this,[=](){//返回Mainwindow并释放内存
+    teacher->show();
+    connect(teacher,&Teacher::Logout,this,[=](){//返回Mainwindow并释放内存
         this->show();
-        delete tm;
-        qDebug()<<"tm指针已删除";
+        delete teacher;
+        qDebug()<<"teacher指针已删除";
     });
+
 }
 
 void MainWindow::login_register_slot()

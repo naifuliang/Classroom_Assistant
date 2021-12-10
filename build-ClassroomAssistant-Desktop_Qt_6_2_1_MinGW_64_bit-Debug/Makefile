@@ -186,6 +186,7 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro C:/Java/QT/6.2.1/mingw81
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/qt_config.prf \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/toolchain.prf \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/default_pre.prf \
@@ -215,7 +216,6 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro C:/Java/QT/6.2.1/mingw81
 		C:/Java/QT/6.2.1/mingw81_64/lib/Qt6Gui.prl \
 		C:/Java/QT/6.2.1/mingw81_64/lib/Qt6Core.prl \
 		C:/Java/QT/6.2.1/mingw81_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\Classroom_Assistant\ClassroomAssistant.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/spec_pre.prf:
@@ -334,6 +334,7 @@ C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/qt_functions.prf:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/qt_config.prf:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++/qmake.conf:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/exclusive_builds.prf:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/toolchain.prf:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/default_pre.prf:
@@ -363,7 +364,6 @@ C:/Java/QT/6.2.1/mingw81_64/lib/Qt6Widgets.prl:
 C:/Java/QT/6.2.1/mingw81_64/lib/Qt6Gui.prl:
 C:/Java/QT/6.2.1/mingw81_64/lib/Qt6Core.prl:
 C:/Java/QT/6.2.1/mingw81_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Classroom_Assistant\ClassroomAssistant.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

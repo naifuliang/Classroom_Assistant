@@ -14,6 +14,7 @@ class Register_Teacher : public QDialog
 public:
     explicit Register_Teacher(QWidget *parent = nullptr);
     ~Register_Teacher();
+    
 public slots:
     void Register_slot();//教师端注册槽函数
     void password_fault_slot();//教师端两次输入的密码不匹配槽函数
