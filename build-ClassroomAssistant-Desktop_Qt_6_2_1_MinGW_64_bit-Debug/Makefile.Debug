@@ -50,65 +50,83 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
-SOURCES       = ..\Classroom_Assistant\chooserole.cpp \
+SOURCES       = ..\Classroom_Assistant\check_page.cpp \
+		..\Classroom_Assistant\chooserole.cpp \
 		..\Classroom_Assistant\enterclass.cpp \
 		..\Classroom_Assistant\login_student.cpp \
 		..\Classroom_Assistant\login_teacher.cpp \
 		..\Classroom_Assistant\main.cpp \
 		..\Classroom_Assistant\mainwindow.cpp \
+		..\Classroom_Assistant\page_answer.cpp \
 		..\Classroom_Assistant\register_student.cpp \
 		..\Classroom_Assistant\register_teacher.cpp \
+		..\Classroom_Assistant\signin_student.cpp \
 		..\Classroom_Assistant\student.cpp \
 		..\Classroom_Assistant\studentclassinfo.cpp \
-		..\Classroom_Assistant\teacher.cpp debug\moc_chooserole.cpp \
+		..\Classroom_Assistant\teacher.cpp debug\moc_check_page.cpp \
+		debug\moc_chooserole.cpp \
 		debug\moc_enterclass.cpp \
 		debug\moc_login_student.cpp \
 		debug\moc_login_teacher.cpp \
 		debug\moc_mainwindow.cpp \
+		debug\moc_page_answer.cpp \
 		debug\moc_register_student.cpp \
 		debug\moc_register_teacher.cpp \
+		debug\moc_signin_student.cpp \
 		debug\moc_student.cpp \
 		debug\moc_studentclassinfo.cpp \
 		debug\moc_teacher.cpp
-OBJECTS       = debug/chooserole.o \
+OBJECTS       = debug/check_page.o \
+		debug/chooserole.o \
 		debug/enterclass.o \
 		debug/login_student.o \
 		debug/login_teacher.o \
 		debug/main.o \
 		debug/mainwindow.o \
+		debug/page_answer.o \
 		debug/register_student.o \
 		debug/register_teacher.o \
+		debug/signin_student.o \
 		debug/student.o \
 		debug/studentclassinfo.o \
 		debug/teacher.o \
+		debug/moc_check_page.o \
 		debug/moc_chooserole.o \
 		debug/moc_enterclass.o \
 		debug/moc_login_student.o \
 		debug/moc_login_teacher.o \
 		debug/moc_mainwindow.o \
+		debug/moc_page_answer.o \
 		debug/moc_register_student.o \
 		debug/moc_register_teacher.o \
+		debug/moc_signin_student.o \
 		debug/moc_student.o \
 		debug/moc_studentclassinfo.o \
 		debug/moc_teacher.o
 
-DIST          =  ..\Classroom_Assistant\chooserole.h \
+DIST          =  ..\Classroom_Assistant\check_page.h \
+		..\Classroom_Assistant\chooserole.h \
 		..\Classroom_Assistant\enterclass.h \
 		..\Classroom_Assistant\login_student.h \
 		..\Classroom_Assistant\login_teacher.h \
 		..\Classroom_Assistant\mainwindow.h \
+		..\Classroom_Assistant\page_answer.h \
 		..\Classroom_Assistant\register_student.h \
 		..\Classroom_Assistant\register_teacher.h \
+		..\Classroom_Assistant\signin_student.h \
 		..\Classroom_Assistant\student.h \
 		..\Classroom_Assistant\studentclassinfo.h \
-		..\Classroom_Assistant\teacher.h ..\Classroom_Assistant\chooserole.cpp \
+		..\Classroom_Assistant\teacher.h ..\Classroom_Assistant\check_page.cpp \
+		..\Classroom_Assistant\chooserole.cpp \
 		..\Classroom_Assistant\enterclass.cpp \
 		..\Classroom_Assistant\login_student.cpp \
 		..\Classroom_Assistant\login_teacher.cpp \
 		..\Classroom_Assistant\main.cpp \
 		..\Classroom_Assistant\mainwindow.cpp \
+		..\Classroom_Assistant\page_answer.cpp \
 		..\Classroom_Assistant\register_student.cpp \
 		..\Classroom_Assistant\register_teacher.cpp \
+		..\Classroom_Assistant\signin_student.cpp \
 		..\Classroom_Assistant\student.cpp \
 		..\Classroom_Assistant\studentclassinfo.cpp \
 		..\Classroom_Assistant\teacher.cpp
@@ -122,7 +140,7 @@ DESTDIR_TARGET = debug\ClassroomAssistant.exe
 first: all
 all: Makefile.Debug  debug/ClassroomAssistant.exe
 
-debug/ClassroomAssistant.exe: C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Widgets.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Gui.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Core.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6EntryPoint.a ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_register_student.h ui_register_teacher.h ui_student.h ui_studentclassinfo.h ui_teacher.h $(OBJECTS) 
+debug/ClassroomAssistant.exe: C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Widgets.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Gui.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6Core.a C:/Java/QT/6.2.1/mingw81_64/lib/libQt6EntryPoint.a ui_check_page.h ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_page_answer.h ui_register_student.h ui_register_teacher.h ui_signin_student.h ui_student.h ui_studentclassinfo.h ui_teacher.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.ClassroomAssistant.Debug  $(LIBS)
 
 qmake: FORCE
@@ -131,10 +149,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ClassroomAssistant.zip $(SOURCES) $(DIST) ..\Classroom_Assistant\ClassroomAssistant.pro C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\device_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\sanitize.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\g++-base.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\qconfig.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_ext_freetype.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_ext_libpng.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssettings.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_linguist.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_linguist_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_openglwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svgwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_tools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\toolchain.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\default_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exclusive_builds_post.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\default_post.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\build_pass.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\entrypoint.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\warn_on.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resources.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\moc.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\uic.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\file_copies.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exceptions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\yacc.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\lex.prf ..\Classroom_Assistant\ClassroomAssistant.pro C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Widgets.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Gui.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Core.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6EntryPoint.prl    C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\Classroom_Assistant\chooserole.h ..\Classroom_Assistant\enterclass.h ..\Classroom_Assistant\login_student.h ..\Classroom_Assistant\login_teacher.h ..\Classroom_Assistant\mainwindow.h ..\Classroom_Assistant\register_student.h ..\Classroom_Assistant\register_teacher.h ..\Classroom_Assistant\student.h ..\Classroom_Assistant\studentclassinfo.h ..\Classroom_Assistant\teacher.h  ..\Classroom_Assistant\chooserole.cpp ..\Classroom_Assistant\enterclass.cpp ..\Classroom_Assistant\login_student.cpp ..\Classroom_Assistant\login_teacher.cpp ..\Classroom_Assistant\main.cpp ..\Classroom_Assistant\mainwindow.cpp ..\Classroom_Assistant\register_student.cpp ..\Classroom_Assistant\register_teacher.cpp ..\Classroom_Assistant\student.cpp ..\Classroom_Assistant\studentclassinfo.cpp ..\Classroom_Assistant\teacher.cpp ..\Classroom_Assistant\chooserole.ui ..\Classroom_Assistant\enterclass.ui ..\Classroom_Assistant\login_student.ui ..\Classroom_Assistant\login_teacher.ui ..\Classroom_Assistant\mainwindow.ui ..\Classroom_Assistant\register_student.ui ..\Classroom_Assistant\register_teacher.ui ..\Classroom_Assistant\student.ui ..\Classroom_Assistant\studentclassinfo.ui ..\Classroom_Assistant\teacher.ui    
+	$(ZIP) ClassroomAssistant.zip $(SOURCES) $(DIST) ..\Classroom_Assistant\ClassroomAssistant.pro C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\device_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\sanitize.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\g++-base.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\qconfig.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_ext_freetype.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_ext_libpng.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_chartsqml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssettings.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_linguist.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_linguist_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_openglwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_svgwidgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_tools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\toolchain.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\default_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exclusive_builds_post.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\default_post.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\build_pass.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\entrypoint.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\warn_on.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qt.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\resources.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\moc.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\uic.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\file_copies.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\exceptions.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\yacc.prf C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\lex.prf ..\Classroom_Assistant\ClassroomAssistant.pro C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Widgets.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Gui.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6Core.prl C:\Java\QT\6.2.1\mingw81_64\lib\Qt6EntryPoint.prl    C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\Classroom_Assistant\check_page.h ..\Classroom_Assistant\chooserole.h ..\Classroom_Assistant\enterclass.h ..\Classroom_Assistant\login_student.h ..\Classroom_Assistant\login_teacher.h ..\Classroom_Assistant\mainwindow.h ..\Classroom_Assistant\page_answer.h ..\Classroom_Assistant\register_student.h ..\Classroom_Assistant\register_teacher.h ..\Classroom_Assistant\signin_student.h ..\Classroom_Assistant\student.h ..\Classroom_Assistant\studentclassinfo.h ..\Classroom_Assistant\teacher.h  ..\Classroom_Assistant\check_page.cpp ..\Classroom_Assistant\chooserole.cpp ..\Classroom_Assistant\enterclass.cpp ..\Classroom_Assistant\login_student.cpp ..\Classroom_Assistant\login_teacher.cpp ..\Classroom_Assistant\main.cpp ..\Classroom_Assistant\mainwindow.cpp ..\Classroom_Assistant\page_answer.cpp ..\Classroom_Assistant\register_student.cpp ..\Classroom_Assistant\register_teacher.cpp ..\Classroom_Assistant\signin_student.cpp ..\Classroom_Assistant\student.cpp ..\Classroom_Assistant\studentclassinfo.cpp ..\Classroom_Assistant\teacher.cpp ..\Classroom_Assistant\check_page.ui ..\Classroom_Assistant\chooserole.ui ..\Classroom_Assistant\enterclass.ui ..\Classroom_Assistant\login_student.ui ..\Classroom_Assistant\login_teacher.ui ..\Classroom_Assistant\mainwindow.ui ..\Classroom_Assistant\page_answer.ui ..\Classroom_Assistant\register_student.ui ..\Classroom_Assistant\register_teacher.ui ..\Classroom_Assistant\signin_student.ui ..\Classroom_Assistant\student.ui ..\Classroom_Assistant\studentclassinfo.ui ..\Classroom_Assistant\teacher.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\chooserole.o debug\enterclass.o debug\login_student.o debug\login_teacher.o debug\main.o debug\mainwindow.o debug\register_student.o debug\register_teacher.o debug\student.o debug\studentclassinfo.o debug\teacher.o debug\moc_chooserole.o debug\moc_enterclass.o debug\moc_login_student.o debug\moc_login_teacher.o debug\moc_mainwindow.o debug\moc_register_student.o debug\moc_register_teacher.o debug\moc_student.o debug\moc_studentclassinfo.o debug\moc_teacher.o
+	-$(DEL_FILE) debug\check_page.o debug\chooserole.o debug\enterclass.o debug\login_student.o debug\login_teacher.o debug\main.o debug\mainwindow.o debug\page_answer.o debug\register_student.o debug\register_teacher.o debug\signin_student.o debug\student.o debug\studentclassinfo.o debug\teacher.o debug\moc_check_page.o debug\moc_chooserole.o debug\moc_enterclass.o debug\moc_login_student.o debug\moc_login_teacher.o debug\moc_mainwindow.o debug\moc_page_answer.o debug\moc_register_student.o debug\moc_register_teacher.o debug\moc_signin_student.o debug\moc_student.o debug\moc_studentclassinfo.o debug\moc_teacher.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -159,9 +177,142 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: C:/Java/QT/6.2.1/mingw81_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\Java\QT\6.2.1\mingw81_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_chooserole.cpp debug/moc_enterclass.cpp debug/moc_login_student.cpp debug/moc_login_teacher.cpp debug/moc_mainwindow.cpp debug/moc_register_student.cpp debug/moc_register_teacher.cpp debug/moc_student.cpp debug/moc_studentclassinfo.cpp debug/moc_teacher.cpp
+compiler_moc_header_make_all: debug/moc_check_page.cpp debug/moc_chooserole.cpp debug/moc_enterclass.cpp debug/moc_login_student.cpp debug/moc_login_teacher.cpp debug/moc_mainwindow.cpp debug/moc_page_answer.cpp debug/moc_register_student.cpp debug/moc_register_teacher.cpp debug/moc_signin_student.cpp debug/moc_student.cpp debug/moc_studentclassinfo.cpp debug/moc_teacher.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_chooserole.cpp debug\moc_enterclass.cpp debug\moc_login_student.cpp debug\moc_login_teacher.cpp debug\moc_mainwindow.cpp debug\moc_register_student.cpp debug\moc_register_teacher.cpp debug\moc_student.cpp debug\moc_studentclassinfo.cpp debug\moc_teacher.cpp
+	-$(DEL_FILE) debug\moc_check_page.cpp debug\moc_chooserole.cpp debug\moc_enterclass.cpp debug\moc_login_student.cpp debug\moc_login_teacher.cpp debug\moc_mainwindow.cpp debug\moc_page_answer.cpp debug\moc_register_student.cpp debug\moc_register_teacher.cpp debug\moc_signin_student.cpp debug\moc_student.cpp debug\moc_studentclassinfo.cpp debug\moc_teacher.cpp
+debug/moc_check_page.cpp: ../Classroom_Assistant/check_page.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		debug/moc_predefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\check_page.h -o debug\moc_check_page.cpp
+
 debug/moc_chooserole.cpp: ../Classroom_Assistant/chooserole.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qdialog.h \
@@ -457,6 +608,7 @@ debug/moc_enterclass.cpp: ../Classroom_Assistant/enterclass.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		debug/moc_predefs.h \
 		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\enterclass.h -o debug\moc_enterclass.cpp
@@ -903,10 +1055,144 @@ debug/moc_mainwindow.cpp: ../Classroom_Assistant/mainwindow.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qstyle.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		../Classroom_Assistant/teacher.h \
 		debug/moc_predefs.h \
 		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\mainwindow.h -o debug\moc_mainwindow.cpp
+
+debug/moc_page_answer.cpp: ../Classroom_Assistant/page_answer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		debug/moc_predefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\page_answer.h -o debug\moc_page_answer.cpp
 
 debug/moc_register_student.cpp: ../Classroom_Assistant/register_student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
@@ -1176,6 +1462,142 @@ debug/moc_register_teacher.cpp: ../Classroom_Assistant/register_teacher.h \
 		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\register_teacher.h -o debug\moc_register_teacher.cpp
 
+debug/moc_signin_student.cpp: ../Classroom_Assistant/signin_student.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qdialog.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h \
+		debug/moc_predefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\signin_student.h -o debug\moc_signin_student.cpp
+
 debug/moc_student.cpp: ../Classroom_Assistant/student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
@@ -1338,6 +1760,7 @@ debug/moc_student.cpp: ../Classroom_Assistant/student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		debug/moc_predefs.h \
 		C:/Java/QT/6.2.1/mingw81_64/bin/moc.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/build-ClassroomAssistant-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Java/QT/6.2.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/1/Documents/Classroom_Assistant/Classroom_Assistant/Classroom_Assistant -IC:/Java/QT/6.2.1/mingw81_64/include -IC:/Java/QT/6.2.1/mingw81_64/include/QtWidgets -IC:/Java/QT/6.2.1/mingw81_64/include/QtGui -IC:/Java/QT/6.2.1/mingw81_64/include/QtCore -I. -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Java/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Java/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Classroom_Assistant\student.h -o debug\moc_student.cpp
@@ -1625,9 +2048,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_register_student.h ui_register_teacher.h ui_student.h ui_studentclassinfo.h ui_teacher.h
+compiler_uic_make_all: ui_check_page.h ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_page_answer.h ui_register_student.h ui_register_teacher.h ui_signin_student.h ui_student.h ui_studentclassinfo.h ui_teacher.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_register_student.h ui_register_teacher.h ui_student.h ui_studentclassinfo.h ui_teacher.h
+	-$(DEL_FILE) ui_check_page.h ui_chooserole.h ui_enterclass.h ui_login_student.h ui_login_teacher.h ui_mainwindow.h ui_page_answer.h ui_register_student.h ui_register_teacher.h ui_signin_student.h ui_student.h ui_studentclassinfo.h ui_teacher.h
+ui_check_page.h: ../Classroom_Assistant/check_page.ui \
+		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\check_page.ui -o ui_check_page.h
+
 ui_chooserole.h: ../Classroom_Assistant/chooserole.ui \
 		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\chooserole.ui -o ui_chooserole.h
@@ -1648,6 +2075,10 @@ ui_mainwindow.h: ../Classroom_Assistant/mainwindow.ui \
 		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\mainwindow.ui -o ui_mainwindow.h
 
+ui_page_answer.h: ../Classroom_Assistant/page_answer.ui \
+		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\page_answer.ui -o ui_page_answer.h
+
 ui_register_student.h: ../Classroom_Assistant/register_student.ui \
 		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\register_student.ui -o ui_register_student.h
@@ -1655,6 +2086,10 @@ ui_register_student.h: ../Classroom_Assistant/register_student.ui \
 ui_register_teacher.h: ../Classroom_Assistant/register_teacher.ui \
 		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
 	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\register_teacher.ui -o ui_register_teacher.h
+
+ui_signin_student.h: ../Classroom_Assistant/signin_student.ui \
+		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
+	C:\Java\QT\6.2.1\mingw81_64\bin\uic.exe ..\Classroom_Assistant\signin_student.ui -o ui_signin_student.h
 
 ui_student.h: ../Classroom_Assistant/student.ui \
 		C:/Java/QT/6.2.1/mingw81_64/bin/uic.exe
@@ -1679,6 +2114,160 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 
 ####### Compile
+
+debug/check_page.o: ../Classroom_Assistant/check_page.cpp ../Classroom_Assistant/check_page.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		ui_check_page.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfutureinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qresultstore.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthreadpool.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthread.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdeadlinetimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qelapsedtimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrunnable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qexception.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qapplicationpermission.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\check_page.o ..\Classroom_Assistant\check_page.cpp
 
 debug/chooserole.o: ../Classroom_Assistant/chooserole.cpp ../Classroom_Assistant/chooserole.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
@@ -2012,6 +2601,7 @@ debug/enterclass.o: ../Classroom_Assistant/enterclass.cpp ../Classroom_Assistant
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		ui_enterclass.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
@@ -2037,10 +2627,7 @@ debug/enterclass.o: ../Classroom_Assistant/enterclass.cpp ../Classroom_Assistant
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QLabel \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlabel.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpicture.h \
-		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextdocument.h \
-		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
-		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
-		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qabstractbutton.h
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\enterclass.o ..\Classroom_Assistant\enterclass.cpp
 
 debug/login_student.o: ../Classroom_Assistant/login_student.cpp ../Classroom_Assistant/login_student.h \
@@ -2579,6 +3166,7 @@ debug/main.o: ../Classroom_Assistant/main.cpp ../Classroom_Assistant/mainwindow.
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qstyle.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		../Classroom_Assistant/teacher.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qapplication.h \
@@ -2599,7 +3187,10 @@ debug/main.o: ../Classroom_Assistant/main.cpp ../Classroom_Assistant/mainwindow.
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h \
+		../Classroom_Assistant/signin_student.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Classroom_Assistant\main.cpp
 
 debug/mainwindow.o: ../Classroom_Assistant/mainwindow.cpp ../Classroom_Assistant/mainwindow.h \
@@ -2774,6 +3365,7 @@ debug/mainwindow.o: ../Classroom_Assistant/mainwindow.cpp ../Classroom_Assistant
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qstyle.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		../Classroom_Assistant/teacher.h \
 		ui_mainwindow.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
@@ -2819,6 +3411,160 @@ debug/mainwindow.o: ../Classroom_Assistant/mainwindow.cpp ../Classroom_Assistant
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Classroom_Assistant\mainwindow.cpp
+
+debug/page_answer.o: ../Classroom_Assistant/page_answer.cpp ../Classroom_Assistant/page_answer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		ui_page_answer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfutureinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qresultstore.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthreadpool.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthread.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdeadlinetimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qelapsedtimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrunnable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qexception.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qapplicationpermission.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\page_answer.o ..\Classroom_Assistant\page_answer.cpp
 
 debug/register_student.o: ../Classroom_Assistant/register_student.cpp ../Classroom_Assistant/register_student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
@@ -3183,6 +3929,186 @@ debug/register_teacher.o: ../Classroom_Assistant/register_teacher.cpp ../Classro
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\register_teacher.o ..\Classroom_Assistant\register_teacher.cpp
 
+debug/signin_student.o: ../Classroom_Assistant/signin_student.cpp ../Classroom_Assistant/signin_student.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QDialog \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qdialog.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtmetamacros.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydatapointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qarraydataops.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearrayview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qanystringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qutf8stringview.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringtokenizer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcompare.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qscopeguard.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevicebase.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiterable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmetacontainer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontainerinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtaggedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmath.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qproperty.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpropertyprivate.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qline.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qbitmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qpointer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qshareddata_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qstringconverter.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qset.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qeventpoint.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qvectornd.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpointingdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputdevice.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qscreen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QList \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QObject \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QRect \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSize \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QSizeF \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/QTransform \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qnativeinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qloggingcategory.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h \
+		ui_signin_student.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfutureinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qresultstore.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthreadpool.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthread.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdeadlinetimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qelapsedtimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrunnable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qexception.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qapplicationpermission.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpicture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextdocument.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpen.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qicon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QSpacerItem \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\signin_student.o ..\Classroom_Assistant\signin_student.cpp
+
 debug/student.o: ../Classroom_Assistant/student.cpp ../Classroom_Assistant/student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qwidget.h \
@@ -3345,6 +4271,7 @@ debug/student.o: ../Classroom_Assistant/student.cpp ../Classroom_Assistant/stude
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		../Classroom_Assistant/studentclassinfo.h \
 		ui_student.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
@@ -3524,7 +4451,43 @@ debug/studentclassinfo.o: ../Classroom_Assistant/studentclassinfo.cpp ../Classro
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QJsonObject \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qjsonobject.h \
 		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QJsonValue \
-		ui_studentclassinfo.h
+		ui_studentclassinfo.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/QVariant \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfutureinterface.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qresultstore.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qfuture_impl.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthreadpool.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qthread.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qdeadlinetimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qelapsedtimer.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qrunnable.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qexception.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qapplicationpermission.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qpicture.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qtextdocument.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qicon.h \
+		C:/Java/QT/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\studentclassinfo.o ..\Classroom_Assistant\studentclassinfo.cpp
 
 debug/teacher.o: ../Classroom_Assistant/teacher.cpp ../Classroom_Assistant/teacher.h \
@@ -3681,6 +4644,9 @@ debug/teacher.o: ../Classroom_Assistant/teacher.cpp ../Classroom_Assistant/teach
 		C:/Java/QT/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\teacher.o ..\Classroom_Assistant\teacher.cpp
 
+debug/moc_check_page.o: debug/moc_check_page.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_check_page.o debug\moc_check_page.cpp
+
 debug/moc_chooserole.o: debug/moc_chooserole.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_chooserole.o debug\moc_chooserole.cpp
 
@@ -3696,11 +4662,17 @@ debug/moc_login_teacher.o: debug/moc_login_teacher.cpp
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
 
+debug/moc_page_answer.o: debug/moc_page_answer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_page_answer.o debug\moc_page_answer.cpp
+
 debug/moc_register_student.o: debug/moc_register_student.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_register_student.o debug\moc_register_student.cpp
 
 debug/moc_register_teacher.o: debug/moc_register_teacher.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_register_teacher.o debug\moc_register_teacher.cpp
+
+debug/moc_signin_student.o: debug/moc_signin_student.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_signin_student.o debug\moc_signin_student.cpp
 
 debug/moc_student.o: debug/moc_student.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_student.o debug\moc_student.cpp
