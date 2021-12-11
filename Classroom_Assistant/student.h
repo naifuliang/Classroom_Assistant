@@ -2,6 +2,8 @@
 #define STUDENT_H
 
 #include <QWidget>
+//（客户端）显示首页界面，包括数据显示 “学生姓名”“学号”；
+//功能按钮“退出登录”“进入课堂”“成绩查询”
 
 namespace Ui {
 class Student;
@@ -20,9 +22,9 @@ signals:
     void Logout();//注销信号
 
 private:
-    Ui::Student *ui;
     int Uid;
     QString Password,Name,Class;
+    Ui::Student *ui;
 };
 
 #endif // STUDENT_H

@@ -20,9 +20,9 @@ signals:
     void Logout();//注销信号
 
 private:
-    Ui::Teacher *ui;
     int Uid;
     QString Password,Name,Class;
+    Ui::Teacher *ui;
 };
 
 #endif // TEACHER_H
