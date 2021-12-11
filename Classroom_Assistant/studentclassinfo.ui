@@ -97,7 +97,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="QuizScoreBtn">
    <property name="geometry">
     <rect>
      <x>250</x>

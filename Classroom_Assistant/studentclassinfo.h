@@ -2,9 +2,10 @@
 #define STUDENTCLASSINFO_H
 
 #include <QWidget>
-#include<QJsonArray>
-#include<QJsonObject>
-#include<QJsonValue>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <quiz_score.h>
 
 namespace Ui {
 class StudentClassInfo;
@@ -24,9 +25,10 @@ signals:
     void StuCLassInfoClosed();
 
 private:
-    Ui::StudentClassInfo *ui;
-
+    Quiz_score *quiz_score;
     const QJsonObject* Class;
+    QString classname,username;
+    Ui::StudentClassInfo *ui;
 };
 
 #endif // STUDENTCLASSINFO_H

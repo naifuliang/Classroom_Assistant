@@ -5,8 +5,7 @@
 #include<QJsonArray>
 #include<QJsonValue>
 #include<QJsonObject>
-
-#include"enterclass.h"
+#include "enterclass.h"
 
 //（客户端）显示首页界面，包括数据显示 “学生姓名”“学号”；
 //功能按钮“退出登录”“进入课堂”“成绩查询”

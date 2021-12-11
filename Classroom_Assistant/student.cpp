@@ -12,7 +12,7 @@ Student::Student(const int &Sid,const QString &Password,const QString& Name,cons
     ui->NameLabel->setText(Name);
     resize(800,600);
 
-    enterclass = new EnterClass;//进入课堂窗口
+    enterclass = new EnterClass();//进入课堂窗口
 
 }
 

@@ -6,6 +6,7 @@
 #include<QJsonObject>
 #include<QJsonValue>
 #include<QListWidget>
+#include <QDebug>
 
 #include"studentclassinfo.h"
 
@@ -24,10 +25,10 @@ public:
     void Deleteclassinfo();
 
 private:
-    Ui::EnterClass *ui;
-
     QJsonArray *studentClassList;
+    QString username;
     StudentClassInfo *classinfo;
+    Ui::EnterClass *ui;
 };
 
 #endif // ENTERCLASS_H
