@@ -1,6 +1,5 @@
-#include "mainwindow.h"
 #include "serverside.h"
-
+#include "client.h"
 #include <QApplication>
 #include <QtDebug>
 

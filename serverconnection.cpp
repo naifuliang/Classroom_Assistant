@@ -5,12 +5,13 @@ serverconnection::serverconnection(QThread* thread,qintptr sock,QObject *parent)
     : QObject{parent}
 {
     this->thread=thread;
-    tcp= new QTcpSocket(this);
+    tcp = new QTcpSocket(this);
     tcp->setSocketDescriptor(sock);
     ip=tcp->peerAddress().toString();
-    qDebug()<<time.currentDateTime()<<ip<<"Connected to this server.\n";
+    qDebug()<<time.currentDateTime().toString()<<ip<<"Connected to this server.\n";
     connect(tcp,&QTcpSocket::disconnected,this,&serverconnection::quit);
     connect(tcp,&QIODevice::readyRead,this,&serverconnection::action);
+    db =  new DB_Management(this);
 }
 
 serverconnection::~serverconnection()
@@ -22,7 +23,7 @@ serverconnection::~serverconnection()
 void serverconnection::action()
 {
     QByteArray message = tcp->readAll();
-    qDebug()<<time.currentDateTime()<<ip<<"recieved:"<<message<<"\n";
+    qDebug()<<time.currentDateTime().toString()<<ip<<"recieved:"<<message<<"\n";
     QJsonDocument doc;
 //    message="{"act":"login"}";
 //    qDebug()<<message<<"\n";
@@ -45,8 +46,24 @@ void serverconnection::action()
         if(act==QString("login"))
         {
             //login
-            qDebug()<<time.currentDateTime()<<ip<<"Attempped to login\n";
+            qDebug()<<time.currentDateTime().toString()<<ip<<"Attempped to login\n";
             login(obj);
+        }
+        if(act==QString("register"))
+        {
+            //register
+            qDebug()<<time.currentDateTime().toString()<<ip<<"Attempped to register\n";
+            reg(obj);
+        }
+        if(act=="attend")
+        {
+            //学生加入课堂
+            attend(obj);
+        }
+        if(act=="newclass")
+        {
+            //老师创建课堂
+            newclass(obj);
         }
     }
     else
@@ -58,21 +75,115 @@ void serverconnection::action()
 void serverconnection::login(const QJsonObject &obj)
 {
     QString type=obj.value("type").toString();
-    QString username=obj.value("name").toString();
+    QString username=obj.value("username").toString();
     QString password=obj.value("password").toString();
-    bool success=0;
+    //process login
+    bool success=1;
     if(success)
     {
         this->type=type;
         this->username=username;
+        QJsonObject send_obj;
+        send_obj.insert("act","login");
+        send_obj.insert("is_successful",true);
+        QJsonDocument send_json(send_obj);
+        tcp->write(send_json.toJson());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<this->username<<"login successfully";
     }
     else
     {
+        QJsonObject send_obj;
+        send_obj.insert("act","login");
+        send_obj.insert("is_successful",false);
+        QJsonDocument send_json(send_obj);
+        tcp->write(send_json.toJson());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<this->username<<"login failed";
         quit();
     }
 }
+
+void serverconnection::reg(const QJsonObject &obj)
+{
+    QString type=obj.value("type").toString();
+    QString username=obj.value("username").toString();
+    QString password=obj.value("password").toString();
+    if(type==QString("student"))
+    {
+        //
+        if(/*succeess*/1)
+        {
+            qDebug()<<username<<"has been registered as a student\n";
+            QJsonObject send_obj;
+            send_obj.insert("act","register");
+            send_obj.insert("is_successful",true);
+            QJsonDocument send_doc(send_obj);
+            tcp->write(send_doc.toJson());
+        }
+        else
+        {
+            QJsonObject send_obj;
+            send_obj.insert("act","register");
+            send_obj.insert("is_successful",false);
+            QJsonDocument send_doc(send_obj);
+            tcp->write(send_doc.toJson());
+        }
+
+    }
+    if(type==QString("teacher"))
+    {
+        //
+//        quit();
+        if(/*success*/1)
+        {
+            qDebug()<<username<<"has been register as a teacher\n";
+            QJsonObject send_obj;
+            send_obj.insert("act","register");
+            send_obj.insert("is_successful",true);
+            QJsonDocument send_doc(send_obj);
+            tcp->write(send_doc.toJson());
+        }
+        else
+        {
+            QJsonObject send_obj;
+            send_obj.insert("act","register");
+            send_obj.insert("is_successful",false);
+            QJsonDocument send_doc(send_obj);
+            tcp->write(send_doc.toJson());
+        }
+
+    }
+    quit();
+}
+
+void serverconnection::attend(const QJsonObject &obj)
+{
+    QString classid=obj.value("classid").toString();
+    //调用数据库操作方法
+    if(/*succeess*/1)
+    {
+        QJsonObject send_obj;
+        send_obj.insert("act","attend");
+        send_obj.insert("is_successful",true);
+        QJsonDocument send_doc(send_obj);
+        tcp->write(send_doc.toJson());
+    }
+    else
+    {
+        QJsonObject send_obj;
+        send_obj.insert("act","attend");
+        send_obj.insert("is_successful",false);
+        QJsonDocument send_doc(send_obj);
+        tcp->write(send_doc.toJson());
+    }
+}
+
+void serverconnection::newclass(const QJsonObject &obj)
+{
+
+}
+
 void serverconnection::quit()
 {
-    qDebug()<<time.currentDateTime()<<ip<<"Connection Lost. The account"<<""<<"has been signed out.";
+    qDebug()<<time.currentDateTime().toString()<<ip<<"Disconnected. The account"<<username<<"has been signed out.";
     emit stop(this);
 }

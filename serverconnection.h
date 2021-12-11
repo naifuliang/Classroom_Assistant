@@ -10,6 +10,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 
+#include <db_management.h>
+//#include <db_operator.h>
+
 /*
 namespace action_type
 {
@@ -25,13 +28,16 @@ class serverconnection : public QObject
 public:
     explicit serverconnection(QThread* thread,qintptr sock,QObject *parent = nullptr);
     ~serverconnection();
-    void quit();
+    void login(const QJsonObject &obj);
+    void reg(const QJsonObject &obj);
+    void attend(const QJsonObject &obj);
+    void newclass(const QJsonObject &obj);
 public slots:
+    void quit();
     void action();
 signals:
     void distroy(serverconnection* connection,QThread* thread);
     void stop(serverconnection* connection);
-    void login(const QJsonObject &obj);
 private:
     QTcpSocket* tcp;
     QThread *thread;
@@ -39,6 +45,7 @@ private:
     QString ip;
     QString username;
     QString type;
+    DB_Management *db;
 };
 
 #endif // SERVERCONNECTION_H
