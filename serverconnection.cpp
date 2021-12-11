@@ -78,8 +78,7 @@ void serverconnection::login(const QJsonObject &obj)
     QString username=obj.value("username").toString();
     QString password=obj.value("password").toString();
     //process login
-    bool success=1;
-    if(success)
+    if(db->login(type,username,password))
     {
         this->type=type;
         this->username=username;
@@ -133,10 +132,9 @@ void serverconnection::reg(const QJsonObject &obj)
     {
         //
 //        quit();
-        if(/*success*/1)
+        if(db->reg(type,username,password))
         {
             qDebug()<<username<<"has been register as a teacher\n";
-            QJsonObject send_obj;
             send_obj.insert("act","register");
             send_obj.insert("is_successful",true);
             QJsonDocument send_doc(send_obj);
@@ -144,7 +142,6 @@ void serverconnection::reg(const QJsonObject &obj)
         }
         else
         {
-            QJsonObject send_obj;
             send_obj.insert("act","register");
             send_obj.insert("is_successful",false);
             QJsonDocument send_doc(send_obj);

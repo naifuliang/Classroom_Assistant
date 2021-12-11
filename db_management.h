@@ -13,6 +13,7 @@ public:
     explicit DB_Management(QObject *parent = nullptr);
     ~DB_Management();
     bool reg(QString type,QString username,QString password);
+    bool login(QString type,QString username,QString password);
 signals:
 
 private:

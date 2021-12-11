@@ -41,6 +41,30 @@ bool DB_Management::reg(QString type, QString username, QString password)
     }
 }
 
+bool DB_Management::login(QString type, QString username, QString password)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from "+type+" where (username='"+username+"');");
+    if(query.next())
+    {
+        QString real_password = query.value("password").toString();
+        if(real_password==password)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        db.close();
+        return false;
+    }
+}
+
 void DB_Management::to_connect()
 {
     db = QSqlDatabase::addDatabase("QODBC");
