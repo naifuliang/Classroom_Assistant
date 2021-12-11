@@ -2,6 +2,13 @@
 #define STUDENT_H
 
 #include <QWidget>
+#include<QJsonArray>
+#include<QJsonValue>
+#include<QJsonObject>
+
+
+
+
 
 namespace Ui {
 class Student;

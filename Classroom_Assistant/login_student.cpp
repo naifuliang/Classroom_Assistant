@@ -8,6 +8,7 @@ Login_student::Login_student(QWidget *parent) :
     ui(new Ui::Login_student)
 {
     ui->setupUi(this);
+
     setWindowTitle("学生端登录");
     //登录
     connect(ui->loginBtn, &QPushButton::clicked, this, &Login_student::log_in);

@@ -31,8 +31,8 @@ public:
     QLabel *label_3;
     QLabel *SidLabel;
     QPushButton *LogoutButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *EnterClassButton;
+    QPushButton *GradesCheckButton;
 
     void setupUi(QWidget *Student)
     {
@@ -78,12 +78,12 @@ public:
         LogoutButton = new QPushButton(Student);
         LogoutButton->setObjectName(QString::fromUtf8("LogoutButton"));
         LogoutButton->setGeometry(QRect(100, 200, 80, 20));
-        pushButton_2 = new QPushButton(Student);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(260, 100, 80, 31));
-        pushButton_3 = new QPushButton(Student);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(260, 140, 80, 31));
+        EnterClassButton = new QPushButton(Student);
+        EnterClassButton->setObjectName(QString::fromUtf8("EnterClassButton"));
+        EnterClassButton->setGeometry(QRect(260, 100, 80, 31));
+        GradesCheckButton = new QPushButton(Student);
+        GradesCheckButton->setObjectName(QString::fromUtf8("GradesCheckButton"));
+        GradesCheckButton->setGeometry(QRect(260, 140, 80, 31));
 
         retranslateUi(Student);
 
@@ -98,8 +98,8 @@ public:
         label_3->setText(QCoreApplication::translate("Student", "Sid:", nullptr));
         SidLabel->setText(QString());
         LogoutButton->setText(QCoreApplication::translate("Student", "Logout", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Student", "\350\277\233\345\205\245\350\257\276\345\240\202", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Student", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
+        EnterClassButton->setText(QCoreApplication::translate("Student", "\350\277\233\345\205\245\350\257\276\345\240\202", nullptr));
+        GradesCheckButton->setText(QCoreApplication::translate("Student", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
     } // retranslateUi
 
 };
