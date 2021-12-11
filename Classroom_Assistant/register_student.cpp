@@ -9,6 +9,29 @@ Register_Student::Register_Student(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("学生端注册");
+    resize(400,300);
+    ui->usernameLine->setClearButtonEnabled(true);
+    ui->passwordLine->setClearButtonEnabled(true);
+    ui->repeatLine->setClearButtonEnabled(true);
+    ui->usernameLine->setPlaceholderText("请输入您的学号");
+    ui->passwordLine->setPlaceholderText("请输入数字和英文字母的组合");
+    ui->repeatLine->setPlaceholderText("请再次输入您的密码");
+    ui->passwordLine->setEchoMode(QLineEdit::Password);
+    ui->repeatLine->setEchoMode(QLineEdit::Password);
+    connect(ui->repeatLine, &QLineEdit::textChanged, this, [=](const QString &text){
+        QString pw=ui->passwordLine->text();
+        int p=pw.length(),t=text.length();
+        if(t>p) password_fault_slot();
+        else
+        {
+            for(int i=0;i<t;i++)
+                if(pw[i] != text[i])
+                {
+                    password_fault_slot();
+                    break;
+                }
+        }
+    });
     connect(ui->closeBtn, &QPushButton::clicked, this, &Register_Student::close);
     connect(ui->registerBtn, &QPushButton::clicked, this, &Register_Student::Register);
     connect(this, &Register_Student::Register, this, &Register_Student::Register_slot);

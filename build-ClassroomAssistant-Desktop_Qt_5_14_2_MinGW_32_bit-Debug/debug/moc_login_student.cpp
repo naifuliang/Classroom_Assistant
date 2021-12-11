@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Login_student_t {
-    QByteArrayData data[9];
-    char stringdata0[95];
+    QByteArrayData data[11];
+    char stringdata0[97];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,15 +36,17 @@ QT_MOC_LITERAL(0, 0, 13), // "Login_student"
 QT_MOC_LITERAL(1, 14, 6), // "log_in"
 QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 14), // "log_in_succeed"
-QT_MOC_LITERAL(4, 37, 8), // "username"
-QT_MOC_LITERAL(5, 46, 13), // "log_in_failed"
-QT_MOC_LITERAL(6, 60, 8), // "Register"
-QT_MOC_LITERAL(7, 69, 11), // "log_in_slot"
-QT_MOC_LITERAL(8, 81, 13) // "Register_slot"
+QT_MOC_LITERAL(4, 37, 2), // "ui"
+QT_MOC_LITERAL(5, 40, 3), // "pss"
+QT_MOC_LITERAL(6, 44, 3), // "nam"
+QT_MOC_LITERAL(7, 48, 13), // "log_in_failed"
+QT_MOC_LITERAL(8, 62, 8), // "Register"
+QT_MOC_LITERAL(9, 71, 11), // "log_in_slot"
+QT_MOC_LITERAL(10, 83, 13) // "Register_slot"
 
     },
     "Login_student\0log_in\0\0log_in_succeed\0"
-    "username\0log_in_failed\0Register\0"
+    "ui\0pss\0nam\0log_in_failed\0Register\0"
     "log_in_slot\0Register_slot"
 };
 #undef QT_MOC_LITERAL
@@ -64,17 +66,17 @@ static const uint qt_meta_data_Login_student[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   44,    2, 0x06 /* Public */,
-       3,    1,   45,    2, 0x06 /* Public */,
-       5,    0,   48,    2, 0x06 /* Public */,
-       6,    0,   49,    2, 0x06 /* Public */,
+       3,    3,   45,    2, 0x06 /* Public */,
+       7,    0,   52,    2, 0x06 /* Public */,
+       8,    0,   53,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   50,    2, 0x0a /* Public */,
-       8,    0,   51,    2, 0x0a /* Public */,
+       9,    0,   54,    2, 0x0a /* Public */,
+      10,    0,   55,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString, QMetaType::QString,    4,    5,    6,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -92,7 +94,7 @@ void Login_student::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->log_in(); break;
-        case 1: _t->log_in_succeed((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->log_in_succeed((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 2: _t->log_in_failed(); break;
         case 3: _t->Register(); break;
         case 4: _t->log_in_slot(); break;
@@ -109,7 +111,7 @@ void Login_student::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             }
         }
         {
-            using _t = void (Login_student::*)(QString );
+            using _t = void (Login_student::*)(int , QString , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Login_student::log_in_succeed)) {
                 *result = 1;
                 return;
@@ -179,9 +181,9 @@ void Login_student::log_in()
 }
 
 // SIGNAL 1
-void Login_student::log_in_succeed(QString _t1)
+void Login_student::log_in_succeed(int _t1, QString _t2, QString _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 

@@ -8,6 +8,7 @@ Teacher::Teacher(const int &Uid,const QString &Password,const QString &Name,cons
 {
     ui->setupUi(this);
     setWindowTitle("教师端首页");
+    resize(800,600);
 }
 
 Teacher::~Teacher()

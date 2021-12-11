@@ -28,12 +28,17 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QPushButton *login_registerBtn;
+    QLabel *label;
+    QSpacerItem *horizontalSpacer_3;
     QSpacerItem *horizontalSpacer_2;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_4;
+    QPushButton *login_registerBtn;
+    QSpacerItem *horizontalSpacer_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -41,17 +46,11 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(648, 405);
+        MainWindow->resize(672, 371);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMargin(30);
-
-        verticalLayout->addWidget(label);
-
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
@@ -60,10 +59,14 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        login_registerBtn = new QPushButton(widget);
-        login_registerBtn->setObjectName(QString::fromUtf8("login_registerBtn"));
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        horizontalLayout->addWidget(login_registerBtn);
+        horizontalLayout->addWidget(label);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -72,10 +75,30 @@ public:
 
         verticalLayout->addWidget(widget);
 
+        widget_2 = new QWidget(centralwidget);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_4);
+
+        login_registerBtn = new QPushButton(widget_2);
+        login_registerBtn->setObjectName(QString::fromUtf8("login_registerBtn"));
+
+        horizontalLayout_2->addWidget(login_registerBtn);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
+
+
+        verticalLayout->addWidget(widget_2);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 648, 21));
+        menubar->setGeometry(QRect(0, 0, 672, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

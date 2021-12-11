@@ -1,4 +1,5 @@
 release/chooserole.o
+release/enterclass.o
 release/login_student.o
 release/login_teacher.o
 release/main.o
@@ -6,12 +7,15 @@ release/mainwindow.o
 release/register_student.o
 release/register_teacher.o
 release/student.o
+release/studentclassinfo.o
 release/teacher.o
 release/moc_chooserole.o
+release/moc_enterclass.o
 release/moc_login_student.o
 release/moc_login_teacher.o
 release/moc_mainwindow.o
 release/moc_register_student.o
 release/moc_register_teacher.o
 release/moc_student.o
+release/moc_studentclassinfo.o
 release/moc_teacher.o

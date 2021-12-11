@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     chooserole.cpp \
+    enterclass.cpp \
     login_student.cpp \
     login_teacher.cpp \
     main.cpp \
@@ -17,26 +18,31 @@ SOURCES += \
     register_student.cpp \
     register_teacher.cpp \
     student.cpp \
+    studentclassinfo.cpp \
     teacher.cpp
 
 HEADERS += \
     chooserole.h \
+    enterclass.h \
     login_student.h \
     login_teacher.h \
     mainwindow.h \
     register_student.h \
     register_teacher.h \
     student.h \
+    studentclassinfo.h \
     teacher.h
 
 FORMS += \
     chooserole.ui \
+    enterclass.ui \
     login_student.ui \
     login_teacher.ui \
     mainwindow.ui \
     register_student.ui \
     register_teacher.ui \
     student.ui \
+    studentclassinfo.ui \
     teacher.ui
 
 # Default rules for deployment.

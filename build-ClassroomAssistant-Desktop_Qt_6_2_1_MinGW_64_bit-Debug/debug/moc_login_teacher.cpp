@@ -35,7 +35,7 @@ QT_MOC_LITERAL(21, 0), // ""
 QT_MOC_LITERAL(22, 14), // "log_in_succeed"
 QT_MOC_LITERAL(37, 2), // "ui"
 QT_MOC_LITERAL(40, 3), // "pss"
-QT_MOC_LITERAL(44, 3), // "cla"
+QT_MOC_LITERAL(44, 3), // "nam"
 QT_MOC_LITERAL(48, 13), // "log_in_failed"
 QT_MOC_LITERAL(62, 8), // "Register"
 QT_MOC_LITERAL(71, 11), // "log_in_slot"
@@ -43,7 +43,7 @@ QT_MOC_LITERAL(83, 13) // "Register_slot"
 
     },
     "Login_teacher\0log_in\0\0log_in_succeed\0"
-    "ui\0pss\0cla\0log_in_failed\0Register\0"
+    "ui\0pss\0nam\0log_in_failed\0Register\0"
     "log_in_slot\0Register_slot"
 };
 #undef QT_MOC_LITERAL

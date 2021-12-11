@@ -6,7 +6,7 @@
 #include<QJsonValue>
 #include<QJsonObject>
 
-
+#include"enterclass.h"
 
 
 
@@ -21,7 +21,6 @@ class Student : public QWidget
 public:
     explicit Student(const int &Sid,const QString &Password,const QString& Name,const QString &Class,QWidget *parent = nullptr);
     ~Student();
-
     void closeEvent(QCloseEvent *event);//关闭事件
 
 signals:
@@ -30,10 +29,14 @@ signals:
 private slots:
     void on_LogoutButton_clicked();
 
+    void on_EnterClassButton_clicked();
+
 private:
     Ui::Student *ui;
     int Sid;
     QString Password,Name,Class;
+
+    EnterClass* enterclass;
 };
 
 #endif // STUDENT_H
