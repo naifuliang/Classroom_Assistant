@@ -11,5 +11,6 @@ int main(int argc, char *argv[])
 //    w.show();
     serverside server;
     //实例化一个服务器
+//    server.wait();
     return a.exec();
 }

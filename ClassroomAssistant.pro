@@ -11,18 +11,17 @@ CONFIG += c++11 console
 SOURCES += \
     client.cpp \
     main.cpp \
-    mainwindow.cpp \
+    mytcpserver.cpp \
     serverconnection.cpp \
     serverside.cpp
 
 HEADERS += \
     client.h \
-    mainwindow.h \
+    mytcpserver.h \
     serverconnection.h \
     serverside.h
 
-FORMS += \
-    mainwindow.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

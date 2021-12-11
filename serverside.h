@@ -7,20 +7,25 @@
 #include <QTcpSocket>
 #include <QtDebug>
 #include <QThread>
+#include <iostream>
+#include <string>
 
 #include <serverconnection.h>
+#include <mytcpserver.h>
 
 class serverside : public QObject
 {
     Q_OBJECT
 public:
     explicit serverside(QObject *parent = nullptr);
-    void newconnectionslot();
+    ~serverside(){}
+public slots:
+    void newconnectionslot(qintptr sock);
     void stop(serverconnection* connection);
     void distroy(serverconnection* connection,QThread* thread);
 signals:
 private:
-    QTcpServer* server;
+    MyTcpServer* server;
 
 };
 
