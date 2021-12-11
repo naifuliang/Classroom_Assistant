@@ -107,13 +107,13 @@ void serverconnection::reg(const QJsonObject &obj)
     QString type=obj.value("type").toString();
     QString username=obj.value("username").toString();
     QString password=obj.value("password").toString();
+    QJsonObject send_obj;
     if(type==QString("student"))
     {
         //
-        if(/*succeess*/1)
+        if(/*succeess*/db->reg(type,username,password))
         {
             qDebug()<<username<<"has been registered as a student\n";
-            QJsonObject send_obj;
             send_obj.insert("act","register");
             send_obj.insert("is_successful",true);
             QJsonDocument send_doc(send_obj);
@@ -121,7 +121,7 @@ void serverconnection::reg(const QJsonObject &obj)
         }
         else
         {
-            QJsonObject send_obj;
+            qDebug()<<"Illegal Registation.";
             send_obj.insert("act","register");
             send_obj.insert("is_successful",false);
             QJsonDocument send_doc(send_obj);
