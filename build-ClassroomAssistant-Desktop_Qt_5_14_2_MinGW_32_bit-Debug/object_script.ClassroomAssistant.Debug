@@ -16,6 +16,7 @@ debug/student.o
 debug/studentclassinfo.o
 debug/teacher.o
 debug/teacherclassinfo.o
+debug/total_score.o
 debug/moc_check_page.o
 debug/moc_chooserole.o
 debug/moc_enterclass.o
@@ -33,3 +34,4 @@ debug/moc_student.o
 debug/moc_studentclassinfo.o
 debug/moc_teacher.o
 debug/moc_teacherclassinfo.o
+debug/moc_total_score.o

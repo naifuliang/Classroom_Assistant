@@ -26,7 +26,8 @@ SOURCES += \
     student.cpp \
     studentclassinfo.cpp \
     teacher.cpp \
-    teacherclassinfo.cpp
+    teacherclassinfo.cpp \
+    total_score.cpp
 
 HEADERS += \
     check_page.h \
@@ -45,7 +46,8 @@ HEADERS += \
     student.h \
     studentclassinfo.h \
     teacher.h \
-    teacherclassinfo.h
+    teacherclassinfo.h \
+    total_score.h
 
 FORMS += \
     check_page.ui \
@@ -64,7 +66,8 @@ FORMS += \
     student.ui \
     studentclassinfo.ui \
     teacher.ui \
-    teacherclassinfo.ui
+    teacherclassinfo.ui \
+    total_score.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

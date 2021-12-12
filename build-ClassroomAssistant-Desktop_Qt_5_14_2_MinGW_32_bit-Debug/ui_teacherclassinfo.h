@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -22,14 +23,15 @@ QT_BEGIN_NAMESPACE
 class Ui_TeacherClassInfo
 {
 public:
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *horizontalLayout;
+    QWidget *widget;
+    QGridLayout *gridLayout;
     QLabel *label_5;
     QLabel *classIDLabel;
-    QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLabel *classNameLabel;
+    QWidget *widget_2;
+    QVBoxLayout *verticalLayout;
     QPushButton *StudentManageButton;
     QPushButton *SignupButton;
     QPushButton *QuizButton;
@@ -40,54 +42,62 @@ public:
         if (TeacherClassInfo->objectName().isEmpty())
             TeacherClassInfo->setObjectName(QString::fromUtf8("TeacherClassInfo"));
         TeacherClassInfo->resize(400, 300);
-        verticalLayoutWidget = new QWidget(TeacherClassInfo);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(40, 100, 160, 71));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_5 = new QLabel(verticalLayoutWidget);
+        horizontalLayout = new QHBoxLayout(TeacherClassInfo);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        widget = new QWidget(TeacherClassInfo);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label_5 = new QLabel(widget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
-        horizontalLayout_3->addWidget(label_5);
+        gridLayout->addWidget(label_5, 0, 0, 1, 1);
 
-        classIDLabel = new QLabel(verticalLayoutWidget);
+        classIDLabel = new QLabel(widget);
         classIDLabel->setObjectName(QString::fromUtf8("classIDLabel"));
 
-        horizontalLayout_3->addWidget(classIDLabel);
+        gridLayout->addWidget(classIDLabel, 0, 1, 1, 2);
 
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(verticalLayoutWidget);
+        label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
 
-        horizontalLayout->addWidget(label);
+        gridLayout->addWidget(label, 1, 0, 1, 1);
 
-        classNameLabel = new QLabel(verticalLayoutWidget);
+        classNameLabel = new QLabel(widget);
         classNameLabel->setObjectName(QString::fromUtf8("classNameLabel"));
 
-        horizontalLayout->addWidget(classNameLabel);
+        gridLayout->addWidget(classNameLabel, 1, 1, 1, 2);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        horizontalLayout->addWidget(widget);
 
-        StudentManageButton = new QPushButton(TeacherClassInfo);
+        widget_2 = new QWidget(TeacherClassInfo);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        verticalLayout = new QVBoxLayout(widget_2);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        StudentManageButton = new QPushButton(widget_2);
         StudentManageButton->setObjectName(QString::fromUtf8("StudentManageButton"));
-        StudentManageButton->setGeometry(QRect(260, 70, 80, 31));
-        SignupButton = new QPushButton(TeacherClassInfo);
+
+        verticalLayout->addWidget(StudentManageButton);
+
+        SignupButton = new QPushButton(widget_2);
         SignupButton->setObjectName(QString::fromUtf8("SignupButton"));
-        SignupButton->setGeometry(QRect(260, 110, 80, 31));
-        QuizButton = new QPushButton(TeacherClassInfo);
+
+        verticalLayout->addWidget(SignupButton);
+
+        QuizButton = new QPushButton(widget_2);
         QuizButton->setObjectName(QString::fromUtf8("QuizButton"));
-        QuizButton->setGeometry(QRect(260, 150, 80, 31));
-        ChooseroleButton = new QPushButton(TeacherClassInfo);
+
+        verticalLayout->addWidget(QuizButton);
+
+        ChooseroleButton = new QPushButton(widget_2);
         ChooseroleButton->setObjectName(QString::fromUtf8("ChooseroleButton"));
-        ChooseroleButton->setGeometry(QRect(260, 190, 80, 31));
+
+        verticalLayout->addWidget(ChooseroleButton);
+
+
+        horizontalLayout->addWidget(widget_2);
+
 
         retranslateUi(TeacherClassInfo);
 

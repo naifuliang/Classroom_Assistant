@@ -13,44 +13,32 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>100</y>
-     <width>160</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>课程ID:</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="1" colspan="2">
        <widget class="QLabel" name="classIDLabel">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+      <item row="1" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>课程名字:</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1" colspan="2">
        <widget class="QLabel" name="classNameLabel">
         <property name="text">
          <string/>
@@ -58,61 +46,43 @@
        </widget>
       </item>
      </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="StudentManageButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>70</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>学生管理</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="SignupButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>110</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>上课签到</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="QuizButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>150</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>发布测试</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ChooseroleButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>190</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>随机选人</string>
-   </property>
-  </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_2" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="StudentManageButton">
+        <property name="text">
+         <string>学生管理</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="SignupButton">
+        <property name="text">
+         <string>上课签到</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="QuizButton">
+        <property name="text">
+         <string>发布测试</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ChooseroleButton">
+        <property name="text">
+         <string>随机选人</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

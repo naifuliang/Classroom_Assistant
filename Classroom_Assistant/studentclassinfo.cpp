@@ -7,6 +7,7 @@ StudentClassInfo::StudentClassInfo(const QJsonObject &NewClass,QWidget *parent) 
 {
     ui->setupUi(this);
     Class = &NewClass;
+    resize(600,400);
     //显示课堂详细信息
     quiz_score = new Quiz_score(username,classname);
     paper_id = 0;//这里获取试卷的编号，如果没有试卷请把它设为-1

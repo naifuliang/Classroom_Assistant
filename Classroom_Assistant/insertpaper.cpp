@@ -6,7 +6,7 @@ InsertPaper::InsertPaper(QWidget *parent) :
     ui(new Ui::InsertPaper)
 {
     ui->setupUi(this);
-
+    resize(600,400);
     ui->QuestionNum->addItems({"1","2","3","4","5","6","7","8","9","10"});
     previousK = 0 ;
 

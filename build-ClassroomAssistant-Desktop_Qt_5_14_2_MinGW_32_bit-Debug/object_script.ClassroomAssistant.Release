@@ -16,6 +16,7 @@ release/student.o
 release/studentclassinfo.o
 release/teacher.o
 release/teacherclassinfo.o
+release/total_score.o
 release/moc_check_page.o
 release/moc_chooserole.o
 release/moc_enterclass.o
@@ -33,3 +34,4 @@ release/moc_student.o
 release/moc_studentclassinfo.o
 release/moc_teacher.o
 release/moc_teacherclassinfo.o
+release/moc_total_score.o

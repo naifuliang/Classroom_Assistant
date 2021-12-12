@@ -3,7 +3,7 @@
 #include <QApplication>
 #include <signin_student.h>
 #include <studentclassinfo.h>
-#include "page_answer.h"
+#include "total_score.h"
 
 //将删除操作交给mainwindow,防止内存泄露
 QWidget *mainwindowptr;
@@ -12,8 +12,6 @@ int main(int argc, char *argv[])
 {
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
-    Page_answer pa(1);
-    pa.show();
     MainWindow w;
     mainwindowptr = &w;
     w.show();

@@ -6,6 +6,7 @@ TeacherClassInfo::TeacherClassInfo(const QJsonObject &NewClass,QWidget *parent) 
     ui(new Ui::TeacherClassInfo)
 {
     ui->setupUi(this);
+    resize(600,400);
     Class = &NewClass;
     //显示课堂详细信息
     setWindowTitle(Class->value("className").toString());
