@@ -4,7 +4,7 @@ Login/Register:
 "act":"login",
 "username":"LNF_297",
 "password":"123",
-"type":"teacher"
+"type":"student"
 }
 
 Get class list for both student and teacher
@@ -42,4 +42,11 @@ Request a full paper for both student and teacher
 {
 "act":"getpaper",
 "paperid":1
+}
+
+Paper submission for student(the client can only submit the score)
+{
+"act":"submit",
+"paperid":1,
+"score":100
 }
