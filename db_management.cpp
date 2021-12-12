@@ -291,6 +291,40 @@ bool DB_Management::submmit(QString username, int paperid, int score)
     return true;
 }
 
+int DB_Management::get_score(QString username, int paperid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from submission where (paperid="+QString::number(paperid)+" and student = '"+username+"' );");
+    if(!query.next())
+    {
+        close();
+        return -1;
+    }
+    int score = query.value("score").toUInt();
+    close();
+    return score;
+}
+
+QJsonArray DB_Management::get_score(int paperid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from submission where (paperid="+QString::number(paperid)+");");
+    QJsonArray arr;
+    while(query.next())
+    {
+        QString student=query.value("student").toString();
+        int score=query.value("score").toInt();
+        QJsonObject obj;
+        obj.insert("student",student);
+        obj.insert("score",score);
+        arr.append(obj);
+    }
+    close();
+    return arr;
+}
+
 inline void DB_Management::to_connect()
 {
 //*/

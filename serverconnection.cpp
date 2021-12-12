@@ -84,6 +84,17 @@ void serverconnection::action()
         {
             submit(obj);
         }
+        if(act==QString("getscore"))
+        {
+            if(type==QString("student"))
+            {
+                getscore_student(obj);
+            }
+            if(type==QString("teacher"))
+            {
+                getscore_teacher(obj);
+            }
+        }
     }
     else
     {
@@ -243,6 +254,21 @@ void serverconnection::submit(const QJsonObject &obj)
     {
         tcp->write(QString("{\n\"act\":\"submission\",\n\"is_successful\":false\n}").toUtf8());
     }
+}
+
+void serverconnection::getscore_student(const QJsonObject &obj)
+{
+    int paperid=obj.value("paperid").toInt();
+    int score=db->get_score(username,paperid);
+    tcp->write(QString("{\n\"act\":\"getscore\",\n\"score\":"+QString::number(score)+"\n}").toUtf8());
+}
+
+void serverconnection::getscore_teacher(const QJsonObject &obj)
+{
+    int paperid=obj.value("paperid").toInt();
+    QJsonArray arr = db->get_score(paperid);
+    QJsonDocument doc(arr);
+    tcp->write(doc.toJson());
 }
 
 

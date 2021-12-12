@@ -51,6 +51,8 @@ private:
     void showpaperlist(const QJsonObject &obj);
     void getpaper(const QJsonObject &obj);
     void submit(const QJsonObject &obj);
+    void getscore_student(const QJsonObject &obj);
+    void getscore_teacher(const QJsonObject &obj);
 };
 
 #endif // SERVERCONNECTION_H

@@ -24,6 +24,8 @@ public:
     QJsonArray showpaperlist(int classid);
     QJsonObject getpaper(int paperid);
     bool submmit(QString username,int paperid,int score);
+    int get_score(QString username,int paperid);
+    QJsonArray get_score(int paperid);
 signals:
 
 private:
