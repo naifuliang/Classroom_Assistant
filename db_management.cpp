@@ -145,6 +145,48 @@ void DB_Management::addclass(QString username, QString classname)
     close();
 }
 
+bool DB_Management::attentclass(QString username, int classid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from class where (id= "+QString::number(classid)+" );");
+    if(!query.next())
+    {
+        close();
+        return false;
+    }
+    query.exec("select * from student where (username= '"+username+"' );");
+    QJsonArray arr;
+    while(query.next())
+    {
+        QJsonDocument orgin_class_doc;
+        QString orgin_class_string=query.value("class").toString();
+        QByteArray orgin_class_bytearr=orgin_class_string.toUtf8();
+//        qDebug()<<orgin_class_bytearr<<"\n";
+        orgin_class_doc=QJsonDocument::fromJson(orgin_class_bytearr);
+        if(orgin_class_doc.isArray())
+        {
+            arr=orgin_class_doc.array();
+            for(int i=0;i<arr.size();i++)
+            {
+                if(arr[i].toInt()==classid)
+                {
+                    close();
+                    return false;
+                }
+            }
+            arr.append(classid);
+//            qDebug()<<classid<<"\n";
+        }
+    }
+    QJsonDocument new_class_doc(arr);
+    QString new_class_string = new_class_doc.toJson();
+//    qDebug()<<new_class_string;
+    query.exec("update student set class = '"+new_class_string+"' where username = '"+username+"';");
+    close();
+    return true;
+}
+
 inline void DB_Management::to_connect()
 {
 //*/

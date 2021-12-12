@@ -30,7 +30,7 @@ public:
     ~serverconnection();
     void login(const QJsonObject &obj);
     void reg(const QJsonObject &obj);
-    void attend(const QJsonObject &obj);
+    void attendclass(const QJsonObject &obj);
     void addclass(const QJsonObject &obj);
     void getclass();
 public slots:

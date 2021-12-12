@@ -55,10 +55,10 @@ void serverconnection::action()
             qDebug()<<time.currentDateTime().toString()<<ip<<"Attempped to register\n";
             reg(obj);
         }
-        if(act=="attend")
+        if(act==QString("attendclass"))
         {
             //学生加入课堂
-            attend(obj);
+            attendclass(obj);
         }
         if(act==QString("addclass"))
         {
@@ -155,11 +155,11 @@ void serverconnection::reg(const QJsonObject &obj)
 //    quit();
 }
 
-void serverconnection::attend(const QJsonObject &obj)
+void serverconnection::attendclass(const QJsonObject &obj)
 {
-    QString classid=obj.value("classid").toString();
+    int classid = obj.value("classid").toInt();
     //调用数据库操作方法
-    if(/*succeess*/1)
+    if(db->attentclass(username,classid))
     {
         QJsonObject send_obj;
         send_obj.insert("act","attend");
