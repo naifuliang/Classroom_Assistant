@@ -4,7 +4,12 @@
 DB_Management::DB_Management(QObject *parent)
     : QObject{parent}
 {
-
+    db = QSqlDatabase::addDatabase("QODBC");
+    db.setHostName(host);
+    db.setPort(port);
+    db.setDatabaseName(DB_name);
+    db.setUserName(DB_username);
+    db.setPassword(DB_password);
 }
 
 DB_Management::~DB_Management()
@@ -26,7 +31,7 @@ bool DB_Management::reg(QString type, QString username, QString password)
     {
 //        QString a=query.value("username").toString();
 //        qDebug()<<a<<"\n";
-        db.close();
+        close();
         return false;
     }
     else
@@ -36,7 +41,7 @@ bool DB_Management::reg(QString type, QString username, QString password)
         db.exec("INSERT INTO "+type+" (username, password, class) VALUES ('"+username+"','"+password+"','[\n]');");
 //        qDebug()<<w<<"\n";
 //        db.exec("INSERT INTO `student` (`username`, `password`, `class`) VALUES ('LNF_297', '123456', '[\r\n]')");
-        db.close();
+        close();
         return true;
     }
 }
@@ -51,36 +56,107 @@ bool DB_Management::login(QString type, QString username, QString password)
         QString real_password = query.value("password").toString();
         if(real_password==password)
         {
+            close();
             return true;
         }
         else
         {
+            close();
             return false;
         }
     }
     else
     {
-        db.close();
+        close();
         return false;
     }
 }
 
-void DB_Management::to_connect()
+QJsonArray DB_Management::get_class(QString type, QString username)
 {
-    db = QSqlDatabase::addDatabase("QODBC");
-    db.setHostName(host);
-    db.setPort(port);
-    db.setDatabaseName(DB_name);
-    db.setUserName(DB_username);
-    db.setPassword(DB_password);
-//*/
-    if(db.open())
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from "+type+" where (username='"+username+"');");
+    QString json_string;
+    while(query.next())
     {
-        qDebug()<<"DB opened successfully\n";
+        json_string = query.value("class").toString();
     }
-    else
+//    db.close();
+
+    QByteArray json = json_string.toUtf8();
+    QJsonDocument doc=QJsonDocument::fromJson(json);
+    QJsonArray rezult;
+    if(doc.isArray())
+    {
+        QJsonArray arr=doc.array();
+        for(int i=0;i<arr.size();i++)
+        {
+            int classid =arr[i].toInt();
+            query.exec("select * from class where (id="+QString::number(classid)+");");
+            QJsonObject obj;
+            while(query.next())
+            {
+                QString classname=query.value("name").toString();
+                QString teacher=query.value("teacher").toString();
+                obj.insert("id",classid);
+                obj.insert("name",classname);
+                obj.insert("teacher",teacher);
+            }
+            rezult.append(obj);
+        }
+    }
+    close();
+    return rezult;
+}
+
+void DB_Management::addclass(QString username, QString classname)
+{
+    to_connect();
+    QSqlQuery query(db);
+    db.exec("INSERT INTO class (name,paper,teacher) VALUES ('"+classname+"','[\n]','"+username+"');");
+//    qDebug()<<"Inserted\n";
+    query.exec("SELECT last_insert_rowid()");
+    query.next();
+    int classid = query.lastInsertId().toInt();
+//    qDebug()<<classid<<"\n";
+    //To get the AUTO INCREASING id in class table
+    query.exec("select * from teacher where (username= '"+username+"' );");
+    QJsonArray arr;
+    while(query.next())
+    {
+//        qDebug()<<"123\n";
+        QJsonDocument orgin_class_doc;
+        QString orgin_class_string=query.value("class").toString();
+        QByteArray orgin_class_bytearr=orgin_class_string.toUtf8();
+//        qDebug()<<orgin_class_bytearr<<"\n";
+        orgin_class_doc=QJsonDocument::fromJson(orgin_class_bytearr);
+        if(orgin_class_doc.isArray())
+        {
+            arr=orgin_class_doc.array();
+            arr.append(classid);
+//            qDebug()<<classid<<"\n";
+        }
+    }
+    QJsonDocument new_class_doc(arr);
+    QString new_class_string = new_class_doc.toJson();
+//    qDebug()<<new_class_string;
+    query.exec("update teacher set class = '"+new_class_string+"' where username = '"+username+"';");
+    close();
+}
+
+inline void DB_Management::to_connect()
+{
+//*/
+    if(!db.open())
     {
         qDebug()<<"DB opened failed. Please check your configuration\n";
     }
-//*/
+    //*/
+}
+
+inline void DB_Management::close()
+{
+    db.close();
+//    QSqlDatabase::removeDatabase("QODBC");
 }

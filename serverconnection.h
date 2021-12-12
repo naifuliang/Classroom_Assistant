@@ -31,7 +31,8 @@ public:
     void login(const QJsonObject &obj);
     void reg(const QJsonObject &obj);
     void attend(const QJsonObject &obj);
-    void newclass(const QJsonObject &obj);
+    void addclass(const QJsonObject &obj);
+    void getclass();
 public slots:
     void quit();
     void action();

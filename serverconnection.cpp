@@ -60,10 +60,13 @@ void serverconnection::action()
             //学生加入课堂
             attend(obj);
         }
-        if(act=="newclass")
+        if(act==QString("addclass"))
         {
-            //老师创建课堂
-            newclass(obj);
+            addclass(obj);
+        }
+        if(act==QString("getclass"))
+        {
+            getclass();
         }
     }
     else
@@ -149,7 +152,7 @@ void serverconnection::reg(const QJsonObject &obj)
         }
 
     }
-    quit();
+//    quit();
 }
 
 void serverconnection::attend(const QJsonObject &obj)
@@ -174,9 +177,16 @@ void serverconnection::attend(const QJsonObject &obj)
     }
 }
 
-void serverconnection::newclass(const QJsonObject &obj)
+void serverconnection::addclass(const QJsonObject &obj)
 {
-
+    QString classname = obj.value("classname").toString();
+    db->addclass(username,classname);
+}
+void serverconnection::getclass()
+{
+    QJsonArray arr=db->get_class(type,username);
+    QJsonDocument doc(arr);
+    tcp->write(doc.toJson());
 }
 
 void serverconnection::quit()
