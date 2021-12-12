@@ -117,7 +117,7 @@ void serverconnection::login(const QJsonObject &obj)
         send_obj.insert("is_successful",true);
         QJsonDocument send_json(send_obj);
         tcp->write(send_json.toJson());
-        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<this->username<<"login successfully";
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<username<<"login successfully";
     }
     else
     {
@@ -126,8 +126,8 @@ void serverconnection::login(const QJsonObject &obj)
         send_obj.insert("is_successful",false);
         QJsonDocument send_json(send_obj);
         tcp->write(send_json.toJson());
-        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<this->username<<"login failed";
-        quit();
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<username<<"login failed";
+//        quit();
     }
 }
 
@@ -193,6 +193,7 @@ void serverconnection::attendclass(const QJsonObject &obj)
         send_obj.insert("is_successful",true);
         QJsonDocument send_doc(send_obj);
         tcp->write(send_doc.toJson());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has took the class"<<classid;
     }
     else
     {
@@ -201,6 +202,7 @@ void serverconnection::attendclass(const QJsonObject &obj)
         send_obj.insert("is_successful",false);
         QJsonDocument send_doc(send_obj);
         tcp->write(send_doc.toJson());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<"attempped to take the class"<<classid<<"but failed";
     }
 }
 
@@ -209,12 +211,14 @@ void serverconnection::addclass(const QJsonObject &obj)
     QString classname = obj.value("classname").toString();
     db->addclass(username,classname);
     tcp->write(QString("{\n\"act\":\"addclass\",\n\"is_successful\":true\n}").toUtf8());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has create a new class "<<classname;
 }
 void serverconnection::getclass()
 {
     QJsonArray arr=db->get_class(type,username);
     QJsonDocument doc(arr);
     tcp->write(doc.toJson());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" got the class list";
 }
 
 void serverconnection::addpaper(const QJsonObject &obj)
@@ -224,6 +228,7 @@ void serverconnection::addpaper(const QJsonObject &obj)
     QString papercontent=obj.value("papercontent").toString();
     db->addpaper(papername,papercontent,classid);
     tcp->write(QString("{\n\"act\":\"addpaper\",\n\"is_successful\":true\n}").toUtf8());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" create a quiz paper in class "<<classid<<" named "<<papername;
 }
 
 void serverconnection::showpaperlist(const QJsonObject &obj)
@@ -232,6 +237,7 @@ void serverconnection::showpaperlist(const QJsonObject &obj)
     QJsonArray arr = db->showpaperlist(classid);
     QJsonDocument doc(arr);
     tcp->write(doc.toJson());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has got the paperlist in class "<<classid;
 }
 
 void serverconnection::getpaper(const QJsonObject &obj)
@@ -240,6 +246,7 @@ void serverconnection::getpaper(const QJsonObject &obj)
     QJsonObject rezult = db->getpaper(paperid);
     QJsonDocument doc(rezult);
     tcp->write(doc.toJson());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has got the quiz paper "<<paperid;
 }
 
 void serverconnection::submit(const QJsonObject &obj)
@@ -249,10 +256,12 @@ void serverconnection::submit(const QJsonObject &obj)
     if(db->submmit(username,paperid,score))
     {
         tcp->write(QString("{\n\"act\":\"submission\",\n\"is_successful\":true\n}").toUtf8());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has submit the quiz paper "<<paperid<<" with the score of "<<score;
     }
     else
     {
         tcp->write(QString("{\n\"act\":\"submission\",\n\"is_successful\":false\n}").toUtf8());
+        qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" attempped to submit a new score but failed";
     }
 }
 
@@ -261,6 +270,7 @@ void serverconnection::getscore_student(const QJsonObject &obj)
     int paperid=obj.value("paperid").toInt();
     int score=db->get_score(username,paperid);
     tcp->write(QString("{\n\"act\":\"getscore\",\n\"score\":"+QString::number(score)+"\n}").toUtf8());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has got his quiz paper"<<paperid<<" score of "<<score;
 }
 
 void serverconnection::getscore_teacher(const QJsonObject &obj)
@@ -269,11 +279,12 @@ void serverconnection::getscore_teacher(const QJsonObject &obj)
     QJsonArray arr = db->get_score(paperid);
     QJsonDocument doc(arr);
     tcp->write(doc.toJson());
+    qDebug()<<time.currentDateTime().toString()<<ip<<" "<<type<<" "<<username<<" has got the scores of quiz paper "<<paperid;
 }
 
 
 void serverconnection::quit()
 {
-    qDebug()<<time.currentDateTime().toString()<<ip<<"Disconnected. The account"<<username<<"has been signed out.";
+    qDebug()<<time.currentDateTime().toString()<<ip<<"Disconnected. The account "<<type<<" "<<username<<"has been signed out.";
     emit stop(this);
 }
