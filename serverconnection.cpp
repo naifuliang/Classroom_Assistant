@@ -1,5 +1,5 @@
 #include "serverconnection.h"
-
+#include <QRandomGenerator>
 
 serverconnection::serverconnection(QThread* thread,qintptr sock,QObject *parent)
     : QObject{parent}
@@ -11,7 +11,8 @@ serverconnection::serverconnection(QThread* thread,qintptr sock,QObject *parent)
     qDebug()<<time.currentDateTime().toString()<<ip<<"Connected to this server.\n";
     connect(tcp,&QTcpSocket::disconnected,this,&serverconnection::quit);
     connect(tcp,&QIODevice::readyRead,this,&serverconnection::action);
-    db =  new DB_Management(this);
+    int randnum=QRandomGenerator::global()->generate();
+    db =  new DB_Management(this,time.currentDateTime().toString()+ip+QString::number(randnum));
 }
 
 serverconnection::~serverconnection()

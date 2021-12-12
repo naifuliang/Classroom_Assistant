@@ -13,7 +13,7 @@ class DB_Management : public QObject
 {
     Q_OBJECT
 public:
-    explicit DB_Management(QObject *parent = nullptr);
+    explicit DB_Management(QObject *parent = nullptr,QString DBname=QString("defult"));
     ~DB_Management();
     bool reg(QString type,QString username,QString password);
     bool login(QString type,QString username,QString password);
