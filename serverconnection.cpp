@@ -80,6 +80,10 @@ void serverconnection::action()
         {
             getpaper(obj);
         }
+        if(act==QString("submit"))
+        {
+            submit(obj);
+        }
     }
     else
     {
@@ -225,6 +229,20 @@ void serverconnection::getpaper(const QJsonObject &obj)
     QJsonObject rezult = db->getpaper(paperid);
     QJsonDocument doc(rezult);
     tcp->write(doc.toJson());
+}
+
+void serverconnection::submit(const QJsonObject &obj)
+{
+    int score=obj.value("score").toInt();
+    int paperid=obj.value("paperid").toInt();
+    if(db->submmit(username,paperid,score))
+    {
+        tcp->write(QString("{\n\"act\":\"submission\",\n\"is_successful\":true\n}").toUtf8());
+    }
+    else
+    {
+        tcp->write(QString("{\n\"act\":\"submission\",\n\"is_successful\":false\n}").toUtf8());
+    }
 }
 
 

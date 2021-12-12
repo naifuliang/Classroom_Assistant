@@ -271,7 +271,24 @@ QJsonObject DB_Management::getpaper(int paperid)
         obj.insert("papername",papername);
         obj.insert("papercontent",papercontent);
     }
+    close();
     return obj;
+}
+
+bool DB_Management::submmit(QString username, int paperid, int score)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from submission where (paperid="+QString::number(paperid)+" and student = '"+username+"' );");
+    if(query.next())
+    {
+        close();
+        return false;
+    }
+    db.exec("INSERT INTO submission (paperid,student,score) VALUES ("+QString::number(paperid)+",'"+username+"',"+QString::number(score)+");");
+//    qDebug()<<command;
+    close();
+    return true;
 }
 
 inline void DB_Management::to_connect()

@@ -23,6 +23,7 @@ public:
     void addpaper(QString papername,QString papercontent,int classid);
     QJsonArray showpaperlist(int classid);
     QJsonObject getpaper(int paperid);
+    bool submmit(QString username,int paperid,int score);
 signals:
 
 private:
