@@ -151,3 +151,29 @@
 }
 //重复提交返回false
 ```
+## Get Score    
+### Client    
+```json
+{
+    "act":"getscore",
+    "paperid":1
+}
+```
+### Server    
+if teacher
+```json
+[
+    {
+        "score": 100,
+        "student": "LNF_297"
+    }
+]
+
+```
+if student
+```json
+{
+"act":"getscore",
+"score":100
+}
+```
