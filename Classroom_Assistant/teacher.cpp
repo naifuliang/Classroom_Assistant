@@ -7,8 +7,8 @@ Teacher::Teacher(const int &Uid,const QString &Password,const QString &Name,cons
     ui(new Ui::Teacher)
 {
     ui->setupUi(this);
+    resize(600,400);
     setWindowTitle("教师端首页");
-    resize(800,600);
 
     ui->NameLabel->setText(Name);
     ui->UidLabel->setText(QString::number(Uid));

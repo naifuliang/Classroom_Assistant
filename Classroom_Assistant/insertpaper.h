@@ -7,6 +7,7 @@
 #include<QJsonValue>
 #include<QMessageBox>
 #include<QCloseEvent>
+#include <QDebug>
 
 namespace Ui {
 class InsertPaper;

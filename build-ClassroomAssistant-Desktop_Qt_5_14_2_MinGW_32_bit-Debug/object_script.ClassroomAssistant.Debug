@@ -1,10 +1,12 @@
 debug/check_page.o
 debug/chooserole.o
 debug/enterclass.o
+debug/insertpaper.o
 debug/login_student.o
 debug/login_teacher.o
 debug/main.o
 debug/mainwindow.o
+debug/managaclass.o
 debug/page_answer.o
 debug/quiz_score.o
 debug/register_student.o
@@ -13,12 +15,15 @@ debug/signin_student.o
 debug/student.o
 debug/studentclassinfo.o
 debug/teacher.o
+debug/teacherclassinfo.o
 debug/moc_check_page.o
 debug/moc_chooserole.o
 debug/moc_enterclass.o
+debug/moc_insertpaper.o
 debug/moc_login_student.o
 debug/moc_login_teacher.o
 debug/moc_mainwindow.o
+debug/moc_managaclass.o
 debug/moc_page_answer.o
 debug/moc_quiz_score.o
 debug/moc_register_student.o
@@ -27,3 +32,4 @@ debug/moc_signin_student.o
 debug/moc_student.o
 debug/moc_studentclassinfo.o
 debug/moc_teacher.o
+debug/moc_teacherclassinfo.o

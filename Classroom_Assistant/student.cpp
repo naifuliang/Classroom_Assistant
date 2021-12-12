@@ -7,11 +7,10 @@ Student::Student(const int &Sid,const QString &Password,const QString& Name,cons
     ui(new Ui::Student)
 {
     ui->setupUi(this);
+    resize(600,400);
     setWindowTitle("学生端首页");
     ui->SidLabel->setText(QString::number(Sid));
     ui->NameLabel->setText(Name);
-    resize(800,600);
-
     enterclass = new EnterClass();//进入课堂窗口
 
 }
