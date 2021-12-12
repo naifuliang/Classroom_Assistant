@@ -9,7 +9,6 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
-#include <QSqlDatabase>
 #include <QRandomGenerator>
 
 #include <db_management.h>

@@ -1,6 +1,5 @@
 #include "serverside.h"
-#include <QApplication>
-#include <QtDebug>
+
 
 int main(int argc, char *argv[])
 {
