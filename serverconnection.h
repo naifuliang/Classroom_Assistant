@@ -28,11 +28,6 @@ class serverconnection : public QObject
 public:
     explicit serverconnection(QThread* thread,qintptr sock,QObject *parent = nullptr);
     ~serverconnection();
-    void login(const QJsonObject &obj);
-    void reg(const QJsonObject &obj);
-    void attendclass(const QJsonObject &obj);
-    void addclass(const QJsonObject &obj);
-    void getclass();
 public slots:
     void quit();
     void action();
@@ -47,6 +42,12 @@ private:
     QString username;
     QString type;
     DB_Management *db;
+    void login(const QJsonObject &obj);
+    void reg(const QJsonObject &obj);
+    void attendclass(const QJsonObject &obj);
+    void addclass(const QJsonObject &obj);
+    void getclass();
+    void addpaper(const QJsonObject &obj);
 };
 
 #endif // SERVERCONNECTION_H

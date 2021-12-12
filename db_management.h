@@ -20,6 +20,7 @@ public:
     QJsonArray get_class(QString type,QString username);
     void addclass(QString username,QString classname);
     bool attentclass(QString username,int classid);
+    void addpaper(QString papername,QString papercontent,int classid);
 signals:
 
 private:

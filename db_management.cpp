@@ -187,6 +187,40 @@ bool DB_Management::attentclass(QString username, int classid)
     return true;
 }
 
+void DB_Management::addpaper(QString papername, QString papercontent, int classid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    db.exec("INSERT INTO paper (name,content) VALUES ('"+papername+"','"+papercontent+"');");
+//    qDebug()<<"Inserted\n";
+    query.exec("SELECT last_insert_rowid()");
+    query.next();
+    int paperid = query.lastInsertId().toInt();
+//    qDebug()<<paperid;
+    query.exec("select * from class where (id = "+QString::number(classid)+" );");
+    QJsonArray arr;
+    while(query.next())
+    {
+//        qDebug()<<"123\n";
+        QJsonDocument orgin_paper_doc;
+        QString orgin_paper_string=query.value("paper").toString();
+        QByteArray orgin_paper_bytearr=orgin_paper_string.toUtf8();
+//        qDebug()<<orgin_class_bytearr<<"\n";
+        orgin_paper_doc=QJsonDocument::fromJson(orgin_paper_bytearr);
+        if(orgin_paper_doc.isArray())
+        {
+            arr=orgin_paper_doc.array();
+            arr.append(paperid);
+//            qDebug()<<classid<<"\n";
+        }
+    }
+    QJsonDocument new_paper_doc(arr);
+    QString new_paper_string = new_paper_doc.toJson();
+//    qDebug()<<new_class_string;
+    query.exec("update class set paper = '"+new_paper_string+"' where id = "+QString::number(classid)+";");
+    close();
+}
+
 inline void DB_Management::to_connect()
 {
 //*/

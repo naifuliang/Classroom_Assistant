@@ -68,6 +68,10 @@ void serverconnection::action()
         {
             getclass();
         }
+        if(act==QString("addpaper"))
+        {
+            addpaper(obj);
+        }
     }
     else
     {
@@ -181,6 +185,7 @@ void serverconnection::addclass(const QJsonObject &obj)
 {
     QString classname = obj.value("classname").toString();
     db->addclass(username,classname);
+    tcp->write(QString("{\n\"act\":\"addclass\",\n\"is_successful\":true\n}").toUtf8());
 }
 void serverconnection::getclass()
 {
@@ -188,6 +193,16 @@ void serverconnection::getclass()
     QJsonDocument doc(arr);
     tcp->write(doc.toJson());
 }
+
+void serverconnection::addpaper(const QJsonObject &obj)
+{
+    int classid=obj.value("classid").toInt();
+    QString papername=obj.value("papername").toString();
+    QString papercontent=obj.value("papercontent").toString();
+    db->addpaper(papername,papercontent,classid);
+    tcp->write(QString("{\n\"act\":\"addpaper\",\n\"is_successful\":true\n}").toUtf8());
+}
+
 
 void serverconnection::quit()
 {
