@@ -22,6 +22,7 @@ public slots:
     void newconnectionslot(qintptr sock);
     void stop(serverconnection* connection);
     void distroy(serverconnection* connection,QThread* thread);
+    void removeDB(serverconnection* connection,QString DBconnectionname);
 signals:
 private:
     MyTcpServer* server;

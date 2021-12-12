@@ -1,10 +1,10 @@
 #include "db_management.h"
 
 
-DB_Management::DB_Management(QObject *parent,QString DBname)
+DB_Management::DB_Management(QObject *parent,QString DBconnectionname)
     : QObject{parent}
 {
-    db = QSqlDatabase::addDatabase("QODBC",DBname);
+    db = QSqlDatabase::addDatabase("QODBC",DBconnectionname);
     db.setHostName(host);
     db.setPort(port);
     db.setDatabaseName(DB_name);

@@ -9,6 +9,8 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QSqlDatabase>
+#include <QRandomGenerator>
 
 #include <db_management.h>
 //#include <db_operator.h>
@@ -34,6 +36,7 @@ public slots:
 signals:
     void distroy(serverconnection* connection,QThread* thread);
     void stop(serverconnection* connection);
+    void removeDB(serverconnection* connection,QString DBconnectionname);
 private:
     QTcpSocket* tcp;
     QThread *thread;
@@ -42,6 +45,7 @@ private:
     QString username;
     QString type;
     DB_Management *db;
+    QString DB_connection_name;
     void login(const QJsonObject &obj);
     void reg(const QJsonObject &obj);
     void attendclass(const QJsonObject &obj);

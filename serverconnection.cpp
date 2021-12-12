@@ -1,5 +1,4 @@
 #include "serverconnection.h"
-#include <QRandomGenerator>
 
 serverconnection::serverconnection(QThread* thread,qintptr sock,QObject *parent)
     : QObject{parent}
@@ -12,13 +11,15 @@ serverconnection::serverconnection(QThread* thread,qintptr sock,QObject *parent)
     connect(tcp,&QTcpSocket::disconnected,this,&serverconnection::quit);
     connect(tcp,&QIODevice::readyRead,this,&serverconnection::action);
     int randnum=QRandomGenerator::global()->generate();
-    db =  new DB_Management(this,time.currentDateTime().toString()+ip+QString::number(randnum));
+    DB_connection_name=time.currentDateTime().toString()+ip+QString::number(randnum);
+    db = new DB_Management(this,DB_connection_name);
 }
 
 serverconnection::~serverconnection()
 {
     emit distroy(this,this->thread);
     //在释放serverconnect资源的同时析构对应的线程
+    emit removeDB(this,DB_connection_name);
 }
 
 void serverconnection::action()

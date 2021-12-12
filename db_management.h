@@ -13,7 +13,7 @@ class DB_Management : public QObject
 {
     Q_OBJECT
 public:
-    explicit DB_Management(QObject *parent = nullptr,QString DBname=QString("defult"));
+    explicit DB_Management(QObject *parent = nullptr,QString DBconnectionname=QString("defult"));
     ~DB_Management();
     bool reg(QString type,QString username,QString password);
     bool login(QString type,QString username,QString password);
@@ -27,7 +27,6 @@ public:
     int get_score(QString username,int paperid);
     QJsonArray get_score(int paperid);
 signals:
-
 private:
     QSqlDatabase db;
     const QString host="localhost",

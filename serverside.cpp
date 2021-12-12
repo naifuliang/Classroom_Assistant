@@ -24,6 +24,9 @@ void serverside::newconnectionslot(qintptr sock)
     connect(connection,&serverconnection::stop,this,&serverside::stop);
     //关联停止信号，便于释放资源
     connect(connection,&serverconnection::distroy,this,&serverside::distroy);
+    //关联线程销毁信号
+    connect(connection,&serverconnection::removeDB,this,&serverside::removeDB);
+    //关联数据库删除信号
 //    qDebug()<<"A new connection prosessed\n";
 }
 
@@ -40,5 +43,12 @@ void serverside::distroy(serverconnection* connection,QThread *thread)
     thread->exit();
     thread->wait();
     thread->deleteLater();
-//    qDebug()<<"distroy\n";
+    //    qDebug()<<"distroy\n";
+}
+
+void serverside::removeDB(serverconnection* connection,QString DBconnectionname)
+{
+    connect(connection,&serverconnection::removeDB,this,&serverside::removeDB);
+    QSqlDatabase::removeDatabase(DBconnectionname);
+//    qDebug()<<"rm";
 }
