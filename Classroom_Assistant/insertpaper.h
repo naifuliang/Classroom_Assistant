@@ -26,10 +26,15 @@ public:
 
 signals:
     void InsertPaperClosed();
+    void InsertPaperDone(const QJsonArray &PaperInfo);
+
+private slots:
+    void on_DoneButton_clicked();
 
 private:
     Ui::InsertPaper *ui;
     QJsonArray PaperInfo;
+    QJsonArray questions;
     int previousK;
 };
 

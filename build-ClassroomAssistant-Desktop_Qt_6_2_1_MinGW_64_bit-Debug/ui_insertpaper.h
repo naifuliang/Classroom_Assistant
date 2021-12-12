@@ -26,7 +26,7 @@ class Ui_InsertPaper
 public:
     QComboBox *QuestionNum;
     QLabel *label;
-    QPushButton *InsertButton;
+    QPushButton *DoneButton;
     QTextEdit *Description;
     QLabel *label_2;
     QWidget *verticalLayoutWidget;
@@ -43,12 +43,14 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label_3;
     QTextEdit *OptionD;
+    QLabel *label_7;
+    QComboBox *AnswerBox;
 
     void setupUi(QWidget *InsertPaper)
     {
         if (InsertPaper->objectName().isEmpty())
             InsertPaper->setObjectName(QString::fromUtf8("InsertPaper"));
-        InsertPaper->resize(577, 412);
+        InsertPaper->resize(577, 399);
         QuestionNum = new QComboBox(InsertPaper);
         QuestionNum->setObjectName(QString::fromUtf8("QuestionNum"));
         QuestionNum->setGeometry(QRect(110, 40, 72, 22));
@@ -59,9 +61,9 @@ public:
         font.setFamilies({QString::fromUtf8("Agency FB")});
         font.setPointSize(14);
         label->setFont(font);
-        InsertButton = new QPushButton(InsertPaper);
-        InsertButton->setObjectName(QString::fromUtf8("InsertButton"));
-        InsertButton->setGeometry(QRect(250, 320, 80, 31));
+        DoneButton = new QPushButton(InsertPaper);
+        DoneButton->setObjectName(QString::fromUtf8("DoneButton"));
+        DoneButton->setGeometry(QRect(250, 350, 80, 31));
         Description = new QTextEdit(InsertPaper);
         Description->setObjectName(QString::fromUtf8("Description"));
         Description->setGeometry(QRect(110, 70, 371, 61));
@@ -71,7 +73,7 @@ public:
         label_2->setFont(font);
         verticalLayoutWidget = new QWidget(InsertPaper);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(90, 140, 391, 171));
+        verticalLayoutWidget->setGeometry(QRect(100, 140, 391, 131));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -139,6 +141,13 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        label_7 = new QLabel(InsertPaper);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setGeometry(QRect(40, 300, 54, 31));
+        label_7->setFont(font);
+        AnswerBox = new QComboBox(InsertPaper);
+        AnswerBox->setObjectName(QString::fromUtf8("AnswerBox"));
+        AnswerBox->setGeometry(QRect(100, 310, 72, 22));
 
         retranslateUi(InsertPaper);
 
@@ -149,12 +158,13 @@ public:
     {
         InsertPaper->setWindowTitle(QCoreApplication::translate("InsertPaper", "Form", nullptr));
         label->setText(QCoreApplication::translate("InsertPaper", "\351\242\230\345\217\267\357\274\232", nullptr));
-        InsertButton->setText(QCoreApplication::translate("InsertPaper", "Insert", nullptr));
+        DoneButton->setText(QCoreApplication::translate("InsertPaper", "Done", nullptr));
         label_2->setText(QCoreApplication::translate("InsertPaper", "\351\242\230\347\233\256\357\274\232", nullptr));
         label_5->setText(QCoreApplication::translate("InsertPaper", "A:", nullptr));
         label_4->setText(QCoreApplication::translate("InsertPaper", "B:", nullptr));
         label_6->setText(QCoreApplication::translate("InsertPaper", "C:", nullptr));
         label_3->setText(QCoreApplication::translate("InsertPaper", "D:", nullptr));
+        label_7->setText(QCoreApplication::translate("InsertPaper", "\347\255\224\346\241\210\357\274\232", nullptr));
     } // retranslateUi
 
 };

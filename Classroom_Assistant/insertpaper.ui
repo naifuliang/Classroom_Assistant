@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>577</width>
-    <height>412</height>
+    <height>399</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,17 +42,17 @@
     <string>题号：</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="InsertButton">
+  <widget class="QPushButton" name="DoneButton">
    <property name="geometry">
     <rect>
      <x>250</x>
-     <y>320</y>
+     <y>350</y>
      <width>80</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Insert</string>
+    <string>Done</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="Description">
@@ -87,10 +87,10 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>100</x>
      <y>140</y>
      <width>391</width>
-     <height>171</height>
+     <height>131</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -175,6 +175,35 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>300</y>
+     <width>54</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>答案：</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="AnswerBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>310</y>
+     <width>72</width>
+     <height>22</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
