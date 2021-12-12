@@ -76,6 +76,10 @@ void serverconnection::action()
         {
             showpaperlist(obj);
         }
+        if(act==QString("getpaper"))
+        {
+            getpaper(obj);
+        }
     }
     else
     {
@@ -212,6 +216,14 @@ void serverconnection::showpaperlist(const QJsonObject &obj)
     int classid=obj.value("classid").toInt();
     QJsonArray arr = db->showpaperlist(classid);
     QJsonDocument doc(arr);
+    tcp->write(doc.toJson());
+}
+
+void serverconnection::getpaper(const QJsonObject &obj)
+{
+    int paperid=obj.value("paperid").toInt();
+    QJsonObject rezult = db->getpaper(paperid);
+    QJsonDocument doc(rezult);
     tcp->write(doc.toJson());
 }
 

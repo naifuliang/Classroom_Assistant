@@ -257,6 +257,23 @@ QJsonArray DB_Management::showpaperlist(int classid)
     return rezult;
 }
 
+QJsonObject DB_Management::getpaper(int paperid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from paper where (id="+QString::number(paperid)+");");
+    QJsonObject obj;
+    while(query.next())
+    {
+        QString papername = query.value("name").toString();
+        QString papercontent = query.value("content").toString();
+        obj.insert("paperid",paperid);
+        obj.insert("papername",papername);
+        obj.insert("papercontent",papercontent);
+    }
+    return obj;
+}
+
 inline void DB_Management::to_connect()
 {
 //*/

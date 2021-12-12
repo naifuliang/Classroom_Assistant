@@ -22,6 +22,7 @@ public:
     bool attentclass(QString username,int classid);
     void addpaper(QString papername,QString papercontent,int classid);
     QJsonArray showpaperlist(int classid);
+    QJsonObject getpaper(int paperid);
 signals:
 
 private:
