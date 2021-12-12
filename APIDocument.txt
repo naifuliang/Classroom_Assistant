@@ -1,0 +1,32 @@
+Login/Register:
+{
+"act":"login",
+"username":"LNF_297",
+"password":"123",
+"type":"teacher"
+}
+
+Get class list for both student and teacher
+{
+"act":"getclass"
+}
+
+Create a new class(Only used by teacher)
+{
+"act":"addclass",
+"classname":"C++"
+}
+
+Take a exitant class by Classid(Only used by student)
+{
+"act":"attendclass",
+"classid":1
+}
+
+Create a new paper
+{
+"act":"addpaper",
+"classid":1,
+"papername":"C++ quiz",
+"papercontent":"[]"
+}
