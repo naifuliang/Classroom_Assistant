@@ -30,3 +30,9 @@ Create a new paper
 "papername":"C++ quiz",
 "papercontent":"[]"
 }
+
+Get a paper list in a certain class for both teacher and student
+{
+"act":"showpaperlist",
+"classid":1
+}
