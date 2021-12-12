@@ -110,7 +110,7 @@
     <string>考试成绩</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="SignupButton">
    <property name="geometry">
     <rect>
      <x>250</x>

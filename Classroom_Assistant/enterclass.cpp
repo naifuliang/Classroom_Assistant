@@ -50,9 +50,9 @@ EnterClass::EnterClass(QWidget *parent) :
         for(int i = 0 ; i < studentClassList->size() ; i++){
             qDebug()<<"id is "<<studentClassList->at(i).toObject().value("id").toInt();
             if(item->whatsThis() == QString::number(studentClassList->at(i).toObject().value("id").toInt())){
-
+                extern QWidget* mainwindowptr;
                 classinfo = new StudentClassInfo(studentClassList->at(i).toObject());
-                connect(classinfo,&StudentClassInfo::StuCLassInfoClosed,this,[=](){delete classinfo;qDebug()<<"classinfo指针已删除";});
+                connect(classinfo,&StudentClassInfo::StuCLassInfoClosed,mainwindowptr,[=](){delete classinfo;qDebug()<<"classinfo指针已删除";});
                 classinfo -> show();
                 break;
             }

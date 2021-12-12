@@ -12,10 +12,12 @@ SOURCES += \
     check_page.cpp \
     chooserole.cpp \
     enterclass.cpp \
+    insertpaper.cpp \
     login_student.cpp \
     login_teacher.cpp \
     main.cpp \
     mainwindow.cpp \
+    managaclass.cpp \
     page_answer.cpp \
     quiz_score.cpp \
     register_student.cpp \
@@ -23,15 +25,18 @@ SOURCES += \
     signin_student.cpp \
     student.cpp \
     studentclassinfo.cpp \
-    teacher.cpp
+    teacher.cpp \
+    teacherclassinfo.cpp
 
 HEADERS += \
     check_page.h \
     chooserole.h \
     enterclass.h \
+    insertpaper.h \
     login_student.h \
     login_teacher.h \
     mainwindow.h \
+    managaclass.h \
     page_answer.h \
     quiz_score.h \
     register_student.h \
@@ -39,15 +44,18 @@ HEADERS += \
     signin_student.h \
     student.h \
     studentclassinfo.h \
-    teacher.h
+    teacher.h \
+    teacherclassinfo.h
 
 FORMS += \
     check_page.ui \
     chooserole.ui \
     enterclass.ui \
+    insertpaper.ui \
     login_student.ui \
     login_teacher.ui \
     mainwindow.ui \
+    managaclass.ui \
     page_answer.ui \
     quiz_score.ui \
     register_student.ui \
@@ -55,7 +63,8 @@ FORMS += \
     signin_student.ui \
     student.ui \
     studentclassinfo.ui \
-    teacher.ui
+    teacher.ui \
+    teacherclassinfo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

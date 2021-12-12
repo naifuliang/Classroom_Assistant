@@ -10,6 +10,9 @@
 
 #include"studentclassinfo.h"
 
+//进入课堂页面，显示课堂列表
+
+
 namespace Ui {
 class EnterClass;
 }

@@ -2,6 +2,7 @@
 #define TEACHER_H
 
 #include <QWidget>
+#include"managaclass.h"
 
 namespace Ui {
 class Teacher;
@@ -19,10 +20,17 @@ public:
 signals:
     void Logout();//注销信号
 
+private slots:
+    void on_LogoutButton_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     int Uid;
     QString Password,Name,Class;
     Ui::Teacher *ui;
+
+    ManagaClass *manageclass;
 };
 
 #endif // TEACHER_H

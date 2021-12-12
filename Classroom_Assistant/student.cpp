@@ -19,6 +19,7 @@ Student::Student(const int &Sid,const QString &Password,const QString& Name,cons
 Student::~Student()
 {
     delete ui;
+    delete enterclass;
 }
 
 void Student::closeEvent(QCloseEvent *event){

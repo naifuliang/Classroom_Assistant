@@ -36,8 +36,8 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
     QLabel *signupLabel;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *QuizScoreBtn;
+    QPushButton *SignupButton;
 
     void setupUi(QWidget *StudentClassInfo)
     {
@@ -110,12 +110,12 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        pushButton = new QPushButton(StudentClassInfo);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(250, 190, 80, 31));
-        pushButton_2 = new QPushButton(StudentClassInfo);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(250, 230, 80, 31));
+        QuizScoreBtn = new QPushButton(StudentClassInfo);
+        QuizScoreBtn->setObjectName(QString::fromUtf8("QuizScoreBtn"));
+        QuizScoreBtn->setGeometry(QRect(250, 190, 80, 31));
+        SignupButton = new QPushButton(StudentClassInfo);
+        SignupButton->setObjectName(QString::fromUtf8("SignupButton"));
+        SignupButton->setGeometry(QRect(250, 230, 80, 31));
 
         retranslateUi(StudentClassInfo);
 
@@ -133,8 +133,8 @@ public:
         teacherNameLabel->setText(QString());
         label_3->setText(QCoreApplication::translate("StudentClassInfo", "\347\255\276\345\210\260\346\254\241\346\225\260:", nullptr));
         signupLabel->setText(QString());
-        pushButton->setText(QCoreApplication::translate("StudentClassInfo", "\350\200\203\350\257\225\346\210\220\347\273\251", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\345\240\202\347\255\276\345\210\260", nullptr));
+        QuizScoreBtn->setText(QCoreApplication::translate("StudentClassInfo", "\350\200\203\350\257\225\346\210\220\347\273\251", nullptr));
+        SignupButton->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\345\240\202\347\255\276\345\210\260", nullptr));
     } // retranslateUi
 
 };
