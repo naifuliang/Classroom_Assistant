@@ -99,8 +99,8 @@ QJsonArray DB_Management::get_class(QString type, QString username)
             {
                 QString classname=query.value("name").toString();
                 QString teacher=query.value("teacher").toString();
-                obj.insert("id",classid);
-                obj.insert("name",classname);
+                obj.insert("classid",classid);
+                obj.insert("classname",classname);
                 obj.insert("teacher",teacher);
             }
             rezult.append(obj);
@@ -219,6 +219,42 @@ void DB_Management::addpaper(QString papername, QString papercontent, int classi
 //    qDebug()<<new_class_string;
     query.exec("update class set paper = '"+new_paper_string+"' where id = "+QString::number(classid)+";");
     close();
+}
+
+QJsonArray DB_Management::showpaperlist(int classid)
+{
+    to_connect();
+    QSqlQuery query(db);
+    query.exec("select * from class where (id="+QString::number(classid)+");");
+    QString json_string;
+    while(query.next())
+    {
+        json_string = query.value("paper").toString();
+    }
+//    db.close();
+
+    QByteArray json = json_string.toUtf8();
+    QJsonDocument doc=QJsonDocument::fromJson(json);
+    QJsonArray rezult;
+    if(doc.isArray())
+    {
+        QJsonArray arr=doc.array();
+        for(int i=0;i<arr.size();i++)
+        {
+            int paperid =arr[i].toInt();
+            query.exec("select * from paper where (id="+QString::number(paperid)+");");
+            QJsonObject obj;
+            while(query.next())
+            {
+                QString papername=query.value("name").toString();
+                obj.insert("paperid",paperid);
+                obj.insert("papername",papername);
+            }
+            rezult.append(obj);
+        }
+    }
+    close();
+    return rezult;
 }
 
 inline void DB_Management::to_connect()

@@ -72,6 +72,10 @@ void serverconnection::action()
         {
             addpaper(obj);
         }
+        if(act==QString("showpaperlist"))
+        {
+            showpaperlist(obj);
+        }
     }
     else
     {
@@ -201,6 +205,14 @@ void serverconnection::addpaper(const QJsonObject &obj)
     QString papercontent=obj.value("papercontent").toString();
     db->addpaper(papername,papercontent,classid);
     tcp->write(QString("{\n\"act\":\"addpaper\",\n\"is_successful\":true\n}").toUtf8());
+}
+
+void serverconnection::showpaperlist(const QJsonObject &obj)
+{
+    int classid=obj.value("classid").toInt();
+    QJsonArray arr = db->showpaperlist(classid);
+    QJsonDocument doc(arr);
+    tcp->write(doc.toJson());
 }
 
 

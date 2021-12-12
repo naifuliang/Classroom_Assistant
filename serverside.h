@@ -7,7 +7,6 @@
 #include <QTcpSocket>
 #include <QtDebug>
 #include <QThread>
-#include <iostream>
 #include <string>
 
 #include <serverconnection.h>

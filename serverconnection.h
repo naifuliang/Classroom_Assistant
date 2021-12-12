@@ -48,6 +48,7 @@ private:
     void addclass(const QJsonObject &obj);
     void getclass();
     void addpaper(const QJsonObject &obj);
+    void showpaperlist(const QJsonObject &obj);
 };
 
 #endif // SERVERCONNECTION_H
