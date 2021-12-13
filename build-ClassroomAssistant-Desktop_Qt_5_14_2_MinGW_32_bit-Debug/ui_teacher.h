@@ -35,8 +35,8 @@ public:
     QLabel *NameLabel;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *classBtn;
+    QPushButton *paperBtn;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
@@ -85,15 +85,15 @@ public:
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         verticalLayout = new QVBoxLayout(widget_2);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        pushButton = new QPushButton(widget_2);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        classBtn = new QPushButton(widget_2);
+        classBtn->setObjectName(QString::fromUtf8("classBtn"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(classBtn);
 
-        pushButton_2 = new QPushButton(widget_2);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        paperBtn = new QPushButton(widget_2);
+        paperBtn->setObjectName(QString::fromUtf8("paperBtn"));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(paperBtn);
 
 
         horizontalLayout->addWidget(widget_2);
@@ -134,9 +134,9 @@ public:
         UidLabel->setText(QString());
         label->setText(QCoreApplication::translate("Teacher", "Name:", nullptr));
         NameLabel->setText(QString());
-        pushButton->setText(QCoreApplication::translate("Teacher", "\350\257\276\345\240\202\347\256\241\347\220\206", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Teacher", "\350\257\225\345\215\267\347\256\241\347\220\206", nullptr));
-        LogoutButton->setText(QCoreApplication::translate("Teacher", "Logout", nullptr));
+        classBtn->setText(QCoreApplication::translate("Teacher", "\350\257\276\345\240\202\347\256\241\347\220\206", nullptr));
+        paperBtn->setText(QCoreApplication::translate("Teacher", "\350\257\225\345\215\267\347\256\241\347\220\206", nullptr));
+        LogoutButton->setText(QCoreApplication::translate("Teacher", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
     } // retranslateUi
 
 };

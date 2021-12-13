@@ -18,7 +18,7 @@ class InsertPaper : public QWidget
     Q_OBJECT
 
 public:
-    explicit InsertPaper(QWidget *parent = nullptr);
+    explicit InsertPaper(QString teachernam="",QWidget *parent = nullptr);
     ~InsertPaper();
 
     void closeEvent(QCloseEvent *event);
@@ -27,8 +27,10 @@ public:
 
 signals:
     void InsertPaperClosed();
+    void InsertPaperSucceed();
 
 private:
+    QString teachername;
     Ui::InsertPaper *ui;
     QJsonArray PaperInfo;
     int previousK;

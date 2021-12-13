@@ -18,6 +18,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     managaclass.cpp \
+    manage_paper.cpp \
+    manage_paper_part.cpp \
     page_answer.cpp \
     quiz_score.cpp \
     register_student.cpp \
@@ -38,6 +40,8 @@ HEADERS += \
     login_teacher.h \
     mainwindow.h \
     managaclass.h \
+    manage_paper.h \
+    manage_paper_part.h \
     page_answer.h \
     quiz_score.h \
     register_student.h \
@@ -58,6 +62,8 @@ FORMS += \
     login_teacher.ui \
     mainwindow.ui \
     managaclass.ui \
+    manage_paper.ui \
+    manage_paper_part.ui \
     page_answer.ui \
     quiz_score.ui \
     register_student.ui \

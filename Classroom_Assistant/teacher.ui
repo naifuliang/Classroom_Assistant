@@ -55,14 +55,14 @@
        <widget class="QWidget" name="widget_2" native="true">
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="classBtn">
            <property name="text">
             <string>课堂管理</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="paperBtn">
            <property name="text">
             <string>试卷管理</string>
            </property>
@@ -93,7 +93,7 @@
       <item>
        <widget class="QPushButton" name="LogoutButton">
         <property name="text">
-         <string>Logout</string>
+         <string>退出登录</string>
         </property>
        </widget>
       </item>

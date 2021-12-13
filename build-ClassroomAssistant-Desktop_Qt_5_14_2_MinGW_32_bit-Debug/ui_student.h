@@ -137,7 +137,7 @@ public:
         SidLabel->setText(QString());
         GradesCheckButton->setText(QCoreApplication::translate("Student", "\346\210\220\347\273\251\346\237\245\350\257\242", nullptr));
         EnterClassButton->setText(QCoreApplication::translate("Student", "\350\277\233\345\205\245\350\257\276\345\240\202", nullptr));
-        LogoutButton->setText(QCoreApplication::translate("Student", "Logout", nullptr));
+        LogoutButton->setText(QCoreApplication::translate("Student", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
     } // retranslateUi
 
 };

@@ -2,24 +2,21 @@
 #include "ui_teacher.h"
 #include<qdebug.h>
 
-Teacher::Teacher(const int &Uid,const QString &Password,const QString &Name,const QString &Class,QWidget *parent) :
-    QWidget(parent),Uid(Uid),Password(Password),Name(Name),Class(Class),
+Teacher::Teacher(const int &Uid,const QString &Password,const QString &Name,QWidget *parent) :
+    QWidget(parent),Uid(Uid),Password(Password),Name(Name),
     ui(new Ui::Teacher)
 {
     ui->setupUi(this);
     resize(600,400);
     setWindowTitle("教师端首页");
-
     ui->NameLabel->setText(Name);
     ui->UidLabel->setText(QString::number(Uid));
-
-    manageclass = new ManagaClass;
 }
-
 Teacher::~Teacher()
 {
     delete ui;
-    delete manageclass;
+    delete manage_class;
+    delete manage_paper;
 }
 
 void Teacher::closeEvent(QCloseEvent *event){
@@ -32,9 +29,14 @@ void Teacher::on_LogoutButton_clicked()
     this->close();
 }
 
-
-void Teacher::on_pushButton_clicked()
+void Teacher::on_classBtn_clicked()
 {
-    manageclass->show();
+    manage_class = new ManagaClass(Name,Uid);
+    manage_class->show();
 }
 
+void Teacher::on_paperBtn_clicked()
+{
+    manage_paper = new Manage_paper(Name);
+    manage_paper->show();
+}

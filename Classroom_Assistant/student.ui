@@ -96,7 +96,7 @@
       <item>
        <widget class="QPushButton" name="LogoutButton">
         <property name="text">
-         <string>Logout</string>
+         <string>退出登录</string>
         </property>
        </widget>
       </item>

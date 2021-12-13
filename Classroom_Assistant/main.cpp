@@ -3,7 +3,6 @@
 #include <QApplication>
 #include <signin_student.h>
 #include <studentclassinfo.h>
-#include "total_score.h"
 
 //将删除操作交给mainwindow,防止内存泄露
 QWidget *mainwindowptr;

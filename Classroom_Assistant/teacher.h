@@ -2,7 +2,8 @@
 #define TEACHER_H
 
 #include <QWidget>
-#include"managaclass.h"
+#include "managaclass.h"
+#include "manage_paper.h"
 
 namespace Ui {
 class Teacher;
@@ -13,7 +14,7 @@ class Teacher : public QWidget
     Q_OBJECT
 
 public:
-    explicit Teacher(const int &Uid,const QString &Password,const QString &Name,const QString &Class,QWidget *parent = nullptr);
+    explicit Teacher(const int &Uid,const QString &Password,const QString &Name,QWidget *parent = nullptr);
     ~Teacher();
     void closeEvent(QCloseEvent *event);//关闭事件
 
@@ -23,14 +24,16 @@ signals:
 private slots:
     void on_LogoutButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_classBtn_clicked();
+
+    void on_paperBtn_clicked();
 
 private:
     int Uid;
     QString Password,Name,Class;
     Ui::Teacher *ui;
-
-    ManagaClass *manageclass;
+    ManagaClass *manage_class;
+    Manage_paper *manage_paper;
 };
 
 #endif // TEACHER_H
