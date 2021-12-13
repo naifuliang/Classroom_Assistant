@@ -23,10 +23,13 @@ SOURCES += \
     page_answer.cpp \
     publishquiz.cpp \
     quiz_score.cpp \
+    quizresult.cpp \
     register_student.cpp \
     register_teacher.cpp \
     signin_student.cpp \
     student.cpp \
+    student_manage.cpp \
+    student_manage_part.cpp \
     studentclassinfo.cpp \
     teacher.cpp \
     teacherclassinfo.cpp \
@@ -46,10 +49,13 @@ HEADERS += \
     page_answer.h \
     publishquiz.h \
     quiz_score.h \
+    quizresult.h \
     register_student.h \
     register_teacher.h \
     signin_student.h \
     student.h \
+    student_manage.h \
+    student_manage_part.h \
     studentclassinfo.h \
     teacher.h \
     teacherclassinfo.h \
@@ -69,10 +75,13 @@ FORMS += \
     page_answer.ui \
     publishquiz.ui \
     quiz_score.ui \
+    quizresult.ui \
     register_student.ui \
     register_teacher.ui \
     signin_student.ui \
     student.ui \
+    student_manage.ui \
+    student_manage_part.ui \
     studentclassinfo.ui \
     teacher.ui \
     teacherclassinfo.ui \

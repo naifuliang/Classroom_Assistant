@@ -9,6 +9,9 @@
 #include<QCloseEvent>
 #include <QDebug>
 
+//教师端用于编辑与查看试卷的窗口，
+//按下Done按钮后会发送信号InsertPaperDone(const QJsonObject &PaperInfo)。
+
 namespace Ui {
 class InsertPaper;
 }
@@ -24,6 +27,10 @@ public:
     void closeEvent(QCloseEvent *event);
 
     void ChangeQuestionNum(const QString &num);
+
+    void setPaperInfo(const QJsonObject &NewPaperInfo);//设置试卷信息
+
+    void setReadOnly();//设置为只读模式
 
 signals:
     void InsertPaperClosed();//关闭信号

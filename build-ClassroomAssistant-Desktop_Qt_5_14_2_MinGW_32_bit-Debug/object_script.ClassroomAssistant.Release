@@ -15,6 +15,8 @@ release/register_student.o
 release/register_teacher.o
 release/signin_student.o
 release/student.o
+release/student_manage.o
+release/student_manage_part.o
 release/studentclassinfo.o
 release/teacher.o
 release/teacherclassinfo.o
@@ -35,6 +37,8 @@ release/moc_register_student.o
 release/moc_register_teacher.o
 release/moc_signin_student.o
 release/moc_student.o
+release/moc_student_manage.o
+release/moc_student_manage_part.o
 release/moc_studentclassinfo.o
 release/moc_teacher.o
 release/moc_teacherclassinfo.o

@@ -15,8 +15,6 @@ Teacher::Teacher(const int &Uid,const QString &Password,const QString &Name,QWid
 Teacher::~Teacher()
 {
     delete ui;
-    delete manage_class;
-    delete manage_paper;
 }
 
 void Teacher::closeEvent(QCloseEvent *event){

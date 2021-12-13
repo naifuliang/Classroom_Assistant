@@ -9,6 +9,8 @@
 #include <QDebug>
 #include"teacherclassinfo.h"
 
+//课堂管理窗口，显示课堂列表，双击进入课堂信息盒子查看详情。
+
 namespace Ui {
 class ManagaClass;
 }

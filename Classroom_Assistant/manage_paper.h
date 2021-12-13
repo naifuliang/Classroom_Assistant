@@ -6,6 +6,9 @@
 #include <QVector>
 #include <insertpaper.h>
 
+//教师端试卷管理窗口，可以添加试卷。
+//按下添加试卷按钮后打开insertpaper界面
+
 namespace Ui {
 class Manage_paper;
 }

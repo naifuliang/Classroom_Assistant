@@ -13,6 +13,16 @@ Page_answer::Page_answer(int id,QWidget *parent) :
     setWindowTitle(page_name+"作答");
     //此处将题目和选项放到checkbox和lable里
     ui->selBoxA_1->setText("this is A");//这是一个例子
+    ui->complete_1->setDisabled(true);
+    ui->complete_2->setDisabled(true);
+    ui->complete_3->setDisabled(true);
+    ui->complete_4->setDisabled(true);
+    ui->complete_5->setDisabled(true);
+    ui->complete_6->setDisabled(true);
+    ui->complete_7->setDisabled(true);
+    ui->complete_8->setDisabled(true);
+    ui->complete_9->setDisabled(true);
+    ui->complete_10->setDisabled(true);
     connect(ui->selBoxA_1, &QCheckBox::stateChanged, this, [=](int state){
         if(state == Qt::Checked) check_A1();
         else ui->complete_1->setChecked(false);

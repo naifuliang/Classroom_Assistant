@@ -9,6 +9,8 @@
 #include <page_answer.h>
 #include <QMessageBox>
 
+//学生端课堂信息界面
+
 namespace Ui {
 class StudentClassInfo;
 }

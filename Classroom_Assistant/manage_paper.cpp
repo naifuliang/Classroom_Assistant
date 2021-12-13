@@ -6,9 +6,9 @@ Manage_paper::Manage_paper(QString username,QWidget *parent) :
     ui(new Ui::Manage_paper)
 {
     ui->setupUi(this);
+    insert_paper = 0 ;
     resize(600,400);
     setWindowTitle(teachername+"老师的试卷");
-    ui->paperTable->setHorizontalHeaderLabels(QStringList() << "试卷名" << "问题数" << "是否发布" << "操作");
     for(int i=0;i<100;i++) mpp[i] = new Manage_paper_part;
     for(int i=0;i<100;i++)
     {
@@ -23,9 +23,18 @@ Manage_paper::Manage_paper(QString username,QWidget *parent) :
         });
     }
     put_in_paper(QJsonObject());
-    insert_paper = new InsertPaper(teachername);
-    connect(ui->addBtn, &QPushButton::clicked, insert_paper, &InsertPaper::show);
-    connect(insert_paper, &InsertPaper::InsertPaperDone, this, &Manage_paper::put_in_paper);
+
+    connect(ui->addBtn, &QPushButton::clicked, this,[=](){
+        extern QWidget *mainwindowptr;
+        insert_paper = new InsertPaper;
+        connect(insert_paper,&InsertPaper::InsertPaperClosed,mainwindowptr,[=](){
+            delete insert_paper;
+            qDebug()<<"insertpaper指针已删除";
+        });
+        connect(insert_paper, &InsertPaper::InsertPaperDone, this, &Manage_paper::put_in_paper);
+        insert_paper->show();
+    });
+    //connect(insert_paper, &InsertPaper::InsertPaperDone, this, &Manage_paper::put_in_paper);
     //把InsertPaperSuccecced信号改为了InsertPaperDone，包含参数const QJsonObject&
 }
 
@@ -69,6 +78,7 @@ void Manage_paper::change_items()
         ui->paperTable->setItem(i,0,new QTableWidgetItem(name_list[i]));
         ui->paperTable->setItem(i,1,new QTableWidgetItem(num_list[i]));
         ui->paperTable->setItem(i,2,new QTableWidgetItem(release_list[i]));
+        ui->paperTable->setItem(i,3,new QTableWidgetItem(QString::number(i)));
         ui->paperTable->setCellWidget(i,3,mpp[i]);
     }
 }
@@ -86,12 +96,8 @@ void Manage_paper::copyBtn_event(int x)
 void Manage_paper::deleteBtn_event(int x)
 {
     QString delete_id = id_list[x];
-    //此处把id为delete_id的试卷从数据库里删除
-    name_list.erase(name_list.begin()+x);
-    release_list.erase(release_list.begin()+x);
-    num_list.erase(num_list.begin()+x);
-    id_list.erase(id_list.begin()+x);
-    change_items();
+    //此处把id为delete_id的试卷从数据库里删除'
+   // put_in_paper();
 }
 
 void Manage_paper::on_addBtn_clicked()

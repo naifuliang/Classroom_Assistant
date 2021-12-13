@@ -5,6 +5,8 @@
 #include "managaclass.h"
 #include "manage_paper.h"
 
+//教师端首页
+
 namespace Ui {
 class Teacher;
 }

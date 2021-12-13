@@ -10,6 +10,8 @@ InsertPaper::InsertPaper(QString teachernam,QWidget *parent) :
     ui->QuestionNum->addItems({"1","2","3","4","5","6","7","8","9","10"});
     ui->AnswerBox->addItems({"A","B","C","D"});
     previousK = 0 ;
+    setWindowTitle("Quiz");
+    resize(560,600);
 
     //PaperInfo.value("title")存放试卷名字
     //PaperInfo.value("content")存放QJsonArray quesions。存放十个数据QJsonObject quesionk(k=0,1,……,9)。
@@ -49,7 +51,9 @@ InsertPaper::InsertPaper(QString teachernam,QWidget *parent) :
     /*connect(ui->InsertButton, &QPushButton::clicked, this, [=](){
         //此处在数据库里加入试卷
         emit InsertPaperSucceed();
+<<<<<<< HEAD
     });*/
+
 }
 
 InsertPaper::~InsertPaper()
@@ -129,5 +133,32 @@ void InsertPaper::on_DoneButton_clicked()
         qDebug()<<"已完成试卷编辑"<<PaperInfo;
     }
 
+}
+
+void InsertPaper::setReadOnly(){
+    ui->AnswerBox->setEnabled(false);
+    ui->Description->setReadOnly(true);
+    ui->OptionA->setReadOnly(true);
+    ui->OptionB->setReadOnly(true);
+    ui->OptionC->setReadOnly(true);
+    ui->OptionD->setReadOnly(true);
+    ui->TitleEdit->setReadOnly(true);
+    ui->DoneButton->setEnabled(false);
+    ui->DoneButton->hide();
+}
+
+void InsertPaper::setPaperInfo(const QJsonObject &NewPaperInfo){//显示试卷内容
+    PaperInfo = NewPaperInfo;
+    ui->TitleEdit->setText(PaperInfo.value("title").toString());
+    for (int k = 0 ; k < 10 ; k++ ) {
+        ui->Description->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("description").toString());
+        ui->OptionA->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("A").toString());
+        ui->OptionB->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("B").toString());
+        ui->OptionC->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("C").toString());
+        ui->OptionD->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("D").toString());
+        ui->AnswerBox->setCurrentText(PaperInfo.value("content").toArray()[k].toObject().value("Answer").toString());
+        ChangeQuestionNum(QString::number(((k+1)%10)+1));
+        PaperInfo = NewPaperInfo;
+    }
 }
 
