@@ -49,6 +49,7 @@ InsertPaper::InsertPaper(QString teachernam,QWidget *parent) :
     connect(ui->InsertButton, &QPushButton::clicked, this, [=](){
         //此处在数据库里加入试卷
         emit InsertPaperSucceed();
+        close();
     });
 }
 

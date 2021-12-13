@@ -8,12 +8,13 @@ TeacherClassInfo::TeacherClassInfo(const QJsonObject &NewClass,QWidget *parent) 
     ui->setupUi(this);
     resize(600,400);
     Class = &NewClass;
+    classname="",username="";//此处获取老师的名字和课程的名字
     //显示课堂详细信息
     setWindowTitle(Class->value("className").toString());
     ui->classIDLabel->setText(QString::number(Class->value("id").toInt()));
     ui->classNameLabel->setText(Class->value("className").toString());
-
-
+    student_manage = new Student_manage(username,classname);
+    connect(ui->StudentManageButton, &QPushButton::clicked, student_manage, &Student_manage::show);
 }
 
 TeacherClassInfo::~TeacherClassInfo()

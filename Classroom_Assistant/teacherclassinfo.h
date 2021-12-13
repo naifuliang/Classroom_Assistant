@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include"insertpaper.h"
+#include "student_manage.h"
 
 namespace Ui {
 class TeacherClassInfo;
@@ -31,7 +32,7 @@ private:
     const QJsonObject* Class;
     QString classname,username;
     Ui::TeacherClassInfo *ui;
-
+    Student_manage *student_manage;
     InsertPaper *insertpaper;
 };
 

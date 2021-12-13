@@ -8,7 +8,6 @@ Manage_paper::Manage_paper(QString username,QWidget *parent) :
     ui->setupUi(this);
     resize(600,400);
     setWindowTitle(teachername+"老师的试卷");
-    ui->paperTable->setHorizontalHeaderLabels(QStringList() << "试卷名" << "问题数" << "是否发布" << "操作");
     for(int i=0;i<100;i++) mpp[i] = new Manage_paper_part;
     for(int i=0;i<100;i++)
     {
@@ -68,6 +67,7 @@ void Manage_paper::change_items()
         ui->paperTable->setItem(i,0,new QTableWidgetItem(name_list[i]));
         ui->paperTable->setItem(i,1,new QTableWidgetItem(num_list[i]));
         ui->paperTable->setItem(i,2,new QTableWidgetItem(release_list[i]));
+        ui->paperTable->setItem(i,3,new QTableWidgetItem(QString::number(i)));
         ui->paperTable->setCellWidget(i,3,mpp[i]);
     }
 }
@@ -85,10 +85,6 @@ void Manage_paper::copyBtn_event(int x)
 void Manage_paper::deleteBtn_event(int x)
 {
     QString delete_id = id_list[x];
-    //此处把id为delete_id的试卷从数据库里删除
-    name_list.erase(name_list.begin()+x);
-    release_list.erase(release_list.begin()+x);
-    num_list.erase(num_list.begin()+x);
-    id_list.erase(id_list.begin()+x);
-    change_items();
+    //此处把id为delete_id的试卷从数据库里删除'
+    put_in_paper();
 }

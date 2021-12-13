@@ -11,8 +11,8 @@ Quiz_score::Quiz_score(QString usernam,QString classnam,QWidget *parent) :
     ui->setupUi(this);
     resize(600,400);
     QVector <QString> name_list,score_list,time_list;
-    setWindowTitle(username+"的"+classname+"成绩");
-    ui->classnameLable->setText(classname);
+    setWindowTitle("学生成绩");
+    ui->classnameLable->setText(username+"的"+classname+"成绩");
     ui->pageTable->setColumnCount(3);
     ui->pageTable->setHorizontalHeaderLabels(QStringList() << "试卷名" << "试卷发布时间" << "试卷成绩");
     ui->pageTable->setEditTriggers(QAbstractItemView::NoEditTriggers);

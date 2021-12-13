@@ -26,6 +26,8 @@ SOURCES += \
     register_teacher.cpp \
     signin_student.cpp \
     student.cpp \
+    student_manage.cpp \
+    student_manage_part.cpp \
     studentclassinfo.cpp \
     teacher.cpp \
     teacherclassinfo.cpp \
@@ -48,6 +50,8 @@ HEADERS += \
     register_teacher.h \
     signin_student.h \
     student.h \
+    student_manage.h \
+    student_manage_part.h \
     studentclassinfo.h \
     teacher.h \
     teacherclassinfo.h \
@@ -70,6 +74,8 @@ FORMS += \
     register_teacher.ui \
     signin_student.ui \
     student.ui \
+    student_manage.ui \
+    student_manage_part.ui \
     studentclassinfo.ui \
     teacher.ui \
     teacherclassinfo.ui \
