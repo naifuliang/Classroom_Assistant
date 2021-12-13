@@ -14,6 +14,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
@@ -43,6 +44,9 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label_3;
     QTextEdit *OptionD;
+    QLineEdit *TitleEdit;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout_5;
     QLabel *label_7;
     QComboBox *AnswerBox;
 
@@ -50,7 +54,7 @@ public:
     {
         if (InsertPaper->objectName().isEmpty())
             InsertPaper->setObjectName(QString::fromUtf8("InsertPaper"));
-        InsertPaper->resize(577, 399);
+        InsertPaper->resize(577, 549);
         QuestionNum = new QComboBox(InsertPaper);
         QuestionNum->setObjectName(QString::fromUtf8("QuestionNum"));
         QuestionNum->setGeometry(QRect(110, 40, 72, 22));
@@ -63,7 +67,7 @@ public:
         label->setFont(font);
         DoneButton = new QPushButton(InsertPaper);
         DoneButton->setObjectName(QString::fromUtf8("DoneButton"));
-        DoneButton->setGeometry(QRect(250, 350, 80, 31));
+        DoneButton->setGeometry(QRect(240, 500, 80, 31));
         Description = new QTextEdit(InsertPaper);
         Description->setObjectName(QString::fromUtf8("Description"));
         Description->setGeometry(QRect(110, 70, 371, 61));
@@ -73,7 +77,7 @@ public:
         label_2->setFont(font);
         verticalLayoutWidget = new QWidget(InsertPaper);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(100, 140, 391, 131));
+        verticalLayoutWidget->setGeometry(QRect(90, 140, 391, 308));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -141,13 +145,26 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        label_7 = new QLabel(InsertPaper);
+        TitleEdit = new QLineEdit(InsertPaper);
+        TitleEdit->setObjectName(QString::fromUtf8("TitleEdit"));
+        TitleEdit->setGeometry(QRect(240, 40, 241, 20));
+        horizontalLayoutWidget = new QWidget(InsertPaper);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(200, 460, 160, 31));
+        horizontalLayout_5 = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_7 = new QLabel(horizontalLayoutWidget);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(40, 300, 54, 31));
         label_7->setFont(font);
-        AnswerBox = new QComboBox(InsertPaper);
+
+        horizontalLayout_5->addWidget(label_7);
+
+        AnswerBox = new QComboBox(horizontalLayoutWidget);
         AnswerBox->setObjectName(QString::fromUtf8("AnswerBox"));
-        AnswerBox->setGeometry(QRect(100, 310, 72, 22));
+
+        horizontalLayout_5->addWidget(AnswerBox);
+
 
         retranslateUi(InsertPaper);
 

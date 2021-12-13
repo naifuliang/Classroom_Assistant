@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -18,12 +19,17 @@ QT_BEGIN_NAMESPACE
 class Ui_Check_page
 {
 public:
+    QScrollBar *verticalScrollBar;
 
     void setupUi(QWidget *Check_page)
     {
         if (Check_page->objectName().isEmpty())
             Check_page->setObjectName(QString::fromUtf8("Check_page"));
         Check_page->resize(400, 300);
+        verticalScrollBar = new QScrollBar(Check_page);
+        verticalScrollBar->setObjectName(QString::fromUtf8("verticalScrollBar"));
+        verticalScrollBar->setGeometry(QRect(270, 70, 16, 160));
+        verticalScrollBar->setOrientation(Qt::Vertical);
 
         retranslateUi(Check_page);
 

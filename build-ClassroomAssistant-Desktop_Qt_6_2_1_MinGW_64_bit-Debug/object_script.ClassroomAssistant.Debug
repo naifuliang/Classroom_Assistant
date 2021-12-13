@@ -8,6 +8,7 @@ debug/main.o
 debug/mainwindow.o
 debug/managaclass.o
 debug/page_answer.o
+debug/publishquiz.o
 debug/quiz_score.o
 debug/register_student.o
 debug/register_teacher.o
@@ -25,6 +26,7 @@ debug/moc_login_teacher.o
 debug/moc_mainwindow.o
 debug/moc_managaclass.o
 debug/moc_page_answer.o
+debug/moc_publishquiz.o
 debug/moc_quiz_score.o
 debug/moc_register_student.o
 debug/moc_register_teacher.o

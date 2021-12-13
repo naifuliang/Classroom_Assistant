@@ -19,6 +19,7 @@ SOURCES += \
     mainwindow.cpp \
     managaclass.cpp \
     page_answer.cpp \
+    publishquiz.cpp \
     quiz_score.cpp \
     register_student.cpp \
     register_teacher.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     mainwindow.h \
     managaclass.h \
     page_answer.h \
+    publishquiz.h \
     quiz_score.h \
     register_student.h \
     register_teacher.h \
@@ -57,6 +59,7 @@ FORMS += \
     mainwindow.ui \
     managaclass.ui \
     page_answer.ui \
+    publishquiz.ui \
     quiz_score.ui \
     register_student.ui \
     register_teacher.ui \

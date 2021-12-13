@@ -8,6 +8,7 @@ release/main.o
 release/mainwindow.o
 release/managaclass.o
 release/page_answer.o
+release/publishquiz.o
 release/quiz_score.o
 release/register_student.o
 release/register_teacher.o
@@ -25,6 +26,7 @@ release/moc_login_teacher.o
 release/moc_mainwindow.o
 release/moc_managaclass.o
 release/moc_page_answer.o
+release/moc_publishquiz.o
 release/moc_quiz_score.o
 release/moc_register_student.o
 release/moc_register_teacher.o

@@ -11,8 +11,8 @@ InsertPaper::InsertPaper(QWidget *parent) :
     ui->AnswerBox->addItems({"A","B","C","D"});
     previousK = 0 ;
 
-    //PaperInfo[0]存放试卷名字
-    //PaperInfo[1]存放QJsonArray quesions。存放十个数据QJsonObject quesionk(k=0,1,……,9)。
+    //PaperInfo.value("title")存放试卷名字
+    //PaperInfo.value("content")存放QJsonArray quesions。存放十个数据QJsonObject quesionk(k=0,1,……,9)。
     /*quesionk
     {"id":题号 为k+1
     "description":题目描述
@@ -25,7 +25,7 @@ InsertPaper::InsertPaper(QWidget *parent) :
         }
     "Answer":正确答案
     }*/
-    PaperInfo.append("title");
+    PaperInfo.insert("title","");
     QJsonObject questionk;
     QJsonObject options;
     for (int k = 0 ; k<10 ;k++ ) {
@@ -40,9 +40,9 @@ InsertPaper::InsertPaper(QWidget *parent) :
         questions.append(questionk);
 
     }
-    PaperInfo.append(questions);
+    PaperInfo.insert("content",questions);
 
-    qDebug()<<PaperInfo[1].toArray()[0].toObject().value("id");
+    qDebug()<<PaperInfo.value("content").toArray()[0].toObject().value("id");
 
     connect(ui->QuestionNum,&QComboBox::currentTextChanged,this,&InsertPaper::ChangeQuestionNum);
 
@@ -87,38 +87,44 @@ void InsertPaper::ChangeQuestionNum(const QString &num){
         questionk.insert("options",options);
         questionk.insert("Answer",ui->AnswerBox->currentText());
         questions[previousK]=questionk;
-        PaperInfo[1]=questions;
+        PaperInfo.insert("content",questions);
     qDebug()<<"Previous K is"<<previousK;
     previousK = k;
     qDebug()<<k<<"="<<previousK;
-    ui->Description->setPlainText(PaperInfo[1].toArray()[k].toObject().value("description").toString());
-    ui->OptionA->setPlainText(PaperInfo[1].toArray()[k].toObject().value("options").toObject().value("A").toString());
-    ui->OptionB->setPlainText(PaperInfo[1].toArray()[k].toObject().value("options").toObject().value("B").toString());
-    ui->OptionC->setPlainText(PaperInfo[1].toArray()[k].toObject().value("options").toObject().value("C").toString());
-    ui->OptionD->setPlainText(PaperInfo[1].toArray()[k].toObject().value("options").toObject().value("D").toString());
-    ui->AnswerBox->setCurrentText(PaperInfo[1].toArray()[k].toObject().value("Answer").toString());
-    qDebug()<<PaperInfo[1].toArray()[k].toObject().value("description");
-    qDebug()<<PaperInfo[1].toArray()[k].toObject().value("id");
+    ui->Description->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("description").toString());
+    ui->OptionA->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("A").toString());
+    ui->OptionB->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("B").toString());
+    ui->OptionC->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("C").toString());
+    ui->OptionD->setPlainText(PaperInfo.value("content").toArray()[k].toObject().value("options").toObject().value("D").toString());
+    ui->AnswerBox->setCurrentText(PaperInfo.value("content").toArray()[k].toObject().value("Answer").toString());
+    qDebug()<<PaperInfo.value("content").toArray()[k].toObject().value("description");
+    qDebug()<<PaperInfo.value("content").toArray()[k].toObject().value("id");
 }
 
 
 
 void InsertPaper::on_DoneButton_clicked()
 {
-    int k = ui->QuestionNum->currentText().toInt() - 1;
-    QJsonObject questionk;
-    QJsonObject options;
-    questionk.insert("description",ui->Description->toPlainText());
-    questionk.insert("id",QString::number(k+1));
-    options.insert("A",ui->OptionA->toPlainText());
-    options.insert("B",ui->OptionB->toPlainText());
-    options.insert("C",ui->OptionC->toPlainText());
-    options.insert("D",ui->OptionD->toPlainText());
-    questionk.insert("options",options);
-    questionk.insert("Answer",ui->AnswerBox->currentText());
-    questions[k]=questionk;
-    PaperInfo[1]=questions;
-    emit InsertPaperDone(PaperInfo);
-    qDebug()<<"已完成试卷编辑"<<PaperInfo;
+    QMessageBox::Button btn = QMessageBox::question(this, "保存试卷", "您确定要保存试卷吗?");
+    if(btn == QMessageBox::Yes)
+    {
+        int k = ui->QuestionNum->currentText().toInt() - 1;
+        QJsonObject questionk;
+        QJsonObject options;
+        questionk.insert("description",ui->Description->toPlainText());
+        questionk.insert("id",QString::number(k+1));
+        options.insert("A",ui->OptionA->toPlainText());
+        options.insert("B",ui->OptionB->toPlainText());
+        options.insert("C",ui->OptionC->toPlainText());
+        options.insert("D",ui->OptionD->toPlainText());
+        questionk.insert("options",options);
+        questionk.insert("Answer",ui->AnswerBox->currentText());
+        questions[k]=questionk;
+        PaperInfo.insert("title",ui->TitleEdit->text());
+        PaperInfo.value("content")=questions;
+        emit InsertPaperDone(PaperInfo);
+        qDebug()<<"已完成试卷编辑"<<PaperInfo;
+    }
+
 }
 

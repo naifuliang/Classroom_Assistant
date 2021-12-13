@@ -65,7 +65,7 @@ static const uint qt_meta_data_InsertPaper[] = {
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QJsonArray,    4,
+    QMetaType::Void, QMetaType::QJsonObject,    4,
 
  // slots: parameters
     QMetaType::Void,
@@ -80,7 +80,7 @@ void InsertPaper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         (void)_t;
         switch (_id) {
         case 0: _t->InsertPaperClosed(); break;
-        case 1: _t->InsertPaperDone((*reinterpret_cast< const QJsonArray(*)>(_a[1]))); break;
+        case 1: _t->InsertPaperDone((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         case 2: _t->on_DoneButton_clicked(); break;
         default: ;
         }
@@ -94,7 +94,7 @@ void InsertPaper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (InsertPaper::*)(const QJsonArray & );
+            using _t = void (InsertPaper::*)(const QJsonObject & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&InsertPaper::InsertPaperDone)) {
                 *result = 1;
                 return;
@@ -110,7 +110,7 @@ const QMetaObject InsertPaper::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_InsertPaper_t
-, QtPrivate::TypeAndForceComplete<InsertPaper, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QJsonArray &, std::false_type>
+, QtPrivate::TypeAndForceComplete<InsertPaper, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QJsonObject &, std::false_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -156,7 +156,7 @@ void InsertPaper::InsertPaperClosed()
 }
 
 // SIGNAL 1
-void InsertPaper::InsertPaperDone(const QJsonArray & _t1)
+void InsertPaper::InsertPaperDone(const QJsonObject & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
