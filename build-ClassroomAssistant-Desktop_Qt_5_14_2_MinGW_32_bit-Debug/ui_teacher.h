@@ -11,6 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -18,12 +24,103 @@ QT_BEGIN_NAMESPACE
 class Ui_Teacher
 {
 public:
+    QVBoxLayout *verticalLayout_2;
+    QWidget *widget_4;
+    QHBoxLayout *horizontalLayout;
+    QWidget *widget;
+    QGridLayout *gridLayout;
+    QLabel *label_2;
+    QLabel *UidLabel;
+    QLabel *label;
+    QLabel *NameLabel;
+    QWidget *widget_2;
+    QVBoxLayout *verticalLayout;
+    QPushButton *classBtn;
+    QPushButton *paperBtn;
+    QWidget *widget_3;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *LogoutButton;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QWidget *Teacher)
     {
         if (Teacher->objectName().isEmpty())
             Teacher->setObjectName(QString::fromUtf8("Teacher"));
         Teacher->resize(400, 300);
+        verticalLayout_2 = new QVBoxLayout(Teacher);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        widget_4 = new QWidget(Teacher);
+        widget_4->setObjectName(QString::fromUtf8("widget_4"));
+        horizontalLayout = new QHBoxLayout(widget_4);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        widget = new QWidget(widget_4);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
+
+        UidLabel = new QLabel(widget);
+        UidLabel->setObjectName(QString::fromUtf8("UidLabel"));
+
+        gridLayout->addWidget(UidLabel, 0, 1, 1, 1);
+
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout->addWidget(label, 1, 0, 1, 1);
+
+        NameLabel = new QLabel(widget);
+        NameLabel->setObjectName(QString::fromUtf8("NameLabel"));
+
+        gridLayout->addWidget(NameLabel, 1, 1, 1, 1);
+
+
+        horizontalLayout->addWidget(widget);
+
+        widget_2 = new QWidget(widget_4);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        verticalLayout = new QVBoxLayout(widget_2);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        classBtn = new QPushButton(widget_2);
+        classBtn->setObjectName(QString::fromUtf8("classBtn"));
+
+        verticalLayout->addWidget(classBtn);
+
+        paperBtn = new QPushButton(widget_2);
+        paperBtn->setObjectName(QString::fromUtf8("paperBtn"));
+
+        verticalLayout->addWidget(paperBtn);
+
+
+        horizontalLayout->addWidget(widget_2);
+
+
+        verticalLayout_2->addWidget(widget_4);
+
+        widget_3 = new QWidget(Teacher);
+        widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        horizontalLayout_2 = new QHBoxLayout(widget_3);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        LogoutButton = new QPushButton(widget_3);
+        LogoutButton->setObjectName(QString::fromUtf8("LogoutButton"));
+
+        horizontalLayout_2->addWidget(LogoutButton);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_2->addWidget(widget_3);
+
 
         retranslateUi(Teacher);
 
@@ -33,6 +130,13 @@ public:
     void retranslateUi(QWidget *Teacher)
     {
         Teacher->setWindowTitle(QCoreApplication::translate("Teacher", "Form", nullptr));
+        label_2->setText(QCoreApplication::translate("Teacher", "Uid:", nullptr));
+        UidLabel->setText(QString());
+        label->setText(QCoreApplication::translate("Teacher", "Name:", nullptr));
+        NameLabel->setText(QString());
+        classBtn->setText(QCoreApplication::translate("Teacher", "\350\257\276\345\240\202\347\256\241\347\220\206", nullptr));
+        paperBtn->setText(QCoreApplication::translate("Teacher", "\350\257\225\345\215\267\347\256\241\347\220\206", nullptr));
+        LogoutButton->setText(QCoreApplication::translate("Teacher", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
     } // retranslateUi
 
 };

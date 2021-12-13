@@ -6,6 +6,7 @@
 #include<QJsonValue>
 #include<QJsonObject>
 #include "enterclass.h"
+#include "total_score.h"
 
 //（客户端）显示首页界面，包括数据显示 “学生姓名”“学号”；
 //功能按钮“退出登录”“进入课堂”“成绩查询”
@@ -32,11 +33,12 @@ private slots:
     void on_EnterClassButton_clicked();
 
 private:
-    Ui::Student *ui;
     int Sid;
+    QString username;
     QString Password,Name,Class;
-
+    Total_score *total_score;
     EnterClass* enterclass;
+    Ui::Student *ui;
 };
 
 #endif // STUDENT_H

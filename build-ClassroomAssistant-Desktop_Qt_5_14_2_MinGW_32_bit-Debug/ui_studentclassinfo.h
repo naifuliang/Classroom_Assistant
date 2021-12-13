@@ -11,9 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -22,100 +24,130 @@ QT_BEGIN_NAMESPACE
 class Ui_StudentClassInfo
 {
 public:
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_5;
-    QLabel *classIDLabel;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLabel *classNameLabel;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_7;
+    QWidget *widget;
+    QGridLayout *gridLayout;
+    QLabel *classIDLabel;
     QLabel *teacherNameLabel;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
+    QLabel *label_7;
+    QLabel *label;
     QLabel *signupLabel;
+    QLabel *label_5;
+    QLabel *label_3;
+    QLabel *classNameLabel;
+    QWidget *widget_2;
+    QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *verticalSpacer;
+    QPushButton *enterquizBtn;
+    QSpacerItem *verticalSpacer_4;
     QPushButton *QuizScoreBtn;
-    QPushButton *pushButton_2;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *SignupButton;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *verticalSpacer_6;
 
     void setupUi(QWidget *StudentClassInfo)
     {
         if (StudentClassInfo->objectName().isEmpty())
             StudentClassInfo->setObjectName(QString::fromUtf8("StudentClassInfo"));
         StudentClassInfo->resize(400, 300);
-        verticalLayoutWidget = new QWidget(StudentClassInfo);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(40, 50, 160, 111));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_5 = new QLabel(verticalLayoutWidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        horizontalLayout_3->addWidget(label_5);
-
-        classIDLabel = new QLabel(verticalLayoutWidget);
+        horizontalLayout = new QHBoxLayout(StudentClassInfo);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        widget = new QWidget(StudentClassInfo);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        classIDLabel = new QLabel(widget);
         classIDLabel->setObjectName(QString::fromUtf8("classIDLabel"));
 
-        horizontalLayout_3->addWidget(classIDLabel);
+        gridLayout->addWidget(classIDLabel, 0, 2, 1, 2);
 
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        horizontalLayout->addWidget(label);
-
-        classNameLabel = new QLabel(verticalLayoutWidget);
-        classNameLabel->setObjectName(QString::fromUtf8("classNameLabel"));
-
-        horizontalLayout->addWidget(classNameLabel);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_7 = new QLabel(verticalLayoutWidget);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        horizontalLayout_4->addWidget(label_7);
-
-        teacherNameLabel = new QLabel(verticalLayoutWidget);
+        teacherNameLabel = new QLabel(widget);
         teacherNameLabel->setObjectName(QString::fromUtf8("teacherNameLabel"));
 
-        horizontalLayout_4->addWidget(teacherNameLabel);
+        gridLayout->addWidget(teacherNameLabel, 2, 2, 1, 2);
 
+        label_7 = new QLabel(widget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
 
-        verticalLayout->addLayout(horizontalLayout_4);
+        gridLayout->addWidget(label_7, 2, 0, 1, 2);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(verticalLayoutWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        horizontalLayout_2->addWidget(label_3);
+        gridLayout->addWidget(label, 1, 0, 1, 1);
 
-        signupLabel = new QLabel(verticalLayoutWidget);
+        signupLabel = new QLabel(widget);
         signupLabel->setObjectName(QString::fromUtf8("signupLabel"));
 
-        horizontalLayout_2->addWidget(signupLabel);
+        gridLayout->addWidget(signupLabel, 3, 2, 1, 2);
+
+        label_5 = new QLabel(widget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout->addWidget(label_5, 0, 0, 1, 1);
+
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout->addWidget(label_3, 3, 0, 1, 2);
+
+        classNameLabel = new QLabel(widget);
+        classNameLabel->setObjectName(QString::fromUtf8("classNameLabel"));
+
+        gridLayout->addWidget(classNameLabel, 1, 2, 1, 2);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        horizontalLayout->addWidget(widget);
 
-        QuizScoreBtn = new QPushButton(StudentClassInfo);
+        widget_2 = new QWidget(StudentClassInfo);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        verticalLayout = new QVBoxLayout(widget_2);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_5);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+        enterquizBtn = new QPushButton(widget_2);
+        enterquizBtn->setObjectName(QString::fromUtf8("enterquizBtn"));
+
+        verticalLayout->addWidget(enterquizBtn);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
+        QuizScoreBtn = new QPushButton(widget_2);
         QuizScoreBtn->setObjectName(QString::fromUtf8("QuizScoreBtn"));
-        QuizScoreBtn->setGeometry(QRect(250, 190, 80, 31));
-        pushButton_2 = new QPushButton(StudentClassInfo);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(250, 230, 80, 31));
+
+        verticalLayout->addWidget(QuizScoreBtn);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
+        SignupButton = new QPushButton(widget_2);
+        SignupButton->setObjectName(QString::fromUtf8("SignupButton"));
+        SignupButton->setAutoRepeatDelay(300);
+
+        verticalLayout->addWidget(SignupButton);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_2);
+
+        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_6);
+
+
+        horizontalLayout->addWidget(widget_2);
+
 
         retranslateUi(StudentClassInfo);
 
@@ -125,16 +157,17 @@ public:
     void retranslateUi(QWidget *StudentClassInfo)
     {
         StudentClassInfo->setWindowTitle(QCoreApplication::translate("StudentClassInfo", "Form", nullptr));
-        label_5->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\347\250\213ID:", nullptr));
         classIDLabel->setText(QString());
-        label->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\347\250\213\345\220\215\345\255\227:", nullptr));
-        classNameLabel->setText(QString());
-        label_7->setText(QCoreApplication::translate("StudentClassInfo", "\344\273\273\350\257\276\350\200\201\345\270\210:", nullptr));
         teacherNameLabel->setText(QString());
-        label_3->setText(QCoreApplication::translate("StudentClassInfo", "\347\255\276\345\210\260\346\254\241\346\225\260:", nullptr));
+        label_7->setText(QCoreApplication::translate("StudentClassInfo", "\344\273\273\350\257\276\350\200\201\345\270\210:", nullptr));
+        label->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\347\250\213\345\220\215\345\255\227:", nullptr));
         signupLabel->setText(QString());
+        label_5->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\347\250\213ID:", nullptr));
+        label_3->setText(QCoreApplication::translate("StudentClassInfo", "\347\255\276\345\210\260\346\254\241\346\225\260:", nullptr));
+        classNameLabel->setText(QString());
+        enterquizBtn->setText(QCoreApplication::translate("StudentClassInfo", "\350\277\233\345\205\245\347\255\224\351\242\230", nullptr));
         QuizScoreBtn->setText(QCoreApplication::translate("StudentClassInfo", "\350\200\203\350\257\225\346\210\220\347\273\251", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\345\240\202\347\255\276\345\210\260", nullptr));
+        SignupButton->setText(QCoreApplication::translate("StudentClassInfo", "\350\257\276\345\240\202\347\255\276\345\210\260", nullptr));
     } // retranslateUi
 
 };

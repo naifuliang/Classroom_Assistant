@@ -18,6 +18,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     managaclass.cpp \
+    manage_paper.cpp \
+    manage_paper_part.cpp \
     page_answer.cpp \
     publishquiz.cpp \
     quiz_score.cpp \
@@ -27,7 +29,8 @@ SOURCES += \
     student.cpp \
     studentclassinfo.cpp \
     teacher.cpp \
-    teacherclassinfo.cpp
+    teacherclassinfo.cpp \
+    total_score.cpp
 
 HEADERS += \
     check_page.h \
@@ -38,6 +41,8 @@ HEADERS += \
     login_teacher.h \
     mainwindow.h \
     managaclass.h \
+    manage_paper.h \
+    manage_paper_part.h \
     page_answer.h \
     publishquiz.h \
     quiz_score.h \
@@ -47,7 +52,8 @@ HEADERS += \
     student.h \
     studentclassinfo.h \
     teacher.h \
-    teacherclassinfo.h
+    teacherclassinfo.h \
+    total_score.h
 
 FORMS += \
     check_page.ui \
@@ -58,6 +64,8 @@ FORMS += \
     login_teacher.ui \
     mainwindow.ui \
     managaclass.ui \
+    manage_paper.ui \
+    manage_paper_part.ui \
     page_answer.ui \
     publishquiz.ui \
     quiz_score.ui \
@@ -67,7 +75,8 @@ FORMS += \
     student.ui \
     studentclassinfo.ui \
     teacher.ui \
-    teacherclassinfo.ui
+    teacherclassinfo.ui \
+    total_score.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

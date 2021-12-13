@@ -1,8 +1,8 @@
 #include "managaclass.h"
 #include "ui_managaclass.h"
 
-ManagaClass::ManagaClass(QWidget *parent) :
-    QWidget(parent),
+ManagaClass::ManagaClass(QString user,int identi,QWidget *parent) :
+    QWidget(parent),username(user),identity(identi),//需传入用户名和是老师还是学生
     ui(new Ui::ManagaClass)
 {
     ui->setupUi(this);
@@ -54,3 +54,4 @@ ManagaClass::~ManagaClass()
 {
     delete ui;
 }
+

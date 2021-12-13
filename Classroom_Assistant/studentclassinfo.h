@@ -6,6 +6,8 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <quiz_score.h>
+#include <page_answer.h>
+#include <QMessageBox>
 
 namespace Ui {
 class StudentClassInfo;
@@ -26,8 +28,10 @@ signals:
 
 private:
     Quiz_score *quiz_score;
+    int paper_id;
     const QJsonObject* Class;
     QString classname,username;
+    Page_answer *paper;
     Ui::StudentClassInfo *ui;
 };
 

@@ -40,7 +40,7 @@ void MainWindow::build_student(int ui,QString pss,QString nam)
 
 void MainWindow::build_teacher(int ui, QString pss, QString nam)
 {
-    teacher = new Teacher(ui,pss,nam,"",nullptr);//新建学生主页面
+    teacher = new Teacher(ui,pss,nam,nullptr);//新建老师主页面
     this->hide();
     teacher->show();
     connect(teacher,&Teacher::Logout,this,[=](){//返回Mainwindow并释放内存

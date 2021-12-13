@@ -247,6 +247,7 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro ../../Qt/Qt5.14.2/5.14.2
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
@@ -275,7 +276,6 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro ../../Qt/Qt5.14.2/5.14.2
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/Qt5Gui.prl \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/Qt5Core.prl \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/qtmain.prl \
-		.qmake.stash \
 		../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\Classroom_Assistant\ClassroomAssistant.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
@@ -455,6 +455,7 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro ../../Qt/Qt5.14.2/5.14.2
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
@@ -483,7 +484,6 @@ Makefile: ../Classroom_Assistant/ClassroomAssistant.pro ../../Qt/Qt5.14.2/5.14.2
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/Qt5Gui.prl:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/Qt5Core.prl:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/lib/qtmain.prl:
-.qmake.stash:
 ../../Qt/Qt5.14.2/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Classroom_Assistant\ClassroomAssistant.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

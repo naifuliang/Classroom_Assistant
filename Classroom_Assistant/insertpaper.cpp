@@ -1,12 +1,12 @@
 #include "insertpaper.h"
 #include "ui_insertpaper.h"
 
-InsertPaper::InsertPaper(QWidget *parent) :
-    QWidget(parent),
+InsertPaper::InsertPaper(QString teachernam,QWidget *parent) :
+    QWidget(parent),teachername(teachernam),
     ui(new Ui::InsertPaper)
 {
     ui->setupUi(this);
-
+    resize(600,400);
     ui->QuestionNum->addItems({"1","2","3","4","5","6","7","8","9","10"});
     ui->AnswerBox->addItems({"A","B","C","D"});
     previousK = 0 ;
@@ -46,7 +46,10 @@ InsertPaper::InsertPaper(QWidget *parent) :
 
     connect(ui->QuestionNum,&QComboBox::currentTextChanged,this,&InsertPaper::ChangeQuestionNum);
 
-
+    /*connect(ui->InsertButton, &QPushButton::clicked, this, [=](){
+        //此处在数据库里加入试卷
+        emit InsertPaperSucceed();
+    });*/
 }
 
 InsertPaper::~InsertPaper()
