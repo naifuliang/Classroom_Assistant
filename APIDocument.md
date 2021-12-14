@@ -15,8 +15,8 @@
     "act": "login",
     "is_successful": true
 }
-//登陆时用户名或密码错误返回false，注册时用户名重名返回false
 ```
+登陆时用户名或密码错误返回false，注册时用户名重名返回false
 ## Get class list for both student and teacher  
 ### Client  
 ```json
@@ -149,8 +149,8 @@
 "act":"submission",
 "is_successful":true
 }
-//重复提交返回false
 ```
+//重复提交返回false
 ## Get Score    
 ### Client    
 ```json
