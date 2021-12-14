@@ -18,6 +18,7 @@
 ```
 登陆时用户名或密码错误返回false，注册时用户名重名返回false
 ## Get class list for both student and teacher  
+教师端查询返回当前帐号已开设课程，学生端调用返回当前帐号已选课程    
 ### Client  
 ```json
 {
