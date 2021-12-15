@@ -6,10 +6,10 @@
 // Hongyi Honor College,
 // Wuhan University
 
-// Last updated : 2021/12/9
+// Last updated : 2021/12/15
 
-#ifndef Client_Teacher_H
-#define Client_Teacher_H
+#ifndef CLIENT_TEACHER_H
+#define CLIENT_TEACHER_H
 
 #include <QObject>
 #include <QWidget>
@@ -33,11 +33,19 @@ public:
     explicit Client_Teacher(QWidget *parent = nullptr);
     ~Client_Teacher();
 
-    void teacher_register(QByteArray username, QByteArray password);
-    void teacher_login(QByteArray username, QByteArray password);
-    void teacher_logout(QByteArray username);
-    void getcourselist();
-    void getstudentlist(quint32 courseid);
+    QByteArray teacher_register(QString username, QString password);
+    QByteArray teacher_login(QString username, QString password);
+//    void teacher_logout(QByteArray username);
+    QByteArray getclasslist();
+    QByteArray addclass(QString classname);
+    QByteArray addpaper(quint32 classid, QString papername, QString papercontent);
+    QByteArray showpaperlist(quint32 classid);
+    QByteArray getpaper(quint32 paperid);
+    QByteArray getscore(quint32 paperid);
+//    void getstudentlist(quint32 courseid);
+//    void getsigncode();
+//    void sendquiz(QStringList problemlist, quint32 timelimit);
+//    void randompick(quint32 courseid);
 
 signals:
     void _connect(QString _ip, quint16 _port);
@@ -56,4 +64,4 @@ private:
 
 };
 
-#endif // Client_Teacher_H
+#endif // CLIENT_TEACHER_H

@@ -6,7 +6,7 @@
 // Hongyi Honor College,
 // Wuhan University
 
-// Last updated : 2021/12/9
+// Last updated : 2021/12/15
 
 #include "client_student.h"
 
@@ -17,7 +17,7 @@ Client_Student::Client_Student(QWidget *parent) :
 
     connect(client, &QTcpSocket::connected, this, &Client_Student::connectSuccessSlot);
     connect(client, &QTcpSocket::disconnected, this, &Client_Student::disconnectSlot);
-    connect(client, &QTcpSocket::readyRead, this, &Client_Student::newDataSlot);
+//    connect(client, &QTcpSocket::readyRead, this, &Client_Student::newDataSlot);
 
     return;
 }
@@ -154,70 +154,229 @@ void Client_Student::_send(QByteArray text)
  * ]
 */
 
-void Client_Student::student_register(QByteArray username, QByteArray password)
+QByteArray Client_Student::student_register(QString username, QString password)
 {
     QByteArray hashPassword;
     QJsonObject obj, subobj;
     QByteArray json;
     QJsonDocument doc;
 
-    hashPassword = QCryptographicHash::hash(password, QCryptographicHash::Md5);
-
-    subobj.insert("type", "student");
-    subobj.insert("name", QString(username));
-    subobj.insert("password", QString(hashPassword));
+    hashPassword = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Md5);
 
     obj.insert("act", "register");
-    obj.insert("content", subobj);
+//    obj.insert("content", subobj);
+    obj.insert("name", username);
+    obj.insert("password", QString(hashPassword));
+    obj.insert("type", "student");
+
 
     doc = QJsonDocument(obj);
     json = doc.toJson();
 
     _send(json);
 
-    return;
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
 }
 
-void Client_Student::student_login(QByteArray username, QByteArray password)
+QByteArray Client_Student::student_login(QString username, QString password)
 {
     QByteArray hashPassword;
     QJsonObject obj, subobj;
     QByteArray json;
     QJsonDocument doc;
 
-    hashPassword = QCryptographicHash::hash(password, QCryptographicHash::Md5);
+    hashPassword = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Md5);
 
-    subobj.insert("type", "student");
-    subobj.insert("name", QString(username));
-    subobj.insert("password", QString(hashPassword));
 
     obj.insert("act", "login");
-    obj.insert("content", subobj);
+//    obj.insert("content", subobj);
+    subobj.insert("name", username);
+    subobj.insert("password", QString(hashPassword));
+    subobj.insert("type", "student");
 
     doc = QJsonDocument(obj);
     json = doc.toJson();
 
     _send(json);
 
-    return;
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
 }
 
-void Client_Student::student_logout(QByteArray username)
+//void Client_Student::student_logout(QByteArray username)
+//{
+//    QJsonObject obj, subobj;
+//    QByteArray json;
+//    QJsonDocument doc;
+
+//    subobj.insert("type", "student");
+//    subobj.insert("name", QString(username));
+
+//    obj.insert("act", "logout");
+//    obj.insert("content", subobj);
+
+//    doc = QJsonDocument(obj);
+//    json = doc.toJson();
+
+//    _send(json);
+
+//    return;
+//}
+
+
+QByteArray Client_Student::getclass()
 {
-    QJsonObject obj, subobj;
+    QJsonObject obj;
     QByteArray json;
     QJsonDocument doc;
 
-    subobj.insert("type", "student");
-    subobj.insert("name", QString(username));
-
-    obj.insert("act", "logout");
-    obj.insert("content", subobj);
+    obj.insert("act", "getclass");
 
     doc = QJsonDocument(obj);
     json = doc.toJson();
 
     _send(json);
 
-    return;
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
+}
+
+QByteArray Client_Student::attendclass(quint32 classid)
+{
+    QJsonObject obj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    obj.insert("act", "attendclass");
+    obj.insert("classid", QString::number(classid));
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
+}
+
+QByteArray Client_Student::showpaperlist(quint32 classid)
+{
+    QJsonObject obj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    obj.insert("act", "showpaperlist");
+    obj.insert("classid", QString::number(classid));
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
+}
+
+QByteArray Client_Student::getpaper(quint32 paperid)
+{
+    QJsonObject obj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    obj.insert("act", "getpaper");
+    obj.insert("paperid", QString::number(paperid));
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
+}
+
+QByteArray Client_Student::submit(quint32 paperid, quint32 score)
+{
+    QJsonObject obj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    obj.insert("act", "submit");
+    obj.insert("paperid", QString::number(paperid));
+    obj.insert("score", QString::number(score));
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
+}
+
+QByteArray Client_Student::getscore(quint32 paperid)
+{
+    QJsonObject obj;
+    QByteArray json;
+    QJsonDocument doc;
+
+    obj.insert("act", "getscore");
+    obj.insert("paperid", QString::number(paperid));
+
+    doc = QJsonDocument(obj);
+    json = doc.toJson();
+
+    _send(json);
+
+    do
+    {
+        json = client->readAll();
+        doc = QJsonDocument::fromJson(json);
+    }
+    while(!doc.isObject());
+
+    return json;
 }
