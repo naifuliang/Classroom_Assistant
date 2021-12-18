@@ -106,7 +106,7 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>输入已创建班级的id加入课堂</string>
+          <string>输入已创建班级的id进入课堂</string>
          </property>
         </widget>
        </item>
@@ -157,7 +157,7 @@
      <x>0</x>
      <y>0</y>
      <width>521</width>
-     <height>18</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

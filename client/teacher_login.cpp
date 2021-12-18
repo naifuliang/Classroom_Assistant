@@ -8,6 +8,7 @@ teacher_login::teacher_login(QWidget *parent,socket *tcp) :
 {
     ui->setupUi(this);
     this->tcp=tcp;
+    setFixedSize(307,288);
 }
 
 teacher_login::~teacher_login()

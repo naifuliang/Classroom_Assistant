@@ -10,6 +10,7 @@ student_class::student_class(QWidget *parent,socket *tcp) :
     ui->setupUi(this);
     this->tcp=tcp;
     get_class();
+    setFixedSize(521,412);
 }
 
 void student_class::get_class()
@@ -29,6 +30,7 @@ void student_class::get_class()
     }
     QStringListModel *model = new QStringListModel(list);
     ui->classlist->setModel(model);
+    ui->classlist->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 student_class::~student_class()

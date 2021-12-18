@@ -7,6 +7,7 @@ student_login::student_login(QWidget *parent,socket *tcp) :
 {
     this->tcp=tcp;
     ui->setupUi(this);
+    setFixedSize(307,288);
 }
 
 student_login::~student_login()

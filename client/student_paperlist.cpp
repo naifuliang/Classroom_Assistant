@@ -9,6 +9,7 @@ student_paperlist::student_paperlist(QWidget *parent,socket *tcp,int classid) :
     this->tcp=tcp;
     this->classid=classid;
     get_paper_list();
+    setFixedSize(548,316);
 }
 
 student_paperlist::~student_paperlist()
@@ -46,6 +47,7 @@ void student_paperlist::get_paper_list()
     }
     QStringListModel *model = new QStringListModel(list);
     ui->paperlist->setModel(model);
+    ui->paperlist->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 int student_paperlist::get_score(int classid)

@@ -22,6 +22,9 @@ public:
     explicit teacher_add(QWidget *parent = nullptr,socket *tcp=NULL,int classid=0);
     ~teacher_add();
 
+signals:
+    void submitDone();
+
 private slots:
     void on_submit_clicked();
 

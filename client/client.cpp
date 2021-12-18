@@ -7,6 +7,7 @@ Client::Client(QWidget *parent)
 {
     ui->setupUi(this);
     tcp = new socket(this);
+    setFixedSize(212,247);
 }
 
 Client::~Client()

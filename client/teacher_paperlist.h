@@ -25,6 +25,7 @@ public:
     ~teacher_paperlist();
     void getlist();
 
+
 private slots:
     void on_lookup_clicked();
 
