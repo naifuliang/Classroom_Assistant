@@ -9,6 +9,7 @@ student_quiz::student_quiz(QWidget *parent,socket *tcp,int paperid) :
     this->tcp=tcp;
     this->paperid=paperid;
     showqestions();
+    setFixedSize(672,444);
 }
 
 student_quiz::~student_quiz()
@@ -42,6 +43,7 @@ void student_quiz::showqestions()
     QStringListModel *model = new QStringListModel(list);
     ui->questions->setModel(model);
     ui->papername->setText(papername);
+    ui->questions->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 void student_quiz::submit(int score)

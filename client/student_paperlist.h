@@ -25,7 +25,7 @@ public:
     void get_paper_list();
     int get_score(int classid);
 
-private slots:
+public slots:
     void on_start_clicked();
 
 private:

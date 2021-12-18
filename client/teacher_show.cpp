@@ -11,6 +11,7 @@ teacher_show::teacher_show(QWidget *parent,socket *tcp,int paperid) :
     this->tcp=tcp;
     this->paperid=paperid;
     showscore();
+    setFixedSize(427,316);
 }
 
 teacher_show::~teacher_show()
@@ -37,4 +38,5 @@ void teacher_show::showscore()
     }
     QStringListModel *model = new QStringListModel(list);
     ui->list_2->setModel(model);
+    ui->list_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }

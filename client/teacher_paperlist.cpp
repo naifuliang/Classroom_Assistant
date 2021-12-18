@@ -11,6 +11,7 @@ teacher_paperlist::teacher_paperlist(QWidget *parent,socket *tcp,int classid) :
     this->tcp=tcp;
     this->classid=classid;
     getlist();
+    setFixedSize(527,357);
 }
 
 teacher_paperlist::~teacher_paperlist()
@@ -40,6 +41,7 @@ void teacher_paperlist::getlist()
     }
     QStringListModel *model = new QStringListModel(list);
     ui->paperlist->setModel(model);
+    ui->paperlist->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 void teacher_paperlist::on_lookup_clicked()
@@ -53,6 +55,7 @@ void teacher_paperlist::on_lookup_clicked()
 void teacher_paperlist::on_newpaper_clicked()
 {
     teacher_add *tadd = new teacher_add(this,tcp,classid);
+    connect(tadd,&teacher_add::submitDone,this,&teacher_paperlist::getlist);
     tadd->show();
 }
 

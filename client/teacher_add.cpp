@@ -8,6 +8,7 @@ teacher_add::teacher_add(QWidget *parent,socket *tcp,int classid) :
     ui->setupUi(this);
     this->tcp=tcp;
     this->classid=classid;
+    setFixedSize(552,537);
 }
 
 teacher_add::~teacher_add()
@@ -47,6 +48,8 @@ void teacher_add::on_submit_clicked()
     obj.insert("papercontent",content_text);
     QJsonDocument doc(obj);
     tcp->request(doc.toJson());
+    submitDone();
+
     this->close();
 }
 
